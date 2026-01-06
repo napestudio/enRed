@@ -1,11 +1,11 @@
 import {
   createClient as baseCreateClient,
-  ClientConfig,
-  Route,
+  type ClientConfig,
+  type Route,
 } from "@prismicio/client";
 import { enableAutoPreviews } from "@prismicio/next";
 import * as prismic from "@prismicio/client";
-import sm from "../slicemachine.config.json";
+import sm from "./slicemachine.config.json";
 
 /**
  * The project's Prismic repository name.
@@ -14,11 +14,15 @@ export const repositoryName =
   process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
 
 /**
- * The project's Prismic route resolvers. This list determines a Prismic document's URL.
+ * A list of Route Resolver objects that define how a document's `url` field is resolved.
+ *
+ * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
+// TODO: Update the routes array to match your project's route structure.
 const routes: Route[] = [
-  { type: "page", uid: "home", path: "/" },
-  { type: "page", path: "/:uid" },
+  // Examples:
+  // { type: "homepage", path: "/" },
+  // { type: "page", path: "/:uid" },
 ];
 
 /**
@@ -27,8 +31,8 @@ const routes: Route[] = [
  *
  * @param config - Configuration for the Prismic client.
  */
-export function createClient(config: ClientConfig = {}) {
-  const client = baseCreateClient(sm.apiEndpoint || repositoryName, {
+export const createClient = (config: ClientConfig = {}) => {
+  const client = baseCreateClient(repositoryName, {
     routes,
     fetchOptions:
       process.env.NODE_ENV === "production"
@@ -40,7 +44,7 @@ export function createClient(config: ClientConfig = {}) {
   enableAutoPreviews({ client });
 
   return client;
-}
+};
 
 declare global {
   // eslint-disable-next-line no-var, no-unused-vars

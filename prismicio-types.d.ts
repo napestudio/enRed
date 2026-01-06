@@ -4,124 +4,175 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+type PickContentRelationshipFieldData<
+  TRelationship extends
+    | prismic.CustomTypeModelFetchCustomTypeLevel1
+    | prismic.CustomTypeModelFetchCustomTypeLevel2
+    | prismic.CustomTypeModelFetchGroupLevel1
+    | prismic.CustomTypeModelFetchGroupLevel2,
+  TData extends Record<
+    string,
+    | prismic.AnyRegularField
+    | prismic.GroupField
+    | prismic.NestedGroupField
+    | prismic.SliceZone
+  >,
+  TLang extends string,
+> =
+  // Content relationship fields
+  {
+    [TSubRelationship in Extract<
+      TRelationship["fields"][number],
+      prismic.CustomTypeModelFetchContentRelationshipLevel1
+    > as TSubRelationship["id"]]: ContentRelationshipFieldWithData<
+      TSubRelationship["customtypes"],
+      TLang
+    >;
+  } & // Group
+  {
+    [TGroup in Extract<
+      TRelationship["fields"][number],
+      | prismic.CustomTypeModelFetchGroupLevel1
+      | prismic.CustomTypeModelFetchGroupLevel2
+    > as TGroup["id"]]: TData[TGroup["id"]] extends prismic.GroupField<
+      infer TGroupData
+    >
+      ? prismic.GroupField<
+          PickContentRelationshipFieldData<TGroup, TGroupData, TLang>
+        >
+      : never;
+  } & // Other fields
+  {
+    [TFieldKey in Extract<
+      TRelationship["fields"][number],
+      string
+    >]: TFieldKey extends keyof TData ? TData[TFieldKey] : never;
+  };
+
+type ContentRelationshipFieldWithData<
+  TCustomType extends
+    | readonly (prismic.CustomTypeModelFetchCustomTypeLevel1 | string)[]
+    | readonly (prismic.CustomTypeModelFetchCustomTypeLevel2 | string)[],
+  TLang extends string = string,
+> = {
+  [ID in Exclude<
+    TCustomType[number],
+    string
+  >["id"]]: prismic.ContentRelationshipField<
+    ID,
+    TLang,
+    PickContentRelationshipFieldData<
+      Extract<TCustomType[number], { id: ID }>,
+      Extract<prismic.Content.AllDocumentTypes, { type: ID }>["data"],
+      TLang
+    >
+  >;
+}[Exclude<TCustomType[number], string>["id"]];
+
+type HomeDocumentDataSlicesSlice = HeaderSlice;
 
 /**
- * Content for Page documents
+ * Content for Home documents
  */
-interface PageDocumentData {
+interface HomeDocumentData {
   /**
-   * Title field in *Page*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
-   * Slice Zone field in *Page*
+   * Slice Zone field in *Home*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: page.slices[]
+   * - **API ID Path**: home.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
+   * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<PageDocumentDataSlicesSlice> /**
-   * Meta Title field in *Page*
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Home*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: page.meta_title
+   * - **API ID Path**: home.meta_title
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
   meta_title: prismic.KeyTextField;
 
   /**
-   * Meta Description field in *Page*
+   * Meta Description field in *Home*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: page.meta_description
+   * - **API ID Path**: home.meta_description
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/fields/text
    */
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Page*
+   * Meta Image field in *Home*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: page.meta_image
+   * - **API ID Path**: home.meta_image
    * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **Documentation**: https://prismic.io/docs/fields/image
    */
   meta_image: prismic.ImageField<never>;
 }
 
 /**
- * Page document from Prismic
+ * Home document from Prismic
  *
- * - **API ID**: `page`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type PageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = PageDocument;
+export type AllDocumentTypes = HomeDocument;
 
 /**
- * Primary content in *RichText → Primary*
+ * Primary content in *Header → Default → Primary*
  */
-export interface RichTextSliceDefaultPrimary {
+export interface HeaderSliceDefaultPrimary {
   /**
-   * Content field in *RichText → Primary*
+   * Imagen Principal field in *Header → Default → Primary*
    *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Lorem ipsum...
-   * - **API ID Path**: rich_text.primary.content
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.default.primary.imagen_principal
+   * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  content: prismic.RichTextField;
+  imagen_principal: prismic.ImageField<never>;
 }
 
 /**
- * Default variation for RichText Slice
+ * Default variation for Header Slice
  *
  * - **API ID**: `default`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
  */
-export type RichTextSliceDefault = prismic.SharedSliceVariation<
+export type HeaderSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<RichTextSliceDefaultPrimary>,
+  Simplify<HeaderSliceDefaultPrimary>,
   never
 >;
 
 /**
- * Slice variation for *RichText*
+ * Slice variation for *Header*
  */
-type RichTextSliceVariation = RichTextSliceDefault;
+type HeaderSliceVariation = HeaderSliceDefault;
 
 /**
- * RichText Shared Slice
+ * Header Shared Slice
  *
- * - **API ID**: `rich_text`
- * - **Description**: RichText
- * - **Documentation**: https://prismic.io/docs/slice
+ * - **API ID**: `header`
+ * - **Description**: Header
+ * - **Documentation**: https://prismic.io/docs/slices
  */
-export type RichTextSlice = prismic.SharedSlice<
-  "rich_text",
-  RichTextSliceVariation
->;
+export type HeaderSlice = prismic.SharedSlice<"header", HeaderSliceVariation>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -131,16 +182,27 @@ declare module "@prismicio/client" {
     ): prismic.Client<AllDocumentTypes>;
   }
 
+  interface CreateWriteClient {
+    (
+      repositoryNameOrEndpoint: string,
+      options: prismic.WriteClientConfig,
+    ): prismic.WriteClient<AllDocumentTypes>;
+  }
+
+  interface CreateMigration {
+    (): prismic.Migration<AllDocumentTypes>;
+  }
+
   namespace Content {
     export type {
-      PageDocument,
-      PageDocumentData,
-      PageDocumentDataSlicesSlice,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
-      RichTextSlice,
-      RichTextSliceDefaultPrimary,
-      RichTextSliceVariation,
-      RichTextSliceDefault,
+      HeaderSlice,
+      HeaderSliceDefaultPrimary,
+      HeaderSliceVariation,
+      HeaderSliceDefault,
     };
   }
 }
