@@ -1,35 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-
-const navItems = [
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Trabajos", href: "/trabajos" },
-  { label: "Contacto", href: "/contacto" },
-];
-
-const socialItems = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/enred-comunicaciones/",
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/enredcomunicaciones/",
-  },
-  { label: "Facebook", href: "https://www.facebook.com/enredcomunicaciones" },
-];
+import { LINKS } from "../lib/constants";
 
 export default function Navbar() {
+  const { navItems, socialItems } = LINKS;
+
   return (
-    <div className="h-16 bg-gray-400 p-4 flex justify-between items-center">
-      <Image src="/next.svg" alt="enRed Logo" width={150} height={50} />
+    <div className="h-16 bg-gray-200 p-4 flex justify-between items-center px-24">
+      <Image src="/logo-en-red.svg" alt="enRed Logo" width={150} height={50} />
       <nav className="flex space-x-8">
-        <ul className="flex justify-between">
+        <ul className="flex justify-between gap-4 uppercase">
           {navItems.map((item) => (
             <li key={item.href}>
-              <Link href={item.href}>{item.label}</Link>
+              <Link className="text-red font-light text-sm" href={item.href}>{item.label}</Link>
             </li>
           ))}
         </ul>
