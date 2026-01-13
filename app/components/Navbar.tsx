@@ -30,7 +30,7 @@ export default function Navbar() {
           <li>
             <Link href={'#'} target="_blank">
               <Image
-                src="/instagram.svg"
+                src="/gram.svg"
                 alt="enRed Logo"
                 className="text-red fill-red"
                 width={16}

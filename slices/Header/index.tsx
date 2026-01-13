@@ -36,7 +36,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
           </div>
           <div className="flex items-center gap-1">
             <Image
-              src="/instagram.svg"
+              src="/gram.svg"
               alt="enRed Logo"
               className="text-red fill-red"
               width={16}
