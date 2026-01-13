@@ -51,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={cn(spaceGrotesk.variable)}>
-      <body className="font-grotesk antialiased">
+      <body className="font-grotesk antialiased ">
         <Navbar />
         {children}
         <Footer />
