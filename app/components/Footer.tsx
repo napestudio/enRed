@@ -6,8 +6,8 @@ export default function Footer() {
   const { navItems, socialItems } = LINKS;
 
   return (
-    <footer className="min-h-[80dvh] bg-red grid grid-cols-9 gap-4 pt-24">
-      <div className="cols-start-1 col-span-3 px-24 ">
+    <footer className="min-h-[80dvh] bg-red grid grid-cols-9 gap-4 pt-24 overflow-hidden">
+      <div className="cols-start-1 col-span-4 px-24 ">
         <h2 className="text-5xl text-balance ">
           Líderes en cerramientos de seguridad
         </h2>
@@ -39,7 +39,7 @@ export default function Footer() {
           alt="enRed Logo"
           width={150}
           height={50}
-          className="w-full "
+          className="w-full h-auto"
         />
       </div>
     </footer>
