@@ -7,10 +7,11 @@
 }
 
 @theme {
-  --font-sans: var(--font-SpaceGrotesk-sans);
+  --font-grotesk: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
 
   --color-red: var(--enred-primary);
+  --fill-red: var(--enred-primary);
 }
 
 

@@ -50,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={cn(spaceGrotesk.variable, "antialiased")}>
+    <html lang="es" className={cn(spaceGrotesk.variable)}>
+      <body className="font-grotesk antialiased">
         <Navbar />
         {children}
         <Footer />
