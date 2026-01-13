@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import CanvasContainer from "@/app/components/experience/CanvasContainer";
 
 /**
  * Props for `Header`.
@@ -17,7 +18,9 @@ const Header: FC<HeaderProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="min-h-screen bg-slate-400"
     >
-    
+      <div className="h-dvh w-dvw">
+        <CanvasContainer />
+      </div>
     </section>
   );
 };
