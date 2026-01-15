@@ -23,7 +23,7 @@ export default function Footer() {
             </li>
           ))}
         </ul>
-        <ul className="hidden flex justify-between ml-8">
+        <ul className="hidden md:flex justify-between ml-8">
           {socialItems.map((item) => (
             <li key={item.href}>
               <Link href={item.href} target="_blank">
@@ -33,13 +33,13 @@ export default function Footer() {
           ))}
         </ul>
       </nav>
-      <div className="col-start-1 col-span-9 mt-8">
+      <div className="col-start-1 col-span-9 grid items-end">
         <Image
-          src="/logo-footer.svg"
+          src="/images/logo-footer.svg"
           alt="enRed Logo"
           width={150}
-          height={50}
-          className="w-full h-auto"
+          height={150}
+          className="w-full h-auto align-bottom inline-block"
         />
       </div>
     </footer>
