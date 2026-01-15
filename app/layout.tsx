@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,34 +10,34 @@ import { cn } from "./lib/utils";
 const spaceGrotesk = localFont({
   src: [
     {
-      path: './fonts/SpaceGrotesk-Light.woff2',
-      weight: '300',
-      style: 'normal',
+      path: "./fonts/SpaceGrotesk-Light.woff2",
+      weight: "300",
+      style: "normal",
     },
     {
-      path: './fonts/SpaceGrotesk-Regular.woff2',
-      weight: '400',
-      style: 'normal',
+      path: "./fonts/SpaceGrotesk-Regular.woff2",
+      weight: "400",
+      style: "normal",
     },
     {
-      path: './fonts/SpaceGrotesk-Medium.woff2',
-      weight: '500',
-      style: 'normal',
+      path: "./fonts/SpaceGrotesk-Medium.woff2",
+      weight: "500",
+      style: "normal",
     },
     {
-      path: './fonts/SpaceGrotesk-SemiBold.woff2',
-      weight: '600',
-      style: 'normal',
+      path: "./fonts/SpaceGrotesk-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
     },
     {
-      path: './fonts/SpaceGrotesk-Bold.woff2',
-      weight: '700',
-      style: 'normal',
+      path: "./fonts/SpaceGrotesk-Bold.woff2",
+      weight: "700",
+      style: "normal",
     },
   ],
-  variable: '--font-space-grotesk',
-  display: 'swap',
-})
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -51,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={cn(spaceGrotesk.variable)}>
-      <body className="font-grotesk antialiased ">
+      <body className="font-grotesk antialiased overflow-x-hidden">
         <Navbar />
         {children}
         <Footer />

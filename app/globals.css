@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --enred-primary: #F03C32;
+  --enred-primary: #f03c32;
 }
 
 @theme {
@@ -14,16 +14,7 @@
   --fill-red: var(--enred-primary);
 }
 
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  
 }

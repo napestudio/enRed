@@ -22,7 +22,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
         <div className="col-span-10 col-start-2 lg:col-start-2 lg:col-span-4 flex flex-col justify-between py-12">
           <div>
             <Image
-              src="/logo-en-red.svg"
+              src="/images/logo-en-red.svg"
               alt="enRed Logo"
               width={400}
               height={100}
@@ -36,18 +36,18 @@ const Header: FC<HeaderProps> = ({ slice }) => {
           </div>
           <div className="flex items-center gap-1">
             <Image
-              src="/gram.svg"
+              src="/images/instagram-icon.svg"
               alt="enRed Logo"
               className="text-red fill-red"
               width={16}
               height={16}
             />
             <p className="text-black"> @enred.soluciones</p>
-          </div> 
+          </div>
         </div>
         <div className="relative col-span-10 col-start-2 lg:col-start-6 lg:col-span-6">
           <Image
-            src="/edificio-header.svg"
+            src="/images/edificio-header.svg"
             alt="enRed Logo"
             className="w-full h-auto"
             width={600}

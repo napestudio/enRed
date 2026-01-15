@@ -18,7 +18,7 @@ type GLTFResult = GLTF & {
 
 export function EdificioModel(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF(
-    "/edificio.glb"
+    "/models/edificio.glb"
   ) as unknown as GLTFResult;
   return (
     <group {...props} dispose={null}>
@@ -32,4 +32,4 @@ export function EdificioModel(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/edificio.glb");
+useGLTF.preload("/models/edificio.glb");

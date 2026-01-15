@@ -69,7 +69,7 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomeDocumentDataSlicesSlice = HeaderSlice;
+type HomeDocumentDataSlicesSlice = SolucionesSlice | HeaderSlice;
 
 /**
  * Content for Home documents
@@ -174,6 +174,61 @@ type HeaderSliceVariation = HeaderSliceDefault;
  */
 export type HeaderSlice = prismic.SharedSlice<"header", HeaderSliceVariation>;
 
+/**
+ * Primary content in *Soluciones → Default → Primary*
+ */
+export interface SolucionesSliceDefaultPrimary {
+  /**
+   * Titulo field in *Soluciones → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: soluciones.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Parrafo field in *Soluciones → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: soluciones.default.primary.paragraph
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  paragraph: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Soluciones Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SolucionesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SolucionesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Soluciones*
+ */
+type SolucionesSliceVariation = SolucionesSliceDefault;
+
+/**
+ * Soluciones Shared Slice
+ *
+ * - **API ID**: `soluciones`
+ * - **Description**: Soluciones
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SolucionesSlice = prismic.SharedSlice<
+  "soluciones",
+  SolucionesSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -203,6 +258,10 @@ declare module "@prismicio/client" {
       HeaderSliceDefaultPrimary,
       HeaderSliceVariation,
       HeaderSliceDefault,
+      SolucionesSlice,
+      SolucionesSliceDefaultPrimary,
+      SolucionesSliceVariation,
+      SolucionesSliceDefault,
     };
   }
 }
