@@ -6,14 +6,14 @@ export default function Footer() {
   const { navItems, socialItems } = LINKS;
 
   return (
-    <footer className="min-h-[80dvh] bg-red grid grid-cols-9 gap-4 p-12 overflow-hidden relative">
-      <div className="cols-start-1 col-span-3 ">
+    <footer className="md:min-h-[80dvh] bg-red grid grid-cols-9 gap-4 p-12 overflow-hidden relative">
+      <div className="cols-start-1 col-span-3 z-10">
         <h2 className="text-6xl text-balance text-black">
           Soluciones con <span className="underline">altura</span>
         </h2>
       </div>
       
-      <div className="absolute col-start-3 col-span-9 pr-12">
+      <div className="absolute col-start-3 col-span-9 pr-12 z-0">
         <Image
           src="/footer-shapes.svg"
           alt="enRed Logo"
