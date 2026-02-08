@@ -32,6 +32,7 @@ const solucionesData = [
     desc: "Garantizamos la mejor protección en edificios, obras en construcción, domicilios  particulares, estructuras y otros espacios.",
   },
 ];
+
 const Header: FC<HeaderProps> = ({ slice }) => {
   return (
     <div className="bg-white text-black ">
@@ -42,7 +43,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
         className="min-h-screen relative"
       >
         <div className="grid grid-cols-12 gap-4 min-h-screen px-12 py-12 z-10 absolute w-full">
-          <div className="col-span-10 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-20 py-12">
+          <div className="col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 md:gap-20 pt-12 md:py-12">
             <h1 className="text-white text-[clamp(2rem,7vw,7rem)] mt-4 text-balance leading-tight max-w-full">
               Soluciones con <span className="underline">altura</span>
             </h1>
@@ -58,7 +59,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
               </div>
             </div>
           </div>
-          <div className="mt-22 col-span-10 col-start-2 lg:col-start-6 lg:col-span-7">
+          <div className="md:mt-22 col-span-10 col-start-2 lg:col-start-6 lg:col-span-7">
             <Image
               src="/figura-lineas.svg"
               alt="enRed Logo"
@@ -79,7 +80,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
       {/* Nosotros */}
       <section className="bg-white">
         <div className="relative grid grid-cols-12 gap-4 p-12">
-          <div className="col-span-5 col-start-8 text-right text-balance z-20">
+          <div className="col-span-12 md:col-span-5 col-start-1 md:col-start-8 text-right text-balance z-20">
             <h2 className="text-5xl mb-6">Nosotros</h2>
             <p className="">
               Somos una empresa que brinda soluciones integrales en edificios,
@@ -107,7 +108,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
           <div className="col-span-5 col-start-1 text-black text-balance z-20">
             <h2 className="text-5xl mb-6">Soluciones</h2>
           </div>
-          <div className="relative grid grid-cols-12 gap-4 p-12 max-w-[60vw]">
+          <div className="relative grid grid-cols-12 gap-4 p-12 md:max-w-[60vw]">
             {solucionesData.map(
               (solucion: { title: string; desc: string }, index: number) => (
                 <div
