@@ -6,9 +6,9 @@ export default function Footer() {
   const { navItems, socialItems } = LINKS;
 
   return (
-    <footer className="md:min-h-[80dvh] bg-red grid grid-cols-9 gap-4 p-12 overflow-hidden relative">
-      <div className="cols-start-1 col-span-3 z-10 text-black mt-20">
-        <h2 className="text-6xl text-balance text-black">
+    <footer className="md:min-h-[80dvh] bg-enred-red grid grid-cols-9 gap-4 p-12 overflow-hidden relative">
+      <div className="cols-start-1 col-span-3 z-10 text-enred-black mt-20">
+        <h2 className="text-6xl text-balance text-enred-black">
           Soluciones con <span className="underline">altura</span>
         </h2>
         <p className="mt-4 text-2xl">Galvez 833</p>
