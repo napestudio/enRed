@@ -3,15 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --enred-primary: #F03C32;
+  --enred-red: #F03C32;
+  --enred-black: #111111;
 }
 
 @theme {
   --font-grotesk: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
 
-  --color-red: var(--enred-primary);
-  --fill-red: var(--enred-primary);
+  --color-enred-red: var(--enred-red);
+  --color-enred-black: var(--enred-black);
+  --fill-red: var(--enred-red);
 }
 
 

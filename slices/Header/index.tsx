@@ -31,11 +31,19 @@ const solucionesData = [
     title: "Hidrolavado de muros",
     desc: "Garantizamos la mejor protección en edificios, obras en construcción, domicilios  particulares, estructuras y otros espacios.",
   },
+  {
+    title: "Cercos para piletas",
+    desc: "Garantizamos la mejor protección en edificios, obras en construcción, domicilios  particulares, estructuras y otros espacios.",
+  },
+  {
+    title: "Kit de autoinstalación",
+    desc: "Garantizamos la mejor protección en edificios, obras en construcción, domicilios  particulares, estructuras y otros espacios.",
+  },
 ];
 
 const Header: FC<HeaderProps> = ({ slice }) => {
   return (
-    <div className="bg-white text-black ">
+    <div className="bg-white text-enred-black ">
       {/* Hero */}
       <section
         data-slice-type={slice.slice_type}
@@ -105,20 +113,20 @@ const Header: FC<HeaderProps> = ({ slice }) => {
       {/* Soluciones */}
       <section className="bg-white mt-40 min-h-screen">
         <div className="relative px-12 py-12">
-          <div className="col-span-5 col-start-1 text-black text-balance z-20">
+          <div className="col-span-5 col-start-1 text-enred-black text-balance z-20">
             <h2 className="text-5xl mb-6">Soluciones</h2>
           </div>
-          <div className="relative grid grid-cols-12 gap-4 p-12 md:max-w-[60vw]">
+          <div className="relative grid grid-cols-12 gap-4 p-12">
             {solucionesData.map(
               (solucion: { title: string; desc: string }, index: number) => (
                 <div
                   key={index}
                   className={cn(
-                    "relative col-span-6 mb-4 p-6",
-                    index === 1 ? "bg-red text-white" : "bg-white",
+                    "relative col-span-12 md:col-span-4 mb-4 p-10",
+                    index === 1 ? "bg-enred-red text-white" : "bg-white",
                   )}
                 >
-                  <div className="flex flex-col gap-6">
+                  <div className="flex flex-col gap-5">
                     {index === 1 ? (
                       <Image
                         src="/white-shape.svg"
@@ -159,7 +167,63 @@ const Header: FC<HeaderProps> = ({ slice }) => {
         </div>
       </section>
       {/* Nuestros trabajos */}
-      <section className="min-h-screen bg-red"></section>
+      <section className="min-h-screen bg-enred-red p-12">
+        <div className="grid grid-cols-12 md:grid-rows-8 gap-4">
+          <div className="order-2 md:order-1 col-span-12 md:col-span-4 md:row-span-3 bg-enred-black">
+            <Image
+              src="/header-bg.jpg"
+              alt="Imagen de fondo"
+              className="w-full h-full object-cover"
+              width={400}
+              height={500}
+              priority
+            />
+          </div>
+          <div className="order-3 md:order-2 col-span-12 md:col-span-4 md:row-span-5 md:col-start-1 md:row-start-4 bg-enred-black">
+            <Image
+              src="/header-bg.jpg"
+              alt="Imagen de fondo"
+              className="w-full h-full object-cover"
+              width={400}
+              height={500}
+              priority
+            />
+          </div>
+          <div className="order-4 md:order-3 col-span-12 md:col-span-4 md:row-span-5 md:col-start-5 md:row-start-1 bg-enred-black">
+            <Image
+              src="/header-bg.jpg"
+              alt="Imagen de fondo"
+              className="w-full h-full object-cover"
+              width={400}
+              height={500}
+              priority
+            />
+          </div>
+          <div className="order-5 md:order-4 col-span-12 md:col-span-4 md:row-span-3 md:col-start-5 md:row-start-6 bg-enred-black">
+            <Image
+              src="/header-bg.jpg"
+              alt="Imagen de fondo"
+              className="w-full h-full object-cover"
+              width={400}
+              height={500}
+              priority
+            />
+          </div>
+          <div className="order-6 md:order-5 col-span-12 md:col-span-4 md:row-span-5 md:col-start-9 md:row-start-4 overflow-hidden">
+            <Image
+              src="/header-bg.jpg"
+              alt="Imagen de fondo"
+              className="w-full h-full object-cover"
+              width={400}
+              height={500}
+              priority
+            />
+          </div>
+          <div className="order-1 md:order-6 col-span-12 md:col-span-4 md:row-span-3 md:col-start-9 md:row-start-1 flex items-center md:justify-end md:text-right">
+            <h2 className="text-5xl mb-6 text-white">Nuestros Clientes</h2>
+          </div>
+        </div>
+      </section>
       {/* Nuestros clientes */}
       <section className="mb-12">
         <div className="grid grid-cols-12 gap-4 p-12 items-center">
@@ -201,7 +265,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
       {/* Reseñas */}
       <section>
         <div className="grid grid-cols-12 gap-4 p-12 items-center">
-          <div className="col-span-6 p-4 bg-red grid grid-cols-3 gap-4">
+          <div className="col-span-6 p-4 bg-enred-red grid grid-cols-3 gap-4">
             <div className="col-span-1 p-4">
               <div className="rounded-full overflow-hidden aspect-square bg-white"></div>
             </div>
@@ -221,7 +285,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
               </p>
             </div>
           </div>
-          <div className="col-span-6 p-4 bg-red grid grid-cols-3 gap-4">
+          <div className="col-span-6 p-4 bg-enred-red grid grid-cols-3 gap-4">
             <div className="col-span-1 p-4">
               <div className="rounded-full overflow-hidden aspect-square bg-white"></div>
             </div>
@@ -244,7 +308,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
         </div>
       </section>
       {/* Cointacto */}
-      <section className="bg-red">
+      <section className="bg-enred-red">
         <div className="grid grid-cols-12 gap-4 p-12 items-center text-white">
           <div className="col-span-3 border-b border-white">
             <p className="p-4">Nombre y Apellido</p>
@@ -255,7 +319,7 @@ const Header: FC<HeaderProps> = ({ slice }) => {
           <div className="col-span-3 border-b border-white">
             <p className="p-4">Consulta</p>
           </div>
-          <div className="col-span-3 bg-black ">
+          <div className="col-span-3 bg-enred-black ">
             <p className="text-white py-4 px-6">Contactanos</p>
           </div>
         </div>
