@@ -1,0 +1,38 @@
+{
+  "type": "SharedSlice",
+  "id": "media_grid_intro",
+  "name": "MediaGridIntro",
+  "variations": [
+    {
+      "id": "headline_image_grid",
+      "name": "Headline with Image Grid",
+      "description": "Displays a prominent headline next to a grid of images, ideal for highlighting clients or partners visually.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Headline"
+          }
+        },
+        "media_items": {
+          "type": "Group",
+          "config": {
+            "label": "Media Items",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

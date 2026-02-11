@@ -1,0 +1,37 @@
+{
+  "type": "SharedSlice",
+  "id": "intro_text_feature_graphic",
+  "name": "IntroTextFeatureGraphic",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Displays heading, description, and a single feature graphic with flexible layout.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Title"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Description"
+          }
+        },
+        "feature_graphic": {
+          "type": "Image",
+          "config": {
+            "label": "Feature Graphic"
+          }
+        }
+      }
+    }
+  ]
+}

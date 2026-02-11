@@ -1,0 +1,42 @@
+{
+  "type": "SharedSlice",
+  "id": "hero_image_overlay",
+  "name": "HeroImageOverlay",
+  "variations": [
+    {
+      "id": "centered_headline_with_image",
+      "name": "Centered Headline with Image",
+      "description": "Hero with large central headline text overlay and background image.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image"
+          }
+        },
+        "headline": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "heading1,strong,em,hyperlink",
+            "label": "Headline"
+          }
+        },
+        "show_decorative_graphic": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Decorative Graphic"
+          }
+        },
+        "show_down_arrow": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Down Arrow"
+          }
+        }
+      }
+    }
+  ]
+}

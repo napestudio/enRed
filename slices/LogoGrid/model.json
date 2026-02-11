@@ -1,0 +1,38 @@
+{
+  "type": "SharedSlice",
+  "id": "logo_grid",
+  "name": "LogoGrid",
+  "variations": [
+    {
+      "id": "with_title",
+      "name": "With Title",
+      "description": "Includes a section title and a group of logo items.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "heading2",
+            "label": "Title"
+          }
+        },
+        "logos": {
+          "type": "Group",
+          "config": {
+            "label": "Logos",
+            "fields": {
+              "logo_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Logo Image"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

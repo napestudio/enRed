@@ -1,0 +1,67 @@
+{
+  "type": "SharedSlice",
+  "id": "solutions_grid",
+  "name": "SolutionsGrid",
+  "variations": [
+    {
+      "id": "featured_item_grid",
+      "name": "Featured Item Grid",
+      "description": "A grid display of items where one is featured/highlighted, including icon, title, optional description, and link.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Heading"
+          }
+        },
+        "solutions": {
+          "type": "Group",
+          "config": {
+            "label": "Solutions",
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3,strong,em",
+                  "label": "Title"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Description"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "featured": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Featured"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
