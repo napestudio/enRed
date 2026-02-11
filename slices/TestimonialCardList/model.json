@@ -1,0 +1,64 @@
+{
+  "type": "SharedSlice",
+  "id": "testimonial_card_list",
+  "name": "TestimonialCardList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard testimonial card list with image, rating, author, and testimonial text.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2"
+          }
+        },
+        "testimonials": {
+          "type": "Group",
+          "config": {
+            "label": "Testimoniales",
+            "repeat": true,
+            "fields": {
+              "avatar": {
+                "type": "Image",
+                "config": {
+                  "label": "Avatar"
+                }
+              },
+              "author_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Nombre del autor",
+                  "placeholder": ""
+                }
+              },
+              "rating": {
+                "type": "Number",
+                "config": {
+                  "label": "Rating"
+                }
+              },
+              "testimonial_text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Texto testimonial",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

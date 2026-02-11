@@ -1,0 +1,80 @@
+{
+  "type": "SharedSlice",
+  "id": "solutions_grid",
+  "name": "SolutionsGrid",
+  "variations": [
+    {
+      "id": "featured_item_grid",
+      "name": "Featured Item Grid",
+      "description": "A grid display of items where one is featured/highlighted, including icon, title, optional description, and link.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2"
+          }
+        },
+        "solutions": {
+          "type": "Group",
+          "config": {
+            "label": "Soluciones",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "label": "Icono"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Titulo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "heading3,strong,em"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Descripción",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Enlace",
+                  "placeholder": "",
+                  "allowText": false,
+                  "repeat": false,
+                  "select": null
+                }
+              },
+              "featured": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Destacado",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

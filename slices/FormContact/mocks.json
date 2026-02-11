@@ -1,0 +1,29 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"name_label": {
+				"__TYPE__": "FieldContent",
+				"value": "port",
+				"type": "Text"
+			},
+			"email_label": {
+				"__TYPE__": "FieldContent",
+				"value": "market",
+				"type": "Text"
+			},
+			"message_label": {
+				"__TYPE__": "FieldContent",
+				"value": "trade",
+				"type": "Text"
+			},
+			"submit_button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "amount",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
