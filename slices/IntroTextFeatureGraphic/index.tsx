@@ -20,7 +20,7 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white"
+      className="bg-white text-enred-black"
     >
       <div className="relative grid grid-cols-12 gap-4 p-12">
         <div className="col-span-12 md:col-span-5 col-start-1 md:col-start-8 text-right text-balance z-20">
