@@ -16,7 +16,7 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="mb-12 bg-white text-enred-black"
+      className="bg-white text-enred-black"
     >
       <div className="grid grid-cols-12 gap-4 p-12 items-center">
         <div className="col-span-3">

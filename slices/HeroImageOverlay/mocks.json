@@ -4,16 +4,15 @@
 		"variation": "centered_headline_with_image",
 		"primary": {
 			"background_image": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
-					"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
-					"width": 4752,
-					"height": 3168
+					"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+					"width": 3935,
+					"height": 5894
 				},
-				"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
-				"width": 4752,
-				"height": 3168,
+				"url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+				"width": 3935,
+				"height": 5894,
 				"edit": {
 					"zoom": 1,
 					"crop": {
@@ -22,7 +21,9 @@
 					},
 					"background": "transparent"
 				},
-				"alt": "population"
+				"alt": "section",
+				"credits": null,
+				"__TYPE__": "ImageContent"
 			},
 			"headline": {
 				"__TYPE__": "StructuredTextContent",
@@ -30,18 +31,10 @@
 					{
 						"type": "heading1",
 						"content": {
-							"text": "Shelf"
+							"text": "Brown"
 						}
 					}
 				]
-			},
-			"show_decorative_graphic": {
-				"__TYPE__": "BooleanContent",
-				"value": true
-			},
-			"show_down_arrow": {
-				"__TYPE__": "BooleanContent",
-				"value": true
 			}
 		},
 		"items": []

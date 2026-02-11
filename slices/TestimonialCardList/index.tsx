@@ -18,7 +18,7 @@ const TestimonialCardList: FC<TestimonialCardListProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="text-enred-black bg-white"
+      className="text-enred-black bg-gray-300"
     >
       <div className="grid grid-cols-12 gap-4 p-12 items-center">
         <div className="col-span-6 p-4 bg-enred-red grid grid-cols-3 gap-4">

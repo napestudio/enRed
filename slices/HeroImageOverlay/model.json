@@ -14,29 +14,21 @@
         "background_image": {
           "type": "Image",
           "config": {
-            "label": "Background Image"
+            "constraint": {},
+            "label": "Imagen de fondo"
           }
         },
         "headline": {
           "type": "StructuredText",
           "config": {
-            "multi": "heading1,strong,em,hyperlink",
-            "label": "Headline"
-          }
-        },
-        "show_decorative_graphic": {
-          "type": "Boolean",
-          "config": {
-            "label": "Show Decorative Graphic"
-          }
-        },
-        "show_down_arrow": {
-          "type": "Boolean",
-          "config": {
-            "label": "Show Down Arrow"
+            "label": "Texto principal",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,strong,em,hyperlink"
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

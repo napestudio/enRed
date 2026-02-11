@@ -219,7 +219,7 @@ export type FormContactSlice = prismic.SharedSlice<
  */
 export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
   /**
-   * Background Image field in *HeroImageOverlay → Centered Headline with Image → Primary*
+   * Imagen de fondo field in *HeroImageOverlay → Centered Headline with Image → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -229,7 +229,7 @@ export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
   background_image: prismic.ImageField<never>;
 
   /**
-   * Headline field in *HeroImageOverlay → Centered Headline with Image → Primary*
+   * Texto principal field in *HeroImageOverlay → Centered Headline with Image → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -237,26 +237,6 @@ export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   headline: prismic.RichTextField;
-
-  /**
-   * Show Decorative Graphic field in *HeroImageOverlay → Centered Headline with Image → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_image_overlay.centered_headline_with_image.primary.show_decorative_graphic
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  show_decorative_graphic: prismic.BooleanField;
-
-  /**
-   * Show Down Arrow field in *HeroImageOverlay → Centered Headline with Image → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_image_overlay.centered_headline_with_image.primary.show_down_arrow
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  show_down_arrow: prismic.BooleanField;
 }
 
 /**
@@ -296,7 +276,7 @@ export type HeroImageOverlaySlice = prismic.SharedSlice<
  */
 export interface IntroTextFeatureGraphicSliceDefaultPrimary {
   /**
-   * Title field in *IntroTextFeatureGraphic → Default → Primary*
+   * Titulo field in *IntroTextFeatureGraphic → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -306,7 +286,7 @@ export interface IntroTextFeatureGraphicSliceDefaultPrimary {
   title: prismic.RichTextField;
 
   /**
-   * Description field in *IntroTextFeatureGraphic → Default → Primary*
+   * Descripción field in *IntroTextFeatureGraphic → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -314,16 +294,6 @@ export interface IntroTextFeatureGraphicSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
-
-  /**
-   * Feature Graphic field in *IntroTextFeatureGraphic → Default → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: intro_text_feature_graphic.default.primary.feature_graphic
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  feature_graphic: prismic.ImageField<never>;
 }
 
 /**
@@ -362,7 +332,7 @@ export type IntroTextFeatureGraphicSlice = prismic.SharedSlice<
  */
 export interface LogoGridSliceWithTitlePrimaryLogosItem {
   /**
-   * Logo Image field in *LogoGrid → With Title → Primary → Logos*
+   * Logo del cliente field in *LogoGrid → With Title → Primary → Logos*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -377,7 +347,7 @@ export interface LogoGridSliceWithTitlePrimaryLogosItem {
  */
 export interface LogoGridSliceWithTitlePrimary {
   /**
-   * Title field in *LogoGrid → With Title → Primary*
+   * Titulo field in *LogoGrid → With Title → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -432,7 +402,7 @@ export type LogoGridSlice = prismic.SharedSlice<
  */
 export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
   /**
-   * Image field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   * Imagen field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -447,7 +417,7 @@ export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
  */
 export interface MediaGridIntroSliceHeadlineImageGridPrimary {
   /**
-   * Headline field in *MediaGridIntro → Headline with Image Grid → Primary*
+   * Titulo field in *MediaGridIntro → Headline with Image Grid → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -500,11 +470,11 @@ export type MediaGridIntroSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *SolutionsGrid → Featured Item Grid → Primary → Solutions*
+ * Item in *SolutionsGrid → Featured Item Grid → Primary → Soluciones*
  */
 export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
   /**
-   * Icon field in *SolutionsGrid → Featured Item Grid → Primary → Solutions*
+   * Icono field in *SolutionsGrid → Featured Item Grid → Primary → Soluciones*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -514,7 +484,7 @@ export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
   icon: prismic.ImageField<never>;
 
   /**
-   * Title field in *SolutionsGrid → Featured Item Grid → Primary → Solutions*
+   * Titulo field in *SolutionsGrid → Featured Item Grid → Primary → Soluciones*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -524,7 +494,7 @@ export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
   title: prismic.RichTextField;
 
   /**
-   * Description field in *SolutionsGrid → Featured Item Grid → Primary → Solutions*
+   * Descripción field in *SolutionsGrid → Featured Item Grid → Primary → Soluciones*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -534,7 +504,7 @@ export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
   description: prismic.RichTextField;
 
   /**
-   * Link field in *SolutionsGrid → Featured Item Grid → Primary → Solutions*
+   * Enlace field in *SolutionsGrid → Featured Item Grid → Primary → Soluciones*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
@@ -544,10 +514,11 @@ export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
   link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
   /**
-   * Featured field in *SolutionsGrid → Featured Item Grid → Primary → Solutions*
+   * Destacado field in *SolutionsGrid → Featured Item Grid → Primary → Soluciones*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
+   * - **Default Value**: true
    * - **API ID Path**: solutions_grid.featured_item_grid.primary.solutions[].featured
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */
@@ -559,7 +530,7 @@ export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
  */
 export interface SolutionsGridSliceFeaturedItemGridPrimary {
   /**
-   * Heading field in *SolutionsGrid → Featured Item Grid → Primary*
+   * Titulo field in *SolutionsGrid → Featured Item Grid → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -569,7 +540,7 @@ export interface SolutionsGridSliceFeaturedItemGridPrimary {
   heading: prismic.RichTextField;
 
   /**
-   * Solutions field in *SolutionsGrid → Featured Item Grid → Primary*
+   * Soluciones field in *SolutionsGrid → Featured Item Grid → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -612,11 +583,11 @@ export type SolutionsGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *TestimonialCardList → Default → Primary → Testimonials*
+ * Item in *TestimonialCardList → Default → Primary → Testimoniales*
  */
 export interface TestimonialCardListSliceDefaultPrimaryTestimonialsItem {
   /**
-   * Avatar field in *TestimonialCardList → Default → Primary → Testimonials*
+   * Avatar field in *TestimonialCardList → Default → Primary → Testimoniales*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -626,7 +597,7 @@ export interface TestimonialCardListSliceDefaultPrimaryTestimonialsItem {
   avatar: prismic.ImageField<never>;
 
   /**
-   * Author Name field in *TestimonialCardList → Default → Primary → Testimonials*
+   * Nombre del autor field in *TestimonialCardList → Default → Primary → Testimoniales*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -636,7 +607,7 @@ export interface TestimonialCardListSliceDefaultPrimaryTestimonialsItem {
   author_name: prismic.KeyTextField;
 
   /**
-   * Rating field in *TestimonialCardList → Default → Primary → Testimonials*
+   * Rating field in *TestimonialCardList → Default → Primary → Testimoniales*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -646,7 +617,7 @@ export interface TestimonialCardListSliceDefaultPrimaryTestimonialsItem {
   rating: prismic.NumberField;
 
   /**
-   * Testimonial Text field in *TestimonialCardList → Default → Primary → Testimonials*
+   * Texto testimonial field in *TestimonialCardList → Default → Primary → Testimoniales*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -661,7 +632,7 @@ export interface TestimonialCardListSliceDefaultPrimaryTestimonialsItem {
  */
 export interface TestimonialCardListSliceDefaultPrimary {
   /**
-   * Title field in *TestimonialCardList → Default → Primary*
+   * Titulo field in *TestimonialCardList → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -671,7 +642,7 @@ export interface TestimonialCardListSliceDefaultPrimary {
   title: prismic.RichTextField;
 
   /**
-   * Testimonials field in *TestimonialCardList → Default → Primary*
+   * Testimoniales field in *TestimonialCardList → Default → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*

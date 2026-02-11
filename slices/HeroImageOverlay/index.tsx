@@ -1,8 +1,10 @@
+"use client"
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
+import { useHeroRef } from "@/app/components/context/HeroRefContext";
 
 /**
  * Props for `HeroImageOverlay`.
@@ -14,11 +16,14 @@ export type HeroImageOverlayProps =
  * Component for "HeroImageOverlay" Slices.
  */
 const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
+
+  const heroRef = useHeroRef();
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="min-h-screen relative"
+      ref={heroRef}
     >
       <div className="grid grid-cols-12 gap-4 min-h-screen px-12 py-12 z-10 absolute w-full">
         <div className="col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 md:gap-20 pt-12 md:py-12">

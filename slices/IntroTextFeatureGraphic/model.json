@@ -14,24 +14,23 @@
         "title": {
           "type": "StructuredText",
           "config": {
-            "single": "heading2",
-            "label": "Title"
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
           }
         },
         "description": {
           "type": "StructuredText",
           "config": {
-            "multi": "paragraph,strong,em,hyperlink",
-            "label": "Description"
-          }
-        },
-        "feature_graphic": {
-          "type": "Image",
-          "config": {
-            "label": "Feature Graphic"
+            "label": "Descripción",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

@@ -14,8 +14,10 @@
         "title": {
           "type": "StructuredText",
           "config": {
-            "multi": "heading2",
-            "label": "Title"
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2"
           }
         },
         "logos": {
@@ -26,13 +28,15 @@
               "logo_image": {
                 "type": "Image",
                 "config": {
-                  "label": "Logo Image"
+                  "constraint": {},
+                  "label": "Logo del cliente"
                 }
               }
             }
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

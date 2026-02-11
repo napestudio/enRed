@@ -14,39 +14,48 @@
         "heading": {
           "type": "StructuredText",
           "config": {
-            "single": "heading1",
-            "label": "Heading"
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2"
           }
         },
         "solutions": {
           "type": "Group",
           "config": {
-            "label": "Solutions",
+            "label": "Soluciones",
+            "repeat": true,
             "fields": {
               "icon": {
                 "type": "Image",
                 "config": {
-                  "label": "Icon"
+                  "constraint": {},
+                  "label": "Icono"
                 }
               },
               "title": {
                 "type": "StructuredText",
                 "config": {
-                  "single": "heading3,strong,em",
-                  "label": "Title"
+                  "label": "Titulo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "heading3,strong,em"
                 }
               },
               "description": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph,strong,em,hyperlink",
-                  "label": "Description"
+                  "label": "Descripción",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
                 }
               },
               "link": {
                 "type": "Link",
                 "config": {
-                  "label": "Link",
+                  "label": "Enlace",
+                  "placeholder": "",
                   "allowText": false,
                   "repeat": false,
                   "select": null
@@ -55,13 +64,17 @@
               "featured": {
                 "type": "Boolean",
                 "config": {
-                  "label": "Featured"
+                  "label": "Destacado",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": true
                 }
               }
             }
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

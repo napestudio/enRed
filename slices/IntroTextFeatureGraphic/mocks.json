@@ -9,7 +9,7 @@
 					{
 						"type": "heading2",
 						"content": {
-							"text": "Terrible"
+							"text": "Honor"
 						}
 					}
 				]
@@ -20,31 +20,10 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Qui ex cillum et aliquip est elit et pariatur eu non est minim do ad laborum. Ea nostrud id eu non nostrud ut quis quis consectetur. Fugiat incididunt ut Lorem veniam sit minim consectetur qui voluptate est ullamco non proident."
+							"text": "Sit consectetur velit ad eu ipsum culpa elit sunt consectetur elit eu reprehenderit nulla ut sunt. Proident laborum tempor consectetur nostrud adipisicing enim elit."
 						}
 					}
 				]
-			},
-			"feature_graphic": {
-				"__TYPE__": "ImageContent",
-				"origin": {
-					"id": "main",
-					"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
-					"width": 5848,
-					"height": 3899
-				},
-				"url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5",
-				"width": 5848,
-				"height": 3899,
-				"edit": {
-					"zoom": 1,
-					"crop": {
-						"x": 0,
-						"y": 0
-					},
-					"background": "transparent"
-				},
-				"alt": "official"
 			}
 		},
 		"items": []

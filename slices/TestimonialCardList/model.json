@@ -14,16 +14,17 @@
         "title": {
           "type": "StructuredText",
           "config": {
-            "label": "Title",
+            "label": "Titulo",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "multi": "strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2"
           }
         },
         "testimonials": {
           "type": "Group",
           "config": {
-            "label": "Testimonials",
+            "label": "Testimoniales",
+            "repeat": true,
             "fields": {
               "avatar": {
                 "type": "Image",
@@ -34,7 +35,8 @@
               "author_name": {
                 "type": "Text",
                 "config": {
-                  "label": "Author Name"
+                  "label": "Nombre del autor",
+                  "placeholder": ""
                 }
               },
               "rating": {
@@ -46,8 +48,10 @@
               "testimonial_text": {
                 "type": "StructuredText",
                 "config": {
-                  "multi": "paragraph,strong,em,hyperlink",
-                  "label": "Testimonial Text"
+                  "label": "Texto testimonial",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
                 }
               }
             }

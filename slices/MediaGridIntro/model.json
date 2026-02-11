@@ -14,8 +14,10 @@
         "headline": {
           "type": "StructuredText",
           "config": {
-            "single": "heading2",
-            "label": "Headline"
+            "label": "Titulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading2"
           }
         },
         "media_items": {
@@ -26,13 +28,15 @@
               "image": {
                 "type": "Image",
                 "config": {
-                  "label": "Image"
+                  "constraint": {},
+                  "label": "Imagen"
                 }
               }
             }
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

@@ -47,7 +47,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white mt-40 min-h-screen text-enred-black"
+      className="bg-white pt-40 min-h-screen text-enred-black"
     >
       <div className="relative px-12 py-12">
         <div className="col-span-5 col-start-1 text-enred-black text-balance z-20">
