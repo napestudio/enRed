@@ -1,0 +1,46 @@
+{
+  "type": "SharedSlice",
+  "id": "media_content_grid",
+  "name": "MediaContentGrid",
+  "variations": [
+    {
+      "id": "image_grid_columns",
+      "name": "Image Grid With Text Columns",
+      "description": "Displays a grid of images on top with two or more columns of text content below, suitable for layouts mixing visual media and detailed descriptions.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "media_items": {
+          "type": "Group",
+          "config": {
+            "label": "Media Items",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image"
+                }
+              }
+            }
+          }
+        },
+        "content_columns": {
+          "type": "Group",
+          "config": {
+            "label": "Content Columns",
+            "fields": {
+              "column_body": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Body"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

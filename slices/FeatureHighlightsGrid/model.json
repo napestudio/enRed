@@ -1,0 +1,113 @@
+{
+  "type": "SharedSlice",
+  "id": "feature_highlights_grid",
+  "name": "FeatureHighlightsGrid",
+  "variations": [
+    {
+      "id": "three_columns_with_intro",
+      "name": "Three Columns with Intro",
+      "description": "Displays three feature columns with icons, headings, and images under an introductory section.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Título del servicio",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "section_subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtítulo",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "section_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descripción del servicio",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "imagen_principal": {
+          "type": "Image",
+          "config": {
+            "label": "Imagen principal",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "features": {
+          "type": "Group",
+          "config": {
+            "label": "Características",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "label": "Icono"
+                }
+              },
+              "heading": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Título",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,strong,em"
+                }
+              }
+            }
+          }
+        },
+        "feature_descriptions": {
+          "type": "Group",
+          "config": {
+            "label": "Información del servicio",
+            "repeat": true,
+            "fields": {
+              "feature_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Párrafo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
+                }
+              }
+            }
+          }
+        },
+        "imagenes": {
+          "type": "Group",
+          "config": {
+            "label": "Galería",
+            "repeat": true,
+            "fields": {
+              "imagen": {
+                "type": "Image",
+                "config": {
+                  "label": "Imagen",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

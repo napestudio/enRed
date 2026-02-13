@@ -1,0 +1,42 @@
+{
+  "type": "SharedSlice",
+  "id": "brand_text_columns",
+  "name": "BrandTextColumns",
+  "variations": [
+    {
+      "id": "logo_two_text_columns",
+      "name": "Logo with Two Text Columns",
+      "description": "Displays a logo or brand mark on the left and two columns of descriptive text to the right, supporting short guarantee or informational statements.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "logo": {
+          "type": "Image",
+          "config": {
+            "label": "Logo"
+          }
+        },
+        "text_columns": {
+          "type": "Group",
+          "config": {
+            "label": "Columnas",
+            "repeat": true,
+            "fields": {
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Párrafo",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
