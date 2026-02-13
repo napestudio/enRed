@@ -87,13 +87,21 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
                   <p className={cn("text-right", index !== 1 ? "hidden" : "")}>
                     {solucion.desc}
                   </p>
-                  <Image
-                    src="/right-arrow.svg"
-                    alt="enRed Logo"
-                    className="ml-auto"
-                    width={30}
-                    height={30}
-                  />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={cn("lucide lucide-arrow-right-icon lucide-arrow-right ml-auto", index !== 1 ? "hidden" : "")}
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
                 </div>
               </div>
             ),
