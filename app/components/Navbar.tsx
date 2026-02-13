@@ -27,12 +27,14 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-[1440px] m-auto h-16 flex justify-between items-center py-6 px-12 overflow-hidden ">
-        <Image
-          src="/logo-en-red.svg"
-          alt="enRed Logo"
-          width={150}
-          height={50}
-        />
+        <Link href={"/"} className="decoration-none">
+          <Image
+            src="/logo-en-red.svg"
+            alt="enRed Logo"
+            width={150}
+            height={50}
+          />
+        </Link>
 
         <nav className="flex space-x-8">
           <ul className="flex justify-between gap-30">

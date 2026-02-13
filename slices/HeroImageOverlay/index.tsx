@@ -31,14 +31,23 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
               Soluciones con <span className="underline">altura</span>
             </h1>
             <div className="grid grid-cols-5 gap-4">
-              <div className="col-start-5 col-span-1">
-                <Image
-                  src="/down-arrow.svg"
-                  alt="enRed Logo"
-                  className="w-full"
-                  width={100}
-                  height={100}
-                />
+              <div className="col-start-5 col-span-1 flex justify-center items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-8 h-8 text-white animate-bounce"
+                >
+                  <path d="M12 17V3" />
+                  <path d="m6 11 6 6 6-6" />
+                  <path d="M19 21H5" />
+                </svg>
               </div>
             </div>
           </div>
