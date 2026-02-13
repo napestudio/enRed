@@ -3,12 +3,15 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  brand_text_columns: dynamic(() => import("./BrandTextColumns")),
+  feature_highlights_grid: dynamic(() => import("./FeatureHighlightsGrid")),
   form_contact: dynamic(() => import("./FormContact")),
   hero_image_overlay: dynamic(() => import("./HeroImageOverlay")),
   intro_text_feature_graphic: dynamic(
     () => import("./IntroTextFeatureGraphic"),
   ),
   logo_grid: dynamic(() => import("./LogoGrid")),
+  media_content_grid: dynamic(() => import("./MediaContentGrid")),
   media_grid_intro: dynamic(() => import("./MediaGridIntro")),
   solutions_grid: dynamic(() => import("./SolutionsGrid")),
   testimonial_card_list: dynamic(() => import("./TestimonialCardList")),

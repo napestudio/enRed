@@ -137,7 +137,316 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = HomeDocument;
+type SolucionDocumentDataSlicesSlice =
+  | FormContactSlice
+  | BrandTextColumnsSlice
+  | FeatureHighlightsGridSlice;
+
+/**
+ * Content for Solución documents
+ */
+interface SolucionDocumentData {
+  /**
+   * Slice Zone field in *Solución*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: solucion.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<SolucionDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Solución*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: solucion.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Solución*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: solucion.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Solución*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: solucion.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Solución document from Prismic
+ *
+ * - **API ID**: `solucion`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SolucionDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<SolucionDocumentData>,
+    "solucion",
+    Lang
+  >;
+
+export type AllDocumentTypes = HomeDocument | SolucionDocument;
+
+/**
+ * Item in *BrandTextColumns → Logo with Two Text Columns → Primary → Columnas*
+ */
+export interface BrandTextColumnsSliceLogoTwoTextColumnsPrimaryTextColumnsItem {
+  /**
+   * Párrafo field in *BrandTextColumns → Logo with Two Text Columns → Primary → Columnas*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_text_columns.logo_two_text_columns.primary.text_columns[].text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *BrandTextColumns → Logo with Two Text Columns → Primary*
+ */
+export interface BrandTextColumnsSliceLogoTwoTextColumnsPrimary {
+  /**
+   * Logo field in *BrandTextColumns → Logo with Two Text Columns → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_text_columns.logo_two_text_columns.primary.logo
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Columnas field in *BrandTextColumns → Logo with Two Text Columns → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: brand_text_columns.logo_two_text_columns.primary.text_columns[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  text_columns: prismic.GroupField<
+    Simplify<BrandTextColumnsSliceLogoTwoTextColumnsPrimaryTextColumnsItem>
+  >;
+}
+
+/**
+ * Logo with Two Text Columns variation for BrandTextColumns Slice
+ *
+ * - **API ID**: `logo_two_text_columns`
+ * - **Description**: Displays a logo or brand mark on the left and two columns of descriptive text to the right, supporting short guarantee or informational statements.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BrandTextColumnsSliceLogoTwoTextColumns =
+  prismic.SharedSliceVariation<
+    "logo_two_text_columns",
+    Simplify<BrandTextColumnsSliceLogoTwoTextColumnsPrimary>,
+    never
+  >;
+
+/**
+ * Slice variation for *BrandTextColumns*
+ */
+type BrandTextColumnsSliceVariation = BrandTextColumnsSliceLogoTwoTextColumns;
+
+/**
+ * BrandTextColumns Shared Slice
+ *
+ * - **API ID**: `brand_text_columns`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type BrandTextColumnsSlice = prismic.SharedSlice<
+  "brand_text_columns",
+  BrandTextColumnsSliceVariation
+>;
+
+/**
+ * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Características*
+ */
+export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeaturesItem {
+  /**
+   * Icono field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Características*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.features[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Título field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Características*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.features[].heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Información del servicio*
+ */
+export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem {
+  /**
+   * Párrafo field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Información del servicio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.feature_descriptions[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
+}
+
+/**
+ * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Galería*
+ */
+export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryImagenesItem {
+  /**
+   * Imagen field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Galería*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.imagenes[].imagen
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagen: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+ */
+export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
+  /**
+   * Título del servicio field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_title: prismic.RichTextField;
+
+  /**
+   * Subtítulo field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.section_subtitle
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_subtitle: prismic.RichTextField;
+
+  /**
+   * Descripción del servicio field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.section_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  section_description: prismic.RichTextField;
+
+  /**
+   * Imagen principal field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.imagen_principal
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  imagen_principal: prismic.ImageField<never>;
+
+  /**
+   * Características field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.features[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  features: prismic.GroupField<
+    Simplify<FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeaturesItem>
+  >;
+
+  /**
+   * Información del servicio field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.feature_descriptions[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  feature_descriptions: prismic.GroupField<
+    Simplify<FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem>
+  >;
+
+  /**
+   * Galería field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.imagenes[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  imagenes: prismic.GroupField<
+    Simplify<FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryImagenesItem>
+  >;
+}
+
+/**
+ * Three Columns with Intro variation for FeatureHighlightsGrid Slice
+ *
+ * - **API ID**: `three_columns_with_intro`
+ * - **Description**: Displays three feature columns with icons, headings, and images under an introductory section.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeatureHighlightsGridSliceThreeColumnsWithIntro =
+  prismic.SharedSliceVariation<
+    "three_columns_with_intro",
+    Simplify<FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary>,
+    never
+  >;
+
+/**
+ * Slice variation for *FeatureHighlightsGrid*
+ */
+type FeatureHighlightsGridSliceVariation =
+  FeatureHighlightsGridSliceThreeColumnsWithIntro;
+
+/**
+ * FeatureHighlightsGrid Shared Slice
+ *
+ * - **API ID**: `feature_highlights_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type FeatureHighlightsGridSlice = prismic.SharedSlice<
+  "feature_highlights_grid",
+  FeatureHighlightsGridSliceVariation
+>;
 
 /**
  * Primary content in *FormContact → Default → Primary*
@@ -395,6 +704,96 @@ type LogoGridSliceVariation = LogoGridSliceWithTitle;
 export type LogoGridSlice = prismic.SharedSlice<
   "logo_grid",
   LogoGridSliceVariation
+>;
+
+/**
+ * Item in *MediaContentGrid → Image Grid With Text Columns → Primary → Media Items*
+ */
+export interface MediaContentGridSliceImageGridColumnsPrimaryMediaItemsItem {
+  /**
+   * Image field in *MediaContentGrid → Image Grid With Text Columns → Primary → Media Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content_grid.image_grid_columns.primary.media_items[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *MediaContentGrid → Image Grid With Text Columns → Primary → Content Columns*
+ */
+export interface MediaContentGridSliceImageGridColumnsPrimaryContentColumnsItem {
+  /**
+   * Body field in *MediaContentGrid → Image Grid With Text Columns → Primary → Content Columns*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content_grid.image_grid_columns.primary.content_columns[].column_body
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  column_body: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *MediaContentGrid → Image Grid With Text Columns → Primary*
+ */
+export interface MediaContentGridSliceImageGridColumnsPrimary {
+  /**
+   * Media Items field in *MediaContentGrid → Image Grid With Text Columns → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content_grid.image_grid_columns.primary.media_items[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  media_items: prismic.GroupField<
+    Simplify<MediaContentGridSliceImageGridColumnsPrimaryMediaItemsItem>
+  >;
+
+  /**
+   * Content Columns field in *MediaContentGrid → Image Grid With Text Columns → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_content_grid.image_grid_columns.primary.content_columns[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  content_columns: prismic.GroupField<
+    Simplify<MediaContentGridSliceImageGridColumnsPrimaryContentColumnsItem>
+  >;
+}
+
+/**
+ * Image Grid With Text Columns variation for MediaContentGrid Slice
+ *
+ * - **API ID**: `image_grid_columns`
+ * - **Description**: Displays a grid of images on top with two or more columns of text content below, suitable for layouts mixing visual media and detailed descriptions.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MediaContentGridSliceImageGridColumns =
+  prismic.SharedSliceVariation<
+    "image_grid_columns",
+    Simplify<MediaContentGridSliceImageGridColumnsPrimary>,
+    never
+  >;
+
+/**
+ * Slice variation for *MediaContentGrid*
+ */
+type MediaContentGridSliceVariation = MediaContentGridSliceImageGridColumns;
+
+/**
+ * MediaContentGrid Shared Slice
+ *
+ * - **API ID**: `media_content_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MediaContentGridSlice = prismic.SharedSlice<
+  "media_content_grid",
+  MediaContentGridSliceVariation
 >;
 
 /**
@@ -708,7 +1107,22 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      SolucionDocument,
+      SolucionDocumentData,
+      SolucionDocumentDataSlicesSlice,
       AllDocumentTypes,
+      BrandTextColumnsSlice,
+      BrandTextColumnsSliceLogoTwoTextColumnsPrimaryTextColumnsItem,
+      BrandTextColumnsSliceLogoTwoTextColumnsPrimary,
+      BrandTextColumnsSliceVariation,
+      BrandTextColumnsSliceLogoTwoTextColumns,
+      FeatureHighlightsGridSlice,
+      FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeaturesItem,
+      FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem,
+      FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryImagenesItem,
+      FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary,
+      FeatureHighlightsGridSliceVariation,
+      FeatureHighlightsGridSliceThreeColumnsWithIntro,
       FormContactSlice,
       FormContactSliceDefaultPrimary,
       FormContactSliceVariation,
@@ -726,6 +1140,12 @@ declare module "@prismicio/client" {
       LogoGridSliceWithTitlePrimary,
       LogoGridSliceVariation,
       LogoGridSliceWithTitle,
+      MediaContentGridSlice,
+      MediaContentGridSliceImageGridColumnsPrimaryMediaItemsItem,
+      MediaContentGridSliceImageGridColumnsPrimaryContentColumnsItem,
+      MediaContentGridSliceImageGridColumnsPrimary,
+      MediaContentGridSliceVariation,
+      MediaContentGridSliceImageGridColumns,
       MediaGridIntroSlice,
       MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem,
       MediaGridIntroSliceHeadlineImageGridPrimary,
