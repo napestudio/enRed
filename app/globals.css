@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --enred-red: #F03C32;
+  --enred-red: #f03c32;
   --enred-black: #111111;
 }
 
@@ -16,7 +16,6 @@
   --fill-red: var(--enred-red);
 }
 
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -27,11 +26,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  
 }
 
-h2 {
-  font-weight: 700;
-  font-size: 6.25rem;
-  line-height: 6.875rem;
-}

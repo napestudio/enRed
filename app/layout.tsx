@@ -51,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={cn(spaceGrotesk.variable)}>
-      <body className="font-grotesk antialiased">
+    <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
+      <body className="font-grotesk antialiased max-w-[1440px] mx-auto">
         <GSAPProvider>
           <Navbar />
           {children}
