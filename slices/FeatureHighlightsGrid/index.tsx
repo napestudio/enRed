@@ -19,83 +19,85 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="min-h-screen bg-white pt-12 px-12"
+      className="bg-white pt-12 px-12"
     >
-      <div className="grid grid-cols-12 gap-4 items-center  py-24">
-        <div className="col-span-6 flex flex-col gap-24 text-enred-black">
-          <div className="flex flex-col gap-12">
-            <div className="text-8xl font-bold">
-              <PrismicRichText field={slice.primary.section_title} />
+      <div className="max-w-[1440px] m-auto">
+        <div className="grid grid-cols-12 gap-4 items-center  py-24">
+          <div className="col-span-6 flex flex-col gap-24 text-enred-black">
+            <div className="flex flex-col gap-12">
+              <div className="text-8xl font-bold">
+                <PrismicRichText field={slice.primary.section_title} />
+              </div>
+              <div className="text-xl font-semibold">
+                <PrismicRichText field={slice.primary.section_subtitle} />
+              </div>
             </div>
-            <div className="text-xl font-semibold">
-              <PrismicRichText field={slice.primary.section_subtitle} />
+            <div className="grid grid-cols-6 gap-4">
+              <div className="col-span-1 p-4 flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-arrow-right-icon lucide-arrow-right w-9 h-9"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
+              <div className="col-span-4 text-xl text-pretty">
+                <PrismicRichText field={slice.primary.section_description} />
+              </div>
             </div>
           </div>
-          <div className="grid grid-cols-6 gap-4">
-            <div className="col-span-1 p-4 flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-arrow-right-icon lucide-arrow-right w-9 h-9"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </div>
-            <div className="col-span-4 text-xl text-pretty">
-              <PrismicRichText field={slice.primary.section_description} />
-            </div>
+          <div className="col-span-6">
+            <PrismicNextImage
+              field={slice.primary.imagen_principal}
+              width={slice.primary.imagen_principal.dimensions?.width}
+              height={slice.primary.imagen_principal.dimensions?.height}
+            />
           </div>
         </div>
-        <div className="col-span-6">
-          <PrismicNextImage
-            field={slice.primary.imagen_principal}
-            width={slice.primary.imagen_principal.dimensions?.width}
-            height={slice.primary.imagen_principal.dimensions?.height}
+
+        <div className="relative grid grid-cols-12 gap-4 items-start pb-16">
+          {slice.primary.features.map((item, i) => (
+            <div key={i} className="col-span-4 p-10 flex flex-col gap-5 z-10">
+              <PrismicNextImage field={item.icon} width={77} height={62} />
+              <div className="text-3xl text-enred-black font-semibold">
+                <PrismicRichText field={item.heading} />
+              </div>
+            </div>
+          ))}
+          <Image
+            src={"/gray-shape.svg"}
+            alt="shape"
+            width={944}
+            height={544}
+            className="absolute inset-0 z-0 w-[69%] h-auto"
           />
         </div>
-      </div>
 
-      <div className="relative grid grid-cols-12 gap-4 items-start pb-16">
-        {slice.primary.features.map((item, i) => (
-          <div key={i} className="col-span-4 p-10 flex flex-col gap-5 z-10">
-            <PrismicNextImage field={item.icon} width={77} height={62} />
-            <div className="text-3xl text-enred-black font-semibold">
-              <PrismicRichText field={item.heading} />
-            </div>
+        <div className="relative flex flex-col gap-16 pt-18 pb-24 z-20">
+          <div className="grid grid-cols-12 gap-4">
+            {slice.primary.imagenes.map((item, index) => (
+              <div key={index} className="col-span-4">
+                <PrismicNextImage field={item.imagen} />
+              </div>
+            ))}
           </div>
-        ))}
-        <Image
-          src={"/gray-shape.svg"}
-          alt="shape"
-          width={944}
-          height={544}
-          className="absolute inset-0 z-0 w-[65vw] h-auto"
-        />
-      </div>
 
-      <div className="relative flex flex-col gap-16 pt-18 pb-24 z-20">
-        <div className="grid grid-cols-12 gap-4">
-          {slice.primary.imagenes.map((item, index) => (
-            <div key={index} className="col-span-4">
-              <PrismicNextImage field={item.imagen} />
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 gap-4 text-enred-black">
-          {slice.primary.feature_descriptions.map((item, index) => (
-            <div className="col-span-1 text-pretty text-xl" key={index}>
-              <PrismicRichText field={item.feature_description} />
-            </div>
-          ))}
+          <div className="grid grid-cols-2 gap-4 text-enred-black">
+            {slice.primary.feature_descriptions.map((item, index) => (
+              <div className="col-span-1 text-pretty text-xl" key={index}>
+                <PrismicRichText field={item.feature_description} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

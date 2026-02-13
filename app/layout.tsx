@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
-      <body className="font-grotesk antialiased max-w-[1440px] mx-auto">
+      <body className="font-grotesk antialiased">
         <GSAPProvider>
           <Navbar />
           {children}

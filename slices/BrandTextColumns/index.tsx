@@ -23,7 +23,7 @@ const BrandTextColumns: FC<BrandTextColumnsProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="py-16 px-12"
     >
-      <div className="grid grid-cols-12 gap-8  items-center">
+      <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-8  items-center">
         <div className="col-span-4">
           <PrismicImage
             field={slice.primary.logo}

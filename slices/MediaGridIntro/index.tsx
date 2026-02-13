@@ -18,9 +18,9 @@ const MediaGridIntro: FC<MediaGridIntroProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="min-h-screen bg-enred-red p-12"
+      className="bg-enred-red p-12"
     >
-      <div className="grid grid-cols-12 md:grid-rows-8 gap-4">
+      <div className="max-w-[1440px] m-auto grid grid-cols-12 md:grid-rows-8 gap-4">
         <div className="order-2 md:order-1 col-span-12 md:col-span-4 md:row-span-3 bg-enred-black">
           <Image
             src="/header-bg.jpg"
