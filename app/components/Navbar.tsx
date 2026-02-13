@@ -22,8 +22,7 @@ export default function Navbar() {
   return (
     <div
       className={cn(
-        isPast ? "bg-enred-red" : "bg-transparent",
-        isServicePage ? "bg-enred-red" : "bg-transparent",
+        (isPast || isServicePage) ? "bg-enred-red" : "bg-transparent",
         "h-16 flex justify-between items-center py-6 px-12 overflow-hidden fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-250 ease-in-out",
       )}
     >

@@ -306,21 +306,6 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeaturesI
 }
 
 /**
- * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Información del servicio*
- */
-export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem {
-  /**
-   * Párrafo field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Información del servicio*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.feature_descriptions[].feature_description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  feature_description: prismic.RichTextField;
-}
-
-/**
  * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Galería*
  */
 export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryImagenesItem {
@@ -333,6 +318,21 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryImagenesI
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   imagen: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Información del servicio*
+ */
+export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem {
+  /**
+   * Párrafo field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Información del servicio*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.feature_descriptions[].feature_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  feature_description: prismic.RichTextField;
 }
 
 /**
@@ -392,18 +392,6 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
   >;
 
   /**
-   * Información del servicio field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.feature_descriptions[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  feature_descriptions: prismic.GroupField<
-    Simplify<FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem>
-  >;
-
-  /**
    * Galería field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
    *
    * - **Field Type**: Group
@@ -413,6 +401,18 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
    */
   imagenes: prismic.GroupField<
     Simplify<FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryImagenesItem>
+  >;
+
+  /**
+   * Información del servicio field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.feature_descriptions[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  feature_descriptions: prismic.GroupField<
+    Simplify<FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem>
   >;
 }
 
@@ -1118,8 +1118,8 @@ declare module "@prismicio/client" {
       BrandTextColumnsSliceLogoTwoTextColumns,
       FeatureHighlightsGridSlice,
       FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeaturesItem,
-      FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem,
       FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryImagenesItem,
+      FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeatureDescriptionsItem,
       FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary,
       FeatureHighlightsGridSliceVariation,
       FeatureHighlightsGridSliceThreeColumnsWithIntro,
