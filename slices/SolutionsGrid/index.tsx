@@ -50,20 +50,20 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
       className="bg-white pt-40 text-enred-black"
     >
       <div className="max-w-[1440px] m-auto relative px-12 py-12">
-        <div className="col-span-5 col-start-1 text-enred-black text-balance z-20">
+        <div className="text-enred-black text-balance z-20">
           <h2 className="text-5xl mb-6">Soluciones</h2>
         </div>
-        <div className="relative grid grid-cols-12 gap-4 p-12">
+        <div className="relative grid grid-cols-12 gap-4">
           {solucionesData.map(
             (solucion: { title: string; desc: string }, index: number) => (
               <div
                 key={index}
                 className={cn(
-                  "relative col-span-12 md:col-span-4 mb-4 p-10",
+                  "relative col-span-12 md:col-span-4 mb-4 p-4",
                   index === 1 ? "bg-enred-red text-white" : "bg-white",
                 )}
               >
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5 p-4 md:p-10">
                   {index === 1 ? (
                     <Image
                       src="/white-shape.svg"
@@ -81,7 +81,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
                       priority
                     />
                   )}
-                  <h3 className="text-xl font-semibold underline text-balance pr-24">
+                  <h3 className="text-xl font-semibold underline text-balance">
                     {solucion.title}
                   </h3>
                   <p className={cn("text-right", index !== 1 ? "hidden" : "")}>

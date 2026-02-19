@@ -25,8 +25,8 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
       ref={heroRef}
     >
       <div className="relative max-w-[1440px] m-auto min-h-screen items-center flex">
-        <div className="grid grid-cols-12 gap-4 px-12 py-12 z-10 absolute w-full">
-          <div className="col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 md:gap-20 pt-12 md:py-12">
+        <div className="grid grid-cols-12 gap-4 px-12 py-12 z-10 ">
+          <div className="col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 lg:gap-20 pt-12 lg:py-12">
             <h1 className="text-white text-[clamp(2rem,7vw,7rem)] mt-4 text-balance leading-tight max-w-full">
               Soluciones con <span className="underline">altura</span>
             </h1>
@@ -42,7 +42,7 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-8 h-8 text-white animate-bounce"
+                  className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-8 h-8 text-white"
                 >
                   <path d="M12 17V3" />
                   <path d="m6 11 6 6 6-6" />
@@ -51,7 +51,8 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
               </div>
             </div>
           </div>
-          <div className="md:mt-22 col-span-10 col-start-2 lg:col-start-6 lg:col-span-7">
+
+          <div className="lg:mt-22 col-span-12 col-start-1 lg:col-start-6 lg:col-span-7">
             <Image
               src="/figura-lineas.svg"
               alt="enRed Logo"
@@ -61,14 +62,14 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
             />
           </div>
         </div>
-        <Image
-          src="/header-bg.jpg"
-          alt="Imagen de fondo"
-          fill
-          className="w-full h-full object-cover"
-          priority
-        />
       </div>
+      <Image
+        src="/header-bg.jpg"
+        alt="Imagen de fondo"
+        fill
+        className="w-full h-full object-cover"
+        priority
+      />
     </section>
   );
 };

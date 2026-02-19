@@ -23,15 +23,16 @@ const BrandTextColumns: FC<BrandTextColumnsProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="py-16 px-12"
     >
-      <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-8  items-center">
-        <div className="col-span-4">
+      <div className="max-w-[1440px] m-auto grid grid-cols-12 md:gap-8  items-center">
+        <div className="col-span-12 md:col-span-4 mb-12 md:mb-0">
           <PrismicImage
+            className="w-full"
             field={slice.primary.logo}
             width={slice.primary.logo.dimensions?.width}
             height={slice.primary.logo.dimensions?.height}
           />
         </div>
-        <div className="col-span-8 flex gap-4">
+        <div className="col-span-12 md:col-span-8 flex flex-col md:flex-row gap-4">
           {slice.primary.text_columns &&
             slice.primary.text_columns.map((column, index) => (
               <div key={index}>

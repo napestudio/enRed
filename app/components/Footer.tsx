@@ -7,9 +7,9 @@ export default function Footer() {
 
   return (
     <footer className="bg-enred-red">
-      <div className="max-w-[1440px] m-auto grid grid-cols-9 gap-4 p-12 overflow-hidden relative">
-        <div className="cols-start-1 col-span-3 z-10 text-enred-black my-20">
-          <h2 className="text-6xl text-balance text-enred-black">
+      <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-0 p-12 overflow-hidden relative">
+        <div className="col-span-12 md:col-span-6 z-10 text-enred-black my-20">
+          <h2 className="text-6xl text-balance text-enred-black text-[clamp(2rem,7vw,7rem)]">
             Soluciones con <span className="underline">altura</span>
           </h2>
           <p className="mt-4 text-2xl">Galvez 833</p>
@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="absolute col-start-3 col-span-9 pr-12 z-0">
+        <div className="absolute bottom-24 md:col-start-3 md:col-span-10 z-0">
           <Image
             src="/footer-shapes.svg"
             alt="enRed Logo"
