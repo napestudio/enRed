@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="bg-enred-red">
       <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-0 p-12 overflow-hidden relative">
         <div className="col-span-12 md:col-span-6 z-10 text-enred-black my-20">
-          <h2 className="text-6xl text-balance text-enred-black text-[clamp(2rem,7vw,7rem)]">
+          <h2 className="text-6xl text-balance text-enred-black font-semibold text-[clamp(2rem,7vw,7rem)]">
             Soluciones con <span className="underline">altura</span>
           </h2>
           <p className="mt-4 text-2xl">Galvez 833</p>

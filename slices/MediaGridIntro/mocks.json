@@ -3,17 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "headline_image_grid",
 		"primary": {
-			"headline": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Station"
-						}
-					}
-				]
-			},
 			"media_items": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -23,7 +12,6 @@
 							[
 								"image",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89",
@@ -41,7 +29,51 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "pool"
+									"alt": "pool",
+									"credits": null,
+									"__TYPE__": "ImageContent"
+								}
+							],
+							[
+								"label",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Quis esse sint ex id eiusmod id ullamco eiusmod dolore Lorem deserunt cillum."
+											}
+										}
+									]
+								}
+							],
+							[
+								"main_title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading2",
+											"content": {
+												"text": "Success"
+											}
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Sunt quis ipsum cillum cupidatat consequat ad adipisicing nulla ullamco eu amet aute incididunt eu nulla."
+											}
+										}
+									]
 								}
 							]
 						]

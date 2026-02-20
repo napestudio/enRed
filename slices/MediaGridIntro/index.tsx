@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
-import Image from "next/image";
+import "swiper/css";
+import TrabajosSwiper from "@/app/components/TrabajosSwiper";
 
 /**
  * Props for `MediaGridIntro`.
@@ -18,61 +19,32 @@ const MediaGridIntro: FC<MediaGridIntroProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-enred-red p-12"
+      className="bg-[#E8E8E8] p-12"
     >
-      <div className="max-w-[1440px] m-auto grid grid-cols-12 md:grid-rows-8 gap-4">
-        <div className="order-2 md:order-1 col-span-12 md:col-span-4 md:row-span-3 bg-enred-black">
-          <Image
-            src="/header-bg.jpg"
-            alt="Imagen de fondo"
-            className="w-full h-full object-cover"
-            width={400}
-            height={500}
-            priority
-          />
+      <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-4">
+        <div className="col-span-12 flex gap-5 items-center md:justify-end mb-6 ">
+          <h2 className="text-5xl text-enred-black font-semibold">
+            Nuestros trabajos
+          </h2>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12 text-black"
+          >
+            <path d="M12 17V3" />
+            <path d="m6 11 6 6 6-6" />
+            <path d="M19 21H5" />
+          </svg>
         </div>
-        <div className="order-3 md:order-2 col-span-12 md:col-span-4 md:row-span-5 md:col-start-1 md:row-start-4 bg-enred-black">
-          <Image
-            src="/header-bg.jpg"
-            alt="Imagen de fondo"
-            className="w-full h-full object-cover"
-            width={400}
-            height={500}
-            priority
-          />
-        </div>
-        <div className="order-4 md:order-3 col-span-12 md:col-span-4 md:row-span-5 md:col-start-5 md:row-start-1 bg-enred-black">
-          <Image
-            src="/header-bg.jpg"
-            alt="Imagen de fondo"
-            className="w-full h-full object-cover"
-            width={400}
-            height={500}
-            priority
-          />
-        </div>
-        <div className="order-5 md:order-4 col-span-12 md:col-span-4 md:row-span-3 md:col-start-5 md:row-start-6 bg-enred-black">
-          <Image
-            src="/header-bg.jpg"
-            alt="Imagen de fondo"
-            className="w-full h-full object-cover"
-            width={400}
-            height={500}
-            priority
-          />
-        </div>
-        <div className="order-6 md:order-5 col-span-12 md:col-span-4 md:row-span-5 md:col-start-9 md:row-start-4 overflow-hidden">
-          <Image
-            src="/header-bg.jpg"
-            alt="Imagen de fondo"
-            className="w-full h-full object-cover"
-            width={400}
-            height={500}
-            priority
-          />
-        </div>
-        <div className="order-1 md:order-6 col-span-12 md:col-span-4 md:row-span-3 md:col-start-9 md:row-start-1 flex items-center md:justify-end md:text-right">
-          <h2 className="text-5xl mb-6 text-white">Nuestros Clientes</h2>
+        <div className="col-span-12">
+          <TrabajosSwiper slice={slice} />
         </div>
       </div>
     </section>
