@@ -4,7 +4,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 
 import Image from "next/image";
-import ImageClipper from "@/app/components/experience/ImageClipper";
+import ImageClipper from "@/app/components/ImageClipper";
 
 /**
  * Props for `FeatureHighlightsGrid`.

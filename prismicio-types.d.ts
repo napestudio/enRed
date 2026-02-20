@@ -801,6 +801,36 @@ export type MediaContentGridSlice = prismic.SharedSlice<
  */
 export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
   /**
+   * Cliente field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid_intro.headline_image_grid.primary.media_items[].label
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  label: prismic.RichTextField;
+
+  /**
+   * Tipo de trabajo field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid_intro.headline_image_grid.primary.media_items[].main_title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  main_title: prismic.RichTextField;
+
+  /**
+   * Descripcion field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid_intro.headline_image_grid.primary.media_items[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+
+  /**
    * Imagen field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
    *
    * - **Field Type**: Image
@@ -815,16 +845,6 @@ export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
  * Primary content in *MediaGridIntro → Headline with Image Grid → Primary*
  */
 export interface MediaGridIntroSliceHeadlineImageGridPrimary {
-  /**
-   * Titulo field in *MediaGridIntro → Headline with Image Grid → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: media_grid_intro.headline_image_grid.primary.headline
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  headline: prismic.RichTextField;
-
   /**
    * Media Items field in *MediaGridIntro → Headline with Image Grid → Primary*
    *
