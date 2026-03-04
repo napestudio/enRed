@@ -5,6 +5,8 @@
   --foreground: #171717;
   --enred-red: #f03c32;
   --enred-black: #111111;
+  --enred-gray: #E8E8E8;
+  --enred-gray-light: #F5F5F5;
 }
 
 @theme {
@@ -13,6 +15,8 @@
 
   --color-enred-red: var(--enred-red);
   --color-enred-black: var(--enred-black);
+  --color-enred-gray: var(--enred-gray);
+  --color-enred-gray-light: var(--enred-gray-light);
   --fill-red: var(--enred-red);
 }
 

@@ -67,17 +67,6 @@
 						]
 					}
 				]
-			},
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Believed"
-						}
-					}
-				]
 			}
 		},
 		"items": []

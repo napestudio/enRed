@@ -449,51 +449,6 @@ export type FeatureHighlightsGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *FormContact → Default → Primary*
- */
-export interface FormContactSliceDefaultPrimary {
-  /**
-   * Name Field Label field in *FormContact → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: form_contact.default.primary.name_label
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  name_label: prismic.KeyTextField;
-
-  /**
-   * Email Field Label field in *FormContact → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: form_contact.default.primary.email_label
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  email_label: prismic.KeyTextField;
-
-  /**
-   * Message Field Label field in *FormContact → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: form_contact.default.primary.message_label
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  message_label: prismic.KeyTextField;
-
-  /**
-   * Submit Button Text field in *FormContact → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: form_contact.default.primary.submit_button_text
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  submit_button_text: prismic.KeyTextField;
-}
-
-/**
  * Default variation for FormContact Slice
  *
  * - **API ID**: `default`
@@ -502,7 +457,7 @@ export interface FormContactSliceDefaultPrimary {
  */
 export type FormContactSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<FormContactSliceDefaultPrimary>,
+  Record<string, never>,
   never
 >;
 
@@ -585,16 +540,6 @@ export type HeroImageOverlaySlice = prismic.SharedSlice<
  */
 export interface IntroTextFeatureGraphicSliceDefaultPrimary {
   /**
-   * Titulo field in *IntroTextFeatureGraphic → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: intro_text_feature_graphic.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  title: prismic.RichTextField;
-
-  /**
    * Descripción field in *IntroTextFeatureGraphic → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -655,16 +600,6 @@ export interface LogoGridSliceWithTitlePrimaryLogosItem {
  * Primary content in *LogoGrid → With Title → Primary*
  */
 export interface LogoGridSliceWithTitlePrimary {
-  /**
-   * Titulo field in *LogoGrid → With Title → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: logo_grid.with_title.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  title: prismic.RichTextField;
-
   /**
    * Logos field in *LogoGrid → With Title → Primary*
    *
@@ -949,16 +884,6 @@ export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
  */
 export interface SolutionsGridSliceFeaturedItemGridPrimary {
   /**
-   * Titulo field in *SolutionsGrid → Featured Item Grid → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: solutions_grid.featured_item_grid.primary.heading
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  heading: prismic.RichTextField;
-
-  /**
    * Soluciones field in *SolutionsGrid → Featured Item Grid → Primary*
    *
    * - **Field Type**: Group
@@ -1051,16 +976,6 @@ export interface TestimonialCardListSliceDefaultPrimaryTestimonialsItem {
  */
 export interface TestimonialCardListSliceDefaultPrimary {
   /**
-   * Titulo field in *TestimonialCardList → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonial_card_list.default.primary.title
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  title: prismic.RichTextField;
-
-  /**
    * Testimoniales field in *TestimonialCardList → Default → Primary*
    *
    * - **Field Type**: Group
@@ -1144,7 +1059,6 @@ declare module "@prismicio/client" {
       FeatureHighlightsGridSliceVariation,
       FeatureHighlightsGridSliceThreeColumnsWithIntro,
       FormContactSlice,
-      FormContactSliceDefaultPrimary,
       FormContactSliceVariation,
       FormContactSliceDefault,
       HeroImageOverlaySlice,

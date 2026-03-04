@@ -3,17 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "with_title",
 		"primary": {
-			"title": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "heading2",
-						"content": {
-							"text": "Stronger"
-						}
-					}
-				]
-			},
 			"logos": {
 				"__TYPE__": "GroupContentType",
 				"value": [
@@ -23,7 +12,6 @@
 							[
 								"logo_image",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c",
@@ -41,7 +29,9 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "youth"
+									"alt": "youth",
+									"credits": null,
+									"__TYPE__": "ImageContent"
 								}
 							]
 						]

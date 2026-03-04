@@ -16,10 +16,10 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white text-enred-black"
+      className="bg-enred-black text-enred-black"
     >
       <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-4 p-12 items-center">
-        <div className="col-span-5 mb-6 flex gap-4 items-center">
+        <div className="col-span-5 mb-6 flex gap-4 items-center text-white">
           <h2 className="text-5xl font-semibold">Nuestros clientes</h2>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12 text-enred-black"
+            className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12 "
           >
             <path d="M12 17V3" />
             <path d="m6 11 6 6 6-6" />

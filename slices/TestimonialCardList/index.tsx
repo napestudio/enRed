@@ -41,7 +41,7 @@ const TestimonialCardList: FC<TestimonialCardListProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="text-enred-black bg-[#E8E8E8]"
+      className="text-enred-black bg-white"
     >
       <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-y-10 gap-x-5 p-12 items-center">
         <div className="col-span-12 mb-6 flex gap-4 items-center justify-end">
@@ -67,7 +67,7 @@ const TestimonialCardList: FC<TestimonialCardListProps> = ({ slice }) => {
         {reseñas.map((reseña, index) => (
           <div
             key={index}
-            className="col-span-4 p-10 bg-white grid grid-cols-3 gap-5 h-full"
+            className="col-span-4 p-10 bg-enred-gray-light grid grid-cols-3 gap-2 h-full rounded-2xl"
           >
             <div className="col-span-3 flex gap-4">
               <div className="w-15 h-15 rounded-full overflow-hidden aspect-square bg-enred-red"></div>
@@ -78,7 +78,7 @@ const TestimonialCardList: FC<TestimonialCardListProps> = ({ slice }) => {
             </div>
 
             <div className="col-span-3 flex flex-col text-enred-black gap-3 justify-center">
-              <p className="text-pretty">{reseña.review}</p>
+              <p className="text-balance">{reseña.review}</p>
             </div>
             <div className="col-span-3 flex flex-col text-enred-black gap-3 justify-center">
               <Image

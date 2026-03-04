@@ -10,32 +10,8 @@
       "version": "initial",
       "imageUrl": "",
       "docURL": "...",
-      "primary": {
-        "name_label": {
-          "type": "Text",
-          "config": {
-            "label": "Name Field Label"
-          }
-        },
-        "email_label": {
-          "type": "Text",
-          "config": {
-            "label": "Email Field Label"
-          }
-        },
-        "message_label": {
-          "type": "Text",
-          "config": {
-            "label": "Message Field Label"
-          }
-        },
-        "submit_button_text": {
-          "type": "Text",
-          "config": {
-            "label": "Submit Button Text"
-          }
-        }
-      }
+      "primary": {},
+      "items": {}
     }
   ]
 }

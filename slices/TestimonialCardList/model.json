@@ -11,15 +11,6 @@
       "imageUrl": "",
       "docURL": "...",
       "primary": {
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Titulo",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "strong,em,hyperlink,image,embed,list-item,o-list-item,rtl,heading2"
-          }
-        },
         "testimonials": {
           "type": "Group",
           "config": {
