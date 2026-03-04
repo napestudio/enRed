@@ -63,7 +63,7 @@ export default async function RootLayout({
         <GSAPProvider>
           <Navbar soluciones={data} />
           {children}
-          <Footer />
+          <Footer soluciones={data}/>
         </GSAPProvider>
       </body>
     </html>
