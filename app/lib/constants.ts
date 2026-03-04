@@ -7,13 +7,14 @@ export const LINKS = {
   ],
   socialItems: [
     {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/company/enred-comunicaciones/",
-    },
-    {
       label: "Instagram",
+      src: "/insta-white.svg",
       href: "https://www.instagram.com/enredcomunicaciones/",
     },
-    { label: "Facebook", href: "https://www.facebook.com/enredcomunicaciones" },
+    {
+      label: "Facebook",
+      src: "/wasap-white.svg",
+      href: "https://www.facebook.com/enredcomunicaciones",
+    },
   ],
 };

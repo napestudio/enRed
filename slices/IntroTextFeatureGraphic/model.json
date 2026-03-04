@@ -11,15 +11,6 @@
       "imageUrl": "",
       "docURL": "...",
       "primary": {
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Titulo",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "heading2"
-          }
-        },
         "description": {
           "type": "StructuredText",
           "config": {
