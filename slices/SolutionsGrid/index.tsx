@@ -6,6 +6,7 @@ import Image from "next/image";
 import { cn } from "@/app/lib/utils";
 import SectionHeading from "@/app/components/SectionHeading";
 import { cms } from "@/prismicio";
+import Link from "next/link";
 
 /**
  * Props for `SolutionsGrid`.
@@ -49,7 +50,6 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
   const solutionsList: any = await cms.getAllByType("solucion", {
     orderings: [{ field: "my.solucion.uid", direction: "asc" }],
   });
-  //console.log("🚀 ~ SolutionsGrid ~ solutionsList:", solutionsList[0].data.slices[0].primary.section_description[0].text)
   
   return (
     <section
@@ -64,7 +64,8 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
         <div className="relative grid grid-cols-12 gap-4">
           {solutionsList.map(
             (solucion: any, index: number) => (
-              <div
+              <Link
+              href={`/soluciones/${solucion.slugs[0] ?? ''}`}
                 key={index}
                 className={cn(
                   "relative col-span-12 md:col-span-4 mb-4 p-4",
@@ -114,7 +115,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
                     <path d="m12 5 7 7-7 7" />
                   </svg>
                 </div>
-              </div>
+              </Link>
             ),
           )}
         </div>
