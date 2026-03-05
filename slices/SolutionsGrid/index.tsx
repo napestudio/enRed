@@ -4,6 +4,7 @@ import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
 import { cn } from "@/app/lib/utils";
+import SectionHeading from "@/app/components/SectionHeading";
 
 /**
  * Props for `SolutionsGrid`.
@@ -51,23 +52,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
     >
       <div className="max-w-[1440px] m-auto relative px-12 py-12">
         <div className="text-enred-black text-balance z-20 flex items-center gap-4 mb-6">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12 text-black"
-          >
-            <path d="M12 17V3" />
-            <path d="m6 11 6 6 6-6" />
-            <path d="M19 21H5" />
-          </svg>
-          <h2 className="text-5xl font-semibold">Soluciones</h2>
+          <SectionHeading title="Soluciones" style="" />
         </div>
         <div className="relative grid grid-cols-12 gap-4">
           {solucionesData.map(
