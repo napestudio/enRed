@@ -51,19 +51,17 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const data = await cms.getAllByType("solucion",{
-  orderings: [
-    { field: 'my.solucion.uid', direction: 'asc' }
-  ]
-});
-  
+  const data = await cms.getAllByType("solucion", {
+    orderings: [{ field: "my.solucion.uid", direction: "asc" }],
+  });
+
   return (
     <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
       <body className="font-grotesk antialiased">
         <GSAPProvider>
           <Navbar soluciones={data} />
           {children}
-          <Footer soluciones={data}/>
+          <Footer soluciones={data} />
         </GSAPProvider>
       </body>
     </html>

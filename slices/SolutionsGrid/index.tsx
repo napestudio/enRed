@@ -5,6 +5,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import Image from "next/image";
 import { cn } from "@/app/lib/utils";
 import SectionHeading from "@/app/components/SectionHeading";
+import { cms } from "@/prismicio";
 
 /**
  * Props for `SolutionsGrid`.
@@ -43,7 +44,13 @@ const solucionesData = [
   },
 ];
 
-const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
+const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
+
+  const solutionsList: any = await cms.getAllByType("solucion", {
+    orderings: [{ field: "my.solucion.uid", direction: "asc" }],
+  });
+  //console.log("🚀 ~ SolutionsGrid ~ solutionsList:", solutionsList[0].data.slices[0].primary.section_description[0].text)
+  
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -55,8 +62,8 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
           <SectionHeading title="Soluciones" style="" />
         </div>
         <div className="relative grid grid-cols-12 gap-4">
-          {solucionesData.map(
-            (solucion: { title: string; desc: string }, index: number) => (
+          {solutionsList.map(
+            (solucion: any, index: number) => (
               <div
                 key={index}
                 className={cn(
@@ -83,10 +90,10 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
                     />
                   )}
                   <h3 className="text-xl font-semibold underline text-balance">
-                    {solucion.title}
+                    {solucion.data.slices[0].primary.section_title[0].text}
                   </h3>
                   <p className={cn("text-right", index !== 1 ? "hidden" : "")}>
-                    {solucion.desc}
+                    {solucion.data.slices[0].primary.section_description[0].text}
                   </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
