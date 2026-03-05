@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import SectionHeading from "./SectionHeading";
 
 function FormSection() {
   const submit = (data: any) => {
@@ -9,23 +10,7 @@ function FormSection() {
     <section className="bg-enred-gray-light text-enred-black overflow-hidden">
       <div className="max-w-[1440px] m-auto grid grid-cols-4 gap-6 p-12 pt-20 items-center">
         <div className="col-span-4 mb-6 flex gap-4 items-center text-enred-black">
-          <h2 className="text-5xl font-semibold">Hablemos</h2>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12 "
-          >
-            <path d="M12 17V3" />
-            <path d="m6 11 6 6 6-6" />
-            <path d="M19 21H5" />
-          </svg>
+          <SectionHeading title="Hablemos" style="text-black" />
         </div>
 
         <div className="relative col-span-4 sm:col-span-2 h-full flex flex-col gap-6 justify-center items-center">

@@ -4,6 +4,9 @@ import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
 import { cn } from "@/app/lib/utils";
+import SectionHeading from "@/app/components/SectionHeading";
+import { cms } from "@/prismicio";
+import Link from "next/link";
 
 /**
  * Props for `SolutionsGrid`.
@@ -42,7 +45,12 @@ const solucionesData = [
   },
 ];
 
-const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
+const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
+
+  const solutionsList: any = await cms.getAllByType("solucion", {
+    orderings: [{ field: "my.solucion.uid", direction: "asc" }],
+  });
+  
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -51,28 +59,13 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
     >
       <div className="max-w-[1440px] m-auto relative px-12 py-12">
         <div className="text-enred-black text-balance z-20 flex items-center gap-4 mb-6">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12 text-black"
-          >
-            <path d="M12 17V3" />
-            <path d="m6 11 6 6 6-6" />
-            <path d="M19 21H5" />
-          </svg>
-          <h2 className="text-5xl font-semibold">Soluciones</h2>
+          <SectionHeading title="Soluciones" style="" />
         </div>
         <div className="relative grid grid-cols-12 gap-4">
-          {solucionesData.map(
-            (solucion: { title: string; desc: string }, index: number) => (
-              <div
+          {solutionsList.map(
+            (solucion: any, index: number) => (
+              <Link
+              href={`/soluciones/${solucion.slugs[0] ?? ''}`}
                 key={index}
                 className={cn(
                   "relative col-span-12 md:col-span-4 mb-4 p-4",
@@ -98,10 +91,10 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
                     />
                   )}
                   <h3 className="text-xl font-semibold underline text-balance">
-                    {solucion.title}
+                    {solucion.data.slices[0].primary.section_title[0].text}
                   </h3>
                   <p className={cn("text-right", index !== 1 ? "hidden" : "")}>
-                    {solucion.desc}
+                    {solucion.data.slices[0].primary.section_description[0].text}
                   </p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +115,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = ({ slice }) => {
                     <path d="m12 5 7 7-7 7" />
                   </svg>
                 </div>
-              </div>
+              </Link>
             ),
           )}
         </div>

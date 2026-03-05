@@ -4,6 +4,7 @@ import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
 import Link from "next/link";
+import SectionHeading from "@/app/components/SectionHeading";
 
 /**
  * Props for `TestimonialCardList`.
@@ -44,24 +45,8 @@ const TestimonialCardList: FC<TestimonialCardListProps> = ({ slice }) => {
       className="text-enred-black bg-white"
     >
       <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-y-10 gap-x-5 p-12 items-center">
-        <div className="col-span-12 mb-6 flex gap-4 items-center justify-end">
-          <h2 className="text-5xl font-semibold">Reseñas</h2>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12 text-black"
-          >
-            <path d="M12 17V3" />
-            <path d="m6 11 6 6 6-6" />
-            <path d="M19 21H5" />
-          </svg>
+        <div className="col-span-12 mb-6 flex gap-4 items-center justify-end">          
+          <SectionHeading title="Reseña" style="text-black"/>
         </div>
 
         {reseñas.map((reseña, index) => (
