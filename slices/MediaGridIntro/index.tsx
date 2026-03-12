@@ -24,7 +24,7 @@ const MediaGridIntro: FC<MediaGridIntroProps> = ({ slice }) => {
     >
       <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-4">
         <div className="col-span-12 flex gap-5 items-center md:justify-end mb-6 ">
-          <SectionHeading title="Nuestros trabajos" style="" />
+          <SectionHeading title="Nuestros trabajos" style="text-enred-black" />
         </div>
         <div className="col-span-12">
           <TrabajosSwiper slice={slice} />

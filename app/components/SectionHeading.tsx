@@ -9,7 +9,7 @@ function SectionHeading({
 }) {
   return (
     <>
-      <h2 className="text-5xl font-semibold">{title}</h2>
+      <h2 className={cn(style, "text-5xl font-semibold")}>{title}</h2>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
