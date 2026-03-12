@@ -21,7 +21,7 @@ export default ({ slice }: any) => {
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-4 text-enred-black flex flex-col gap-14 pr-5">
               <PrismicRichText field={item.label} />
-              <div className="text-6xl font-semibold">
+              <div className="text-6xl font-semibold text-[clamp(1rem,7vw,3rem)]">
                 <PrismicRichText field={item.main_title} />
               </div>
               <div className="text-balance">

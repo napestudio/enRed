@@ -1,9 +1,17 @@
+"use client";
+
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
 import SectionHeading from "@/app/components/SectionHeading";
+import { PrismicNextImage } from "@prismicio/next";
 /**
  * Props for `LogoGrid`.
  */
@@ -13,6 +21,8 @@ export type LogoGridProps = SliceComponentProps<Content.LogoGridSlice>;
  * Component for "LogoGrid" Slices.
  */
 const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
+  //console.log("🚀 ~ LogoGrid ~ slice:", slice);
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -20,50 +30,35 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
       className="bg-enred-black text-enred-black"
     >
       <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-4 p-12 items-center">
-        <div className="col-span-5 mb-6 flex gap-4 items-center text-white">          
+        <div className="col-span-5 mb-6 flex gap-4 items-center text-white">
           <SectionHeading title="Nuestros clientes" style="text-white" />
         </div>
-        <div className="col-span-12 grid grid-cols-12">
-          <div className="col-span-3">
-            <Image
-              src="/cliente.svg"
-              alt="Imagen de fondo"
-              className="w-full h-auto"
-              width={400}
-              height={500}
-              priority
-            />
-          </div>
-          <div className="col-span-3">
-            <Image
-              src="/cliente.svg"
-              alt="Imagen de fondo"
-              className="w-full h-auto"
-              width={400}
-              height={500}
-              priority
-            />
-          </div>
-          <div className="col-span-3">
-            <Image
-              src="/cliente.svg"
-              alt="Imagen de fondo"
-              className="w-full h-auto"
-              width={400}
-              height={500}
-              priority
-            />
-          </div>
-          <div className="col-span-3">
-            <Image
-              src="/cliente.svg"
-              alt="Imagen de fondo"
-              className="w-full h-auto"
-              width={400}
-              height={500}
-              priority
-            />
-          </div>
+        <div className="col-span-12 ">
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={4.2}
+            style={{ alignItems: "stretch" }}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+            className="!items-stretch"
+          >
+            {slice.primary.logos.map((foto: any, index: number) => (
+              <SwiperSlide
+                key={index}
+                style={{ height: "auto" }}
+                className="!h-auto"
+              >
+                <div className="h-full p-4">
+                  <PrismicNextImage
+                    className="w-full h-auto aspect-video object-contain"
+                    field={foto.logo_image}
+                    width={foto.logo_image.dimensions.width}
+                    height={foto.logo_image.dimensions.height}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
