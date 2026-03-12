@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 
 const PLACE_ID = process.env.GOOGLE_PLACE_ID;
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
-const CACHE_DURATION = 60 * 60 * 24; // 24 horas en segundos
+const day = 60 * 60 * 24;// 24 horas en segundos
+const CACHE_DURATION = day * 5;
 
 interface Review {
   authorAttribution: any;
@@ -29,7 +30,9 @@ export async function GET() {
     const response = await fetch(url, {
       headers: {
         "X-Goog-Api-Key": API_KEY,
-        "X-Goog-FieldMask": "reviews,rating,userRatingCount,displayName",
+        "X-Goog-FieldMask":
+          "reviews,rating,userRatingCount,displayName,googleMapsLinks",
+        "Accept-Language": "es",
       },
       next: { revalidate: CACHE_DURATION },
     });
@@ -59,6 +62,7 @@ export async function GET() {
       placeName: data.displayName?.text || null,
       averageRating: data.rating || null,
       totalReviews: data.userRatingCount || null,
+      reviewsUrl: data.googleMapsLinks?.reviewsUri || null,
       reviews,
     });
   } catch (error) {
