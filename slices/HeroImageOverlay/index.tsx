@@ -5,7 +5,6 @@ import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
 import { useHeroRef } from "@/app/components/context/HeroRefContext";
-
 /**
  * Props for `HeroImageOverlay`.
  */
@@ -17,20 +16,21 @@ export type HeroImageOverlayProps =
  */
 const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
   const heroRef = useHeroRef();
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white"
+      className="bg-white relative"
       ref={heroRef}
     >
-      <div className="relative max-w-[1440px] m-auto min-h-screen items-center flex">
-        <div className="grid grid-cols-12 gap-4 px-12 py-12 z-10 ">
-          <div className="col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 lg:gap-20 pt-12 lg:py-12">
-            <h1 className="text-white text-[clamp(2rem,7vw,7rem)] mt-4 text-balance leading-tight max-w-full">
-              Soluciones con <span className="underline">altura</span>
+      <div className="relative max-w-[1440px] m-auto min-h-screen items-center flex z-20">
+        <div className="grid grid-cols-3 md:grid-cols-12 gap-4 p-6 md:p-12 z-10 ">
+          <div className="col-span-3 md:col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 lg:gap-20 pt-12 lg:py-12">
+            <h1 className="text-white text-[clamp(2.3rem,7vw,7rem)] mt-4 text-balance leading-[1] font-semibold max-w-full underline decoration-1 md:no-underline underline-offset-4 ">
+              Soluciones con <span className="no-underline md:underline underline-offset-8 decoration-3">altura</span>
             </h1>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="hidden md:grid grid-cols-5 gap-4">
               <div className="col-start-5 col-span-1 flex justify-center items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
             </div>
           </div>
 
-          <div className="lg:mt-22 col-span-12 col-start-1 lg:col-start-6 lg:col-span-7">
+          <div className="hidden md:block lg:mt-22 col-span-12 col-start-1 lg:col-start-6 lg:col-span-7">
             <Image
               src="/figura-lineas.svg"
               alt="enRed Logo"
@@ -63,11 +63,12 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
           </div>
         </div>
       </div>
+      <div className="absolute inset-0 bg-enred-black opacity-44 z-10"></div>
       <Image
         src="/header-bg.jpg"
         alt="Imagen de fondo"
         fill
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover z-0"
         priority
       />
     </section>

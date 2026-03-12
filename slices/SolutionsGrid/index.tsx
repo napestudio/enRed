@@ -39,7 +39,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
               href={`/soluciones/${solucion.slugs[0] ?? ""}`}
               key={index}
               className={cn(
-                "relative col-span-12 md:col-span-4 mb-4 p-4",
+                "relative col-span-12 md:col-span-4 mb-4 p-4 ",
                 index === 1 ? "bg-enred-red text-white" : "bg-white",
               )}
             >
@@ -56,7 +56,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
                 <h3 className="text-xl font-semibold underline text-balance">
                   {solucion.data.slices[0].primary.section_title[0].text}
                 </h3>
-                <p className={cn("text-right", index !== 1 ? "hidden" : "")}>
+                <p className={cn("text-right",)}>
                   {solucion.data.slices[0].primary.section_description[0].text}
                 </p>
                 <svg
