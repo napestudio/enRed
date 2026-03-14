@@ -208,17 +208,17 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
           )}
         </div>
       </div>
-      <Menu open={open} items={navItems} />
+      <MobileMenu open={open} items={navItems} />
     </>
   );
 }
 
-type MenuProps = {
+type MobileMenuProps = {
   open?: boolean;
   items: any[];
 };
 
-export const Menu: FC<MenuProps> = ({ open = false, items = []}) => {
+export const MobileMenu: FC<MobileMenuProps> = ({ open = false, items = []}) => {
   const { socialItems } = LINKS;
   const ref = useRef<HTMLDivElement | null>(null);
   
