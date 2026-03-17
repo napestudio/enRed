@@ -74,8 +74,8 @@ export default function Footer({
               </p>
               <p className="text-lg">contacto@enred.com.ar</p>
             </div>
-            <div className="flex flex-row gap-4 justify-end">
-              <ul className="flex flex-row gap-8">
+            <div className="flex flex-col md:flex-row gap-5 md:gap-10 items-center md:justify-end">
+              <ul className="flex flex-col md:flex-row gap-2 md:gap-8 text-xs md:text-sm">
                 {navItems.map((item) => (
                   <li key={item.href} className="relative">
                     {item.label === "Soluciones" ? (
@@ -118,7 +118,7 @@ export default function Footer({
                       </div>
                     ) : (
                       <Link
-                        className="text-enred-black font-sm"
+                        className="text-enred-black"
                         href={item.href}
                       >
                         {item.label}
@@ -127,7 +127,7 @@ export default function Footer({
                   </li>
                 ))}
               </ul>
-              <ul className="flex gap-6">
+              <ul className="flex justify-start gap-6">
                 {socialItems.map((link) => (
                   <li key={link.label}>
                     <Link
@@ -140,7 +140,6 @@ export default function Footer({
                         alt="enRed Logo"
                         width={20}
                         height={20}
-                        className="text-enred-black fill-enred-black"
                       />
                     </Link>
                   </li>
