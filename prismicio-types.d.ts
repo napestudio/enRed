@@ -137,6 +137,139 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
+/**
+ * Item in *Metrics → Métrica principales*
+ */
+export interface MetricsDocumentDataMainMetricItem {
+  /**
+   * Titulo field in *Metrics → Métrica principales*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.main_metric[].titulo
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Descripcion field in *Metrics → Métrica principales*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.main_metric[].descripcion
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  descripcion: prismic.RichTextField;
+}
+
+/**
+ * Item in *Metrics → Métrica secundaria*
+ */
+export interface MetricsDocumentDataSecondMetricItem {
+  /**
+   * Titulo field in *Metrics → Métrica secundaria*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.second_metric[].titulo
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Descripcion field in *Metrics → Métrica secundaria*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.second_metric[].descripcion
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  descripcion: prismic.RichTextField;
+}
+
+/**
+ * Item in *Metrics → Métricas secundarias*
+ */
+export interface MetricsDocumentDataThirdMetricItem {
+  /**
+   * Titulo field in *Metrics → Métricas secundarias*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.third_metric[].titulo
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  titulo: prismic.RichTextField;
+
+  /**
+   * Descripcion field in *Metrics → Métricas secundarias*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.third_metric[].descripcion
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  descripcion: prismic.RichTextField;
+}
+
+/**
+ * Content for Metrics documents
+ */
+interface MetricsDocumentData {
+  /**
+   * Métrica principales field in *Metrics*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.main_metric[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  main_metric: prismic.GroupField<Simplify<MetricsDocumentDataMainMetricItem>>;
+
+  /**
+   * Métrica secundaria field in *Metrics*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.second_metric[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  second_metric: prismic.GroupField<
+    Simplify<MetricsDocumentDataSecondMetricItem>
+  >;
+
+  /**
+   * Métricas secundarias field in *Metrics*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.third_metric[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  third_metric: prismic.GroupField<
+    Simplify<MetricsDocumentDataThirdMetricItem>
+  >;
+}
+
+/**
+ * Metrics document from Prismic
+ *
+ * - **API ID**: `metrics`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MetricsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<MetricsDocumentData>,
+    "metrics",
+    Lang
+  >;
+
 type SolucionDocumentDataSlicesSlice =
   | FormContactSlice
   | BrandTextColumnsSlice
@@ -205,7 +338,10 @@ export type SolucionDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | SolucionDocument;
+export type AllDocumentTypes =
+  | HomeDocument
+  | MetricsDocument
+  | SolucionDocument;
 
 /**
  * Item in *BrandTextColumns → Logo with Two Text Columns → Primary → Columnas*
@@ -1042,6 +1178,11 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      MetricsDocument,
+      MetricsDocumentData,
+      MetricsDocumentDataMainMetricItem,
+      MetricsDocumentDataSecondMetricItem,
+      MetricsDocumentDataThirdMetricItem,
       SolucionDocument,
       SolucionDocumentData,
       SolucionDocumentDataSlicesSlice,

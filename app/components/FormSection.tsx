@@ -4,6 +4,7 @@ import SectionHeading from "./SectionHeading";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { PrismicRichText } from "@prismicio/react";
 
 // 1. Schema Zod
 const schema = z.object({
@@ -18,7 +19,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-function FormSection() {
+function FormSection({ metrics }: { metrics: any }) {
   const {
     register,
     handleSubmit,
@@ -45,34 +46,40 @@ function FormSection() {
 
         <div className="col-span-1 grid grid-cols-4 gap-16 md:gap-4">
           <div className="order-1 md:order-0 relative col-span-4 md:col-span-2 h-full flex flex-col gap-16 justify-center">
-            <div className="z-10 flex flex-col items-center md:items-start gap-6">
-              <h2 className="text-[3.5rem] md:text-[8rem] font-bold tracking-tight leading-[.75] m-0 z-10">
-                +80.000
-              </h2>
-              <p className="text-[1.1rem] md:text-[2.5rem] leading-none m-0 z-10 indent-3">
-                metros <span className="text-enred-red">en red</span> instalados
-              </p>
-            </div>
+            {metrics.main_metric.map((item: any, index: number) => (
+              <div
+                key={index}
+                className="z-10 flex flex-col items-center md:items-start gap-6"
+              >
+                <div className="text-[3.5rem] md:text-[8rem] font-bold tracking-tight leading-[.75] m-0 z-10">
+                  <PrismicRichText field={item.titulo} />
+                </div>
+                <div className="text-[1.1rem] md:text-[2.5rem] leading-none m-0 z-10 indent-3">
+                  <PrismicRichText field={item.descripcion} />
+                </div>
+              </div>
+            ))}
             <div className="w-full flex flex-col md:flex-row gap-14 items-center z-10">
-              <div className="flex flex-col gap-4">
-                <h2 className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
-                  +80.000
-                </h2>
-                <p className="text-[1.1rem] leading-none m-0 z-10">
-                  metros <span className="text-enred-red">en red</span>{" "}
-                  instalados
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                <h2 className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
-                  +80.000
-                </h2>
-                <p className="text-[1.1rem] leading-none m-0 z-10">
-                  metros <span className="text-enred-red">en red</span>{" "}
-                  instalados
-                </p>
-              </div>
+              {metrics.second_metric.map((item: any, index: number) => (
+                <div key={index} className="flex flex-col gap-4">
+                  <div className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
+                    <PrismicRichText field={item.titulo} />
+                  </div>
+                  <div className="text-[1.1rem] leading-none m-0 z-10">
+                    <PrismicRichText field={item.descripcion} />
+                  </div>
+                </div>
+              ))}
+              {metrics.third_metric.map((item: any, index: number) => (
+                <div key={index} className="flex flex-col gap-4">
+                  <div className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
+                    <PrismicRichText field={item.titulo} />
+                  </div>
+                  <div className="text-[1.1rem] leading-none m-0 z-10">
+                    <PrismicRichText field={item.descripcion} />
+                  </div>
+                </div>
+              ))}
             </div>
             <div className="absolute -left-100 top-0 right-10 col-span-12 col-start-1 md:col-span-10 md:col-start-3 z-0 flex items-center">
               <Image
