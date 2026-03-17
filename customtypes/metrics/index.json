@@ -1,0 +1,92 @@
+{
+  "format": "custom",
+  "id": "metrics",
+  "label": "Metrics",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "main_metric": {
+        "type": "Group",
+        "config": {
+          "label": "Métrica principales",
+          "repeat": false,
+          "fields": {
+            "titulo": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Titulo",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading2"
+              }
+            },
+            "descripcion": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Descripcion",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading4"
+              }
+            }
+          }
+        }
+      },
+      "second_metric": {
+        "type": "Group",
+        "config": {
+          "label": "Métrica secundaria",
+          "repeat": false,
+          "fields": {
+            "titulo": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Titulo",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading2"
+              }
+            },
+            "descripcion": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Descripcion",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading4"
+              }
+            }
+          }
+        }
+      },
+      "third_metric": {
+        "type": "Group",
+        "config": {
+          "label": "Métricas secundarias",
+          "repeat": false,
+          "fields": {
+            "titulo": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Titulo",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading2"
+              }
+            },
+            "descripcion": {
+              "type": "StructuredText",
+              "config": {
+                "label": "Descripcion",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "heading4"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

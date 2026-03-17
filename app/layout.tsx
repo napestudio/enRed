@@ -55,13 +55,16 @@ export default async function RootLayout({
     orderings: [{ field: "my.solucion.uid", direction: "asc" }],
   });
 
+  const metrics = await cms.getByType("metrics");
+  console.log("🚀 ~ RootLayout ~ metrics:", metrics)
+
   return (
     <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
       <body className="font-grotesk antialiased">
         <GSAPProvider>
           <Navbar soluciones={data} />
           {children}
-          <Footer soluciones={data} />
+          <Footer soluciones={data} metrics={metrics.results[0].data}/>
         </GSAPProvider>
       </body>
     </html>
