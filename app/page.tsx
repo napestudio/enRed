@@ -12,10 +12,10 @@ export default async function Page() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const page = await cms.getSingle("home").catch(() => notFound());  
+  const page = await cms.getSingle("home").catch(() => notFound());
   return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
+    title: page.data.meta_title || "EnRed - Soluciones con altura",
+    description: page.data.meta_description || "Redes de protección",
     openGraph: {
       images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],
     },

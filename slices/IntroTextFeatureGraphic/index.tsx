@@ -4,6 +4,7 @@ import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
 import SectionHeading from "@/app/components/SectionHeading";
+import Experience from "@/app/components/experience/Experience";
 
 /**
  * Props for `IntroTextFeatureGraphic`.
@@ -21,9 +22,9 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white text-enred-black"
+      className="bg-white text-enred-black relative"
     >
-      <div className="max-w-[1440px] m-auto relative grid grid-cols-12 gap-4 p-12">
+      <div className="max-w-360 m-auto relative grid grid-cols-12 gap-4 p-12">
         <div className="col-span-12 md:col-span-4 col-start-1 md:col-start-9 text-right text-balance z-20">
           <div className="flex gap-4 justify-end items-center mb-6">
             <SectionHeading title="Nosotros" style="" />
@@ -36,7 +37,7 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
             rápidos y eficientes en cada espacio.
           </p>
         </div>
-        <div className="absolute left-0 px-12 -top-20 z-10 w-[70%]">
+        {/* <div className="absolute left-0 px-12 -top-20 z-10 w-[70%]">
           <Image
             src="/red-solid.svg"
             alt="Imagen de fondo"
@@ -45,7 +46,10 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
             height={500}
             priority
           />
-        </div>
+        </div> */}
+      </div>
+      <div className="h-[50svh] w-full absolute inset-0 z-90">
+        <Experience />
       </div>
     </section>
   );
