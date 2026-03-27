@@ -34,9 +34,9 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = ({ slice }) => {
     >
       <div className="max-w-[1440px] m-auto ">
         <div className="grid grid-cols-12 gap-y-10 md:gap-4 items-center py-24">
-          <div className="col-span-12 md:col-span-6 flex flex-col md:gap-4 md:gap-24 text-enred-black">
+          <div className="col-span-12 md:col-span-6 flex flex-col md:gap-4 md:gap-24 text-enred-black bg-red-400">
             <div className="flex flex-col gap-12">
-              <div className="text-8xl font-bold text-[clamp(2rem,7vw,7rem)]">
+              <div className="font-bold text-[clamp(3rem,4.5vw,calc(95vw-1rem))] leading-none">
                 <PrismicRichText field={slice.primary.section_title} />
               </div>
               <div className="text-xl font-semibold">
@@ -78,7 +78,7 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = ({ slice }) => {
                 key={index}
                 className={cn(
                   "col-span-12 md:col-span-4 rounded-xl overflow-hidden",
-                  colSpans[index > 4 ? (index - imagesLength) : index] ??
+                  colSpans[index > 4 ? index - imagesLength : index] ??
                     "col-span-4",
                 )}
               >

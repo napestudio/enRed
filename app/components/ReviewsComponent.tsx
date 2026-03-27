@@ -33,9 +33,9 @@ function ReviewsComponent() {
     const fetchReviews = async () => {
       try {
         const data = await fetch("/api/reviews").then((r) => r.json());
-        console.log("🚀 ~ fetchReviews ~ data:", data)
+        console.log("🚀 ~ fetchReviews ~ data:", data);
         setReviews(data.reviews ?? []);
-        setReviewUrl(data.reviewsUrl)
+        setReviewUrl(data.reviewsUrl);
       } catch (err) {
         console.error("Error fetching reviews:", err);
       } finally {
@@ -56,10 +56,10 @@ function ReviewsComponent() {
         onSwiper={(swiper) => console.log(swiper)}
         className="min-h-[300px]"
       >
-        {reviews.map((review: any, index: number) => (
+        {reviews.map((review: Review, index: number) => (
           <SwiperSlide
             key={index}
-            className="select-none p-10 bg-enred-gray-light h-full rounded-2xl h-full "
+            className="select-none p-10 bg-enred-gray-light h-full rounded-2xl"
           >
             <Link
               href={review.profileUrl}

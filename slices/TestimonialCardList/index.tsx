@@ -44,7 +44,7 @@ const TestimonialCardList: FC<TestimonialCardListProps> = async ({ slice }) => {
       data-slice-variation={slice.variation}
       className="text-enred-black bg-white"
     >
-      <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-y-10 gap-x-5 p-12 items-center">
+      <div className="max-w-360 m-auto grid grid-cols-12 gap-y-10 gap-x-5 p-12 items-center">
         <div className="col-span-12 mb-6 flex gap-4 items-center justify-end">
           <SectionHeading title="Reseña" style="text-black" />
         </div>
@@ -52,8 +52,6 @@ const TestimonialCardList: FC<TestimonialCardListProps> = async ({ slice }) => {
         <div className="col-span-12">
           <ReviewsComponent />
         </div>
-
-        
       </div>
     </section>
   );

@@ -1,49 +1,28 @@
 "use client";
 
+import { MetricsDocumentData } from "@/prismicio-types";
+import { PrismicDocument } from "@prismicio/client";
 import Image from "next/image";
 import Link from "next/link";
-import { LINKS } from "../lib/constants";
-import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { cn } from "../lib/utils";
-import FormSection from "./FormSection";
+import { LINKS } from "../../lib/constants";
+import { cn } from "../../lib/utils";
+import FormSection from "../FormSection";
 
 export default function Footer({
   soluciones,
   metrics,
 }: {
-  soluciones: any;
-  metrics: any;
+  soluciones: PrismicDocument<Record<string, any>, string, string>[];
+  metrics: MetricsDocumentData[];
 }) {
   const pathname = usePathname();
   const { navItems, socialItems } = LINKS;
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const isServicePage = pathname.startsWith("/soluciones/");
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    setIsDropdownOpen(false);
-  }, [pathname]);
 
   const chevronIcon = (
     <svg
       className={cn(
-        "w-4 h-4 transition-transform duration-200",
-        isDropdownOpen && "rotate-180",
+        "w-4 h-4 transition-transform duration-200 group-focus-within:rotate-180",
       )}
       fill="none"
       stroke="currentColor"
@@ -63,7 +42,7 @@ export default function Footer({
       <FormSection metrics={metrics} />
 
       <footer className="bg-enred-red md:min-h-screen overflow-hidden">
-        <div className="h-screen max-w-[1440px] mx-auto p-12 pt-40 relative flex flex-col">
+        <div className="h-screen max-w-360 mx-auto p-12 pt-40 relative flex flex-col">
           <div className="h-full z-40 text-enred-black flex flex-col gap-10 justify-between">
             <div className="">
               <h2 className="text-balance text-enred-black font-bold text-[clamp(2rem,5vw,7rem)] leading-none">
@@ -79,25 +58,19 @@ export default function Footer({
                 {navItems.map((item) => (
                   <li key={item.href} className="relative">
                     {item.label === "Soluciones" ? (
-                      <div className="relative" ref={dropdownRef}>
-                        <button
-                          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className="text-enred-black font-sm flex items-center gap-1 cursor-pointer"
-                        >
+                      <div className="relative group">
+                        <button className="text-enred-black font-sm flex items-center gap-1 cursor-pointer">
                           {item.label}
                           {chevronIcon}
                         </button>
 
                         <div
                           className={cn(
-                            "absolute bottom-full left-0 bg-white shadow min-w-[280px] mt-5 z-20",
+                            "group-focus-within:opacity-100 group-focus-within:scale-y-100 group-focus-within:visible opacity-0 scale-y-95 invisible absolute bottom-full left-0 bg-white shadow min-w-[280px] mt-5 z-20",
                             "transition-all duration-300 ease-out origin-top overflow-hidden",
-                            isDropdownOpen
-                              ? "opacity-100 scale-y-100 visible"
-                              : "opacity-0 scale-y-95 invisible",
                           )}
                         >
-                          {soluciones?.map((solucion: any) => (
+                          {soluciones?.map((solucion) => (
                             <Link
                               key={solucion.id}
                               href={`/soluciones/${solucion.uid}`}
@@ -106,7 +79,6 @@ export default function Footer({
                                 pathname === `/soluciones/${solucion.uid}` &&
                                   "bg-enred-red text-white hover:text-white ",
                               )}
-                              onClick={() => setIsDropdownOpen(false)}
                             >
                               {
                                 solucion.data.slices[0].primary.section_title[0]
@@ -117,10 +89,7 @@ export default function Footer({
                         </div>
                       </div>
                     ) : (
-                      <Link
-                        className="text-enred-black"
-                        href={item.href}
-                      >
+                      <Link className="text-enred-black" href={item.href}>
                         {item.label}
                       </Link>
                     )}

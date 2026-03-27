@@ -44,11 +44,11 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    setIsDropdownOpen(false);
   }, [pathname]);
+
+  // useEffect(() => {
+  //   setIsDropdownOpen(false);
+  // }, [pathname]);
 
   useEffect(() => {
     if (!isSmallScreen) setOpen(false);
@@ -218,10 +218,13 @@ type MobileMenuProps = {
   items: any[];
 };
 
-export const MobileMenu: FC<MobileMenuProps> = ({ open = false, items = []}) => {
+export const MobileMenu: FC<MobileMenuProps> = ({
+  open = false,
+  items = [],
+}) => {
   const { socialItems } = LINKS;
   const ref = useRef<HTMLDivElement | null>(null);
-  
+
   useEffect(() => {
     const container = ref.current;
     if (!container) return;
