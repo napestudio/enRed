@@ -22,11 +22,11 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white text-enred-black relative z-90"
+      className="bg-white text-enred-black relative"
     >
       <div className="grid grid-cols-5 relative">
         <div className="relative col-span-4 row-start-1 col-start-1 h-full">
-          <Experience />
+          {/* <Experience /> */}
         </div>
         <div className="relative row-start-1 col-start-4 col-span-2 gap-4 p-12 z-50">
           <div className="col-span-12 md:col-span-4 col-start-1 md:col-start-9 text-right text-balance z-20">
