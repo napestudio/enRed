@@ -78,7 +78,7 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
       <div
         className={cn(
           shouldBeRed ? "bg-enred-red" : "bg-transparent",
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-250 ease-in-out ",
+          "fixed top-0 left-0 right-0 z-9999 transition-colors duration-250 ease-in-out",
         )}
       >
         <div className="max-w-[1440px] m-auto h-16 flex justify-between items-center py-6 px-12">

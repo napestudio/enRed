@@ -1,7 +1,7 @@
 "use client";
 
 import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
-import { gsap } from "@/app/lib/gsap";
+import { gsap, ScrollTrigger } from "@/app/lib/gsap";
 import { useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -153,23 +153,51 @@ const POSITIONS = [
 
 export default function AnimatedCubes() {
   const refs = useRef<(THREE.Group | null)[]>([]);
+  const groupRef = useRef<THREE.Group>(null);
+
   const { viewport } = useThree();
 
   useIsomorphicLayoutEffect(() => {
-    refs.current.forEach((group, i) => {
-      if (!group) return;
-      // Animate each cube from 8 units below its final Y position
-      gsap.from(group.position, {
-        y: group.position.y - 8,
-        duration: 0.8,
-        delay: i * 0.05,
-        ease: "back.out(1.4)",
+    const ctx = gsap.context(() => {
+      refs.current.forEach((group, i) => {
+        if (!group) return;
+
+        gsap.from(group.position, {
+          y: group.position.y + 2,
+          duration: 0.8,
+          ease: "back.out(1.4)",
+        });
       });
-    });
+
+      if (!groupRef.current) return;
+
+      const section = document.querySelector(
+        '[data-slice-type="intro_text_feature_graphic"]',
+      ) as HTMLElement | null;
+      if (!section) return;
+
+      const tl = gsap
+        .timeline({ paused: true })
+        .fromTo(
+          groupRef.current.position,
+          { y: -viewport.height },
+          { y: viewport.height, ease: "none" },
+        );
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        animation: tl,
+        scrub: true,
+      });
+    }, refs);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <group position={[0, viewport.height, 0]}>
+    <group position={[0, 0, 0]} ref={groupRef}>
       {POSITIONS.map((pos, i) => (
         <group
           key={i}
