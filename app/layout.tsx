@@ -52,9 +52,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const data = await cms.getAllByType("solucion", {
+  const data = (await cms.getAllByType("solucion", {
     orderings: [{ field: "my.solucion.uid", direction: "asc" }],
-  });
+  })) as import("@prismicio/client").Content.SolucionDocument[];
 
   const metrics = await cms.getByType("metrics");
 
