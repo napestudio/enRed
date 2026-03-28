@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { PrismicRichText } from "@prismicio/react";
+import { MetricsDocumentData } from "@/prismicio-types";
 
 // 1. Schema Zod
 const schema = z.object({
@@ -19,7 +20,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-function FormSection({ metrics }: { metrics: any }) {
+function FormSection({ metrics }: { metrics: MetricsDocumentData }) {
   const {
     register,
     handleSubmit,
@@ -39,14 +40,14 @@ function FormSection({ metrics }: { metrics: any }) {
 
   return (
     <section className="bg-enred-gray-light text-enred-black overflow-hidden">
-      <div className="max-w-[1440px] m-auto grid grid-cols-1 gap-4 py-16 px-6 md:p-12 items-center">
+      <div className="max-w-360 m-auto grid grid-cols-1 gap-4 py-16 px-6 md:p-12 items-center">
         <div className="col-span-1 mb-6 flex gap-4 items-center text-enred-black">
           <SectionHeading title="Hablemos" style="text-black" />
         </div>
 
         <div className="col-span-1 grid grid-cols-4 gap-16 md:gap-4">
           <div className="order-1 md:order-0 relative col-span-4 md:col-span-2 h-full flex flex-col gap-16 justify-center">
-            {metrics.main_metric.map((item: any, index: number) => (
+            {metrics.main_metric.map((item, index) => (
               <div
                 key={index}
                 className="z-10 flex flex-col items-center md:items-start gap-6"
@@ -60,7 +61,7 @@ function FormSection({ metrics }: { metrics: any }) {
               </div>
             ))}
             <div className="w-full flex flex-col md:flex-row gap-14 items-center z-10">
-              {metrics.second_metric.map((item: any, index: number) => (
+              {metrics.second_metric.map((item, index) => (
                 <div key={index} className="flex flex-col gap-4">
                   <div className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
                     <PrismicRichText field={item.titulo} />
@@ -70,7 +71,7 @@ function FormSection({ metrics }: { metrics: any }) {
                   </div>
                 </div>
               ))}
-              {metrics.third_metric.map((item: any, index: number) => (
+              {metrics.third_metric.map((item, index) => (
                 <div key={index} className="flex flex-col gap-4">
                   <div className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
                     <PrismicRichText field={item.titulo} />

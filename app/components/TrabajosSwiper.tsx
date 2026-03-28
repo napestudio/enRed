@@ -7,11 +7,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { PrismicRichText } from "@prismicio/react";
 import TrabajosImageClipper from "./TrabajosImageClipper";
+import { MediaGridIntroSlice } from "@/prismicio-types";
 
-export default function TrabajosSwiper({ slice }: any) {
+export default function TrabajosSwiper({ slice }: { slice: MediaGridIntroSlice }) {
   return (
     <Swiper spaceBetween={0} slidesPerView={1}>
-      {slice.primary.media_items.map((item: any, index: number) => (
+      {slice.primary.media_items.map((item, index) => (
         <SwiperSlide key={index}>
           <div className="grid grid-cols-12 gap-4">
             <div className="col-span-4 text-enred-black flex flex-col gap-14 pr-5">

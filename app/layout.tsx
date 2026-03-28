@@ -66,7 +66,7 @@ export default async function RootLayout({
           {children}
           <Footer
             soluciones={data}
-            metrics={metrics.results[0].data as MetricsDocumentData[]}
+            metrics={metrics.results[0].data as MetricsDocumentData}
           />
         </GSAPProvider>
       </body>

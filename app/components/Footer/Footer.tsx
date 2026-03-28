@@ -1,7 +1,7 @@
 "use client";
 
-import { MetricsDocumentData } from "@/prismicio-types";
-import { PrismicDocument } from "@prismicio/client";
+import { asText } from "@prismicio/client";
+import { MetricsDocumentData, SolucionDocument, FeatureHighlightsGridSlice } from "@/prismicio-types";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,8 +13,8 @@ export default function Footer({
   soluciones,
   metrics,
 }: {
-  soluciones: PrismicDocument<Record<string, any>, string, string>[];
-  metrics: MetricsDocumentData[];
+  soluciones: SolucionDocument[];
+  metrics: MetricsDocumentData;
 }) {
   const pathname = usePathname();
   const { navItems, socialItems } = LINKS;
@@ -66,7 +66,7 @@ export default function Footer({
 
                         <div
                           className={cn(
-                            "group-focus-within:opacity-100 group-focus-within:scale-y-100 group-focus-within:visible opacity-0 scale-y-95 invisible absolute bottom-full left-0 bg-white shadow min-w-[280px] mt-5 z-20",
+                            "group-focus-within:opacity-100 group-focus-within:scale-y-100 group-focus-within:visible opacity-0 scale-y-95 invisible absolute bottom-full left-0 bg-white shadow min-w-70 mt-5 z-20",
                             "transition-all duration-300 ease-out origin-top overflow-hidden",
                           )}
                         >
@@ -81,8 +81,7 @@ export default function Footer({
                               )}
                             >
                               {
-                                solucion.data.slices[0].primary.section_title[0]
-                                  .text
+                                asText((solucion.data.slices[0] as FeatureHighlightsGridSlice).primary.section_title)
                               }
                             </Link>
                           ))}
