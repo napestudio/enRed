@@ -81,8 +81,8 @@ export default function AnimatedCubes() {
 
       tweenRefs.current[index] = gsap.to(group.position, {
         [axis]: group.position[axis] + direction,
-        duration: 1.2,
-        ease: "power1.inOut",
+        duration: 2,
+        ease: "back.out(1.5)",
         delay: 2,
         onComplete: () => animateCube(group, index),
       });
@@ -95,7 +95,7 @@ export default function AnimatedCubes() {
         gsap.from(group.position, {
           y: group.position.y + 2,
           duration: 0.8,
-          ease: "back.out(1.4)",
+          ease: "back.out(2.5)",
         });
       });
 

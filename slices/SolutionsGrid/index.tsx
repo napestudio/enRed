@@ -17,9 +17,12 @@ export type SolutionsGridProps =
  */
 
 const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
-  const solutionsList: any = await cms.getAllByType("solucion", {
-    orderings: [{ field: "my.solucion.uid", direction: "asc" }],
-  });
+  const solutionsList: Content.SolucionDocument[] = await cms.getAllByType(
+    "solucion",
+    {
+      orderings: [{ field: "my.solucion.uid", direction: "asc" }],
+    },
+  );
 
   return (
     <section
@@ -27,7 +30,7 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
       data-slice-variation={slice.variation}
       className="bg-white pt-40 text-enred-black z-90"
     >
-      <div className="max-w-[1440px] m-auto relative px-12 py-12">
+      <div className="max-w-360 m-auto relative px-12 py-12">
         <div className="text-enred-black text-balance z-20 flex items-center gap-4 mb-6">
           <SectionHeading title="Soluciones" style="" />
         </div>

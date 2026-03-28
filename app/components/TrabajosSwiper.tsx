@@ -8,14 +8,9 @@ import "swiper/css";
 import { PrismicRichText } from "@prismicio/react";
 import TrabajosImageClipper from "./TrabajosImageClipper";
 
-export default ({ slice }: any) => {
+export default function TrabajosSwiper({ slice }: any) {
   return (
-    <Swiper
-      spaceBetween={0}
-      slidesPerView={1}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
+    <Swiper spaceBetween={0} slidesPerView={1}>
       {slice.primary.media_items.map((item: any, index: number) => (
         <SwiperSlide key={index}>
           <div className="grid grid-cols-12 gap-4">
@@ -36,4 +31,4 @@ export default ({ slice }: any) => {
       ))}
     </Swiper>
   );
-};
+}

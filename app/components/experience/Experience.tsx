@@ -5,11 +5,12 @@ import AnimatedCubes from "./AnimatedCubes";
 
 export default function Experience() {
   return (
-    <div className="fixed z-80 h-screen w-full inset-0 pointer-events-none">
+    <div className="fixed z-50 h-screen w-full inset-0 pointer-events-none **:pointer-events-none!">
       <Canvas
-        className="h-full w-full object-contain pointer-events-none"
+        className="h-full z-50 w-full pointer-events-none"
+        events={undefined}
         orthographic
-        camera={{ zoom: 70, position: [8, 8, 8] }}
+        camera={{ zoom: 75, position: [8, 8, 8] }}
       >
         <AnimatedCubes />
       </Canvas>

@@ -58,8 +58,6 @@ export default async function RootLayout({
 
   const metrics = await cms.getByType("metrics");
 
-  console.log("data  aaaa", data);
-
   return (
     <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
       <body className="font-grotesk antialiased">

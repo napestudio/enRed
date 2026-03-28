@@ -24,11 +24,14 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
       className="bg-white relative"
       ref={heroRef}
     >
-      <div className="relative max-w-[1440px] m-auto min-h-screen items-center flex z-20">
+      <div className="relative max-w-360 m-auto min-h-screen items-center flex z-20">
         <div className="grid grid-cols-3 md:grid-cols-12 gap-4 p-6 md:p-12 z-10 ">
           <div className="col-span-3 md:col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 lg:gap-20 pt-12 lg:py-12">
-            <h1 className="text-white text-[clamp(2.3rem,7vw,7rem)] mt-4 text-balance leading-[1] font-semibold max-w-full underline decoration-1 md:no-underline underline-offset-4 ">
-              Soluciones con <span className="no-underline md:underline underline-offset-8 decoration-3">altura</span>
+            <h1 className="text-white text-[clamp(2.3rem,7vw,7rem)] mt-4 text-balance leading-none font-semibold max-w-full underline decoration-1 md:no-underline underline-offset-4 ">
+              Soluciones con{" "}
+              <span className="no-underline md:underline underline-offset-8 decoration-3">
+                altura
+              </span>
             </h1>
             <div className="hidden md:grid grid-cols-5 gap-4">
               <div className="col-start-5 col-span-1 flex justify-center items-center">
