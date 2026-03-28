@@ -10,7 +10,6 @@ import { useMediaQuery } from "@mantine/hooks";
 import { LINKS } from "../lib/constants";
 import { cn } from "../lib/utils";
 import { useIsPastHero } from "../lib/custom-hooks/useIsPastHero";
-import { useHeroRef } from "@/app/components/context/HeroRefContext";
 
 import gsap from "gsap";
 import { Content, asText } from "@prismicio/client";
@@ -23,8 +22,7 @@ export default function Navbar({
   const pathname = usePathname();
   const { navItems, socialItems } = LINKS;
 
-  const heroRef = useHeroRef();
-  const isPast = useIsPastHero(heroRef);
+  const isPast = useIsPastHero();
 
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 

@@ -1,26 +1,53 @@
+"use client";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
-import { FC } from "react";
+import { FC, useRef } from "react";
+import { gsap, ScrollTrigger, SplitText } from "@/app/lib/gsap";
 
 import SectionHeading from "@/app/components/SectionHeading";
+import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
 
-/**
- * Props for `IntroTextFeatureGraphic`.
- */
 export type IntroTextFeatureGraphicProps =
   SliceComponentProps<Content.IntroTextFeatureGraphicSlice>;
 
-/**
- * Component for "IntroTextFeatureGraphic" Slices.
- */
 const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
   slice,
 }) => {
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  useIsomorphicLayoutEffect(() => {
+    if (!textRef.current || !sectionRef.current) return;
+    const ctx = gsap.context(() => {
+      const words = new SplitText(textRef.current, { type: "words" });
+
+      const tl = gsap.timeline({ paused: true }).from(words.words, {
+        opacity: 0.5,
+        stagger: 0.15,
+      });
+
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top center",
+        end: "bottom center",
+        animation: tl,
+        scrub: true,
+      });
+
+      return () => {
+        tl.kill();
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
+    }, textRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="bg-white text-enred-black relative"
+      ref={sectionRef}
     >
       <div className="max-w-360 m-auto grid grid-cols-5 relative">
         <div className="relative row-start-1 col-start-4 col-span-2 gap-4 p-12 z-50">
@@ -28,7 +55,7 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
             <div className="flex gap-4 justify-end items-center mb-6">
               <SectionHeading title="Nosotros" style="" />
             </div>
-            <p className="text-xl text-pretty">
+            <p className="text-xl text-pretty" ref={textRef}>
               Somos una empresa que brinda soluciones integrales en edificios,
               obras de construcción, instalaciones industriales, domicilios
               particulares y otros espacios, con más de 6 años de experiencia en
