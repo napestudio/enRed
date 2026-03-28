@@ -33,9 +33,9 @@ function ReviewsComponent() {
     const fetchReviews = async () => {
       try {
         const data = await fetch("/api/reviews").then((r) => r.json());
-        console.log("🚀 ~ fetchReviews ~ data:", data)
+        console.log("🚀 ~ fetchReviews ~ data:", data);
         setReviews(data.reviews ?? []);
-        setReviewUrl(data.reviewsUrl)
+        setReviewUrl(data.reviewsUrl);
       } catch (err) {
         console.error("Error fetching reviews:", err);
       } finally {
@@ -52,22 +52,17 @@ function ReviewsComponent() {
       <Swiper
         spaceBetween={16}
         slidesPerView={isSmallScreen ? 1 : isMediumScreen ? 2 : 3}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        className="min-h-[300px]"
+        className="min-h-75 items-stretch!"
       >
-        {reviews.map((review: any, index: number) => (
-          <SwiperSlide
-            key={index}
-            className="select-none p-10 bg-enred-gray-light h-full rounded-2xl h-full "
-          >
+        {reviews.map((review: Review, index: number) => (
+          <SwiperSlide key={index} className="select-none  h-auto! group ">
             <Link
               href={review.profileUrl}
               target="_blank"
-              className="flex flex-col justify-between gap-10 h-full"
+              className="flex flex-col justify-between gap-10 h-full p-10 bg-enred-gray-light rounded-2xl hover:bg-enred-red hover:text-white transition-all duration-300"
             >
               <div className="flex gap-4 ">
-                <div className="w-15 h-15 rounded-full overflow-hidden aspect-square bg-enred-red">
+                <div className="w-15 h-15 rounded-full overflow-hidden aspect-square bg-enred-red group-hover:bg-white">
                   <Image
                     src={review.photoUrl}
                     alt={review.author}
@@ -81,23 +76,22 @@ function ReviewsComponent() {
                 </div>
               </div>
 
-              <div className="text-enred-black">
+              <div>
                 <p className="text-pretty text-md">{review.text}</p>
               </div>
 
-              <div className="flex flex text-enred-black gap-1 ">
+              <div className="flex text-enred-red group-hover:text-white transition-colors gap-1 ">
                 {Array.from({ length: review.rating }).map((_, index) => (
                   <svg
                     key={index}
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
-                    fill="none"
+                    fill="currentColor"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="lucide lucide-star-icon lucide-star h-4 w-4 text-enred-red"
                   >
                     <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
                   </svg>

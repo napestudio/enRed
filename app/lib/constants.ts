@@ -10,13 +10,13 @@ export const LINKS = {
       label: "Instagram",
       src: "/insta-white.svg",
       black: "/gram-black.svg",
-      href: "https://www.instagram.com/enredcomunicaciones/",
+      href: "https://www.instagram.com/enred.soluciones/",
     },
     {
-      label: "Facebook",
+      label: "Whatsapp",
       src: "/wasap-white.svg",
       black: "/wasap-black.svg",
-      href: "https://www.facebook.com/enredcomunicaciones",
+      href: "#",
     },
   ],
 };

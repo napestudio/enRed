@@ -13,8 +13,13 @@ import { useIsPastHero } from "../lib/custom-hooks/useIsPastHero";
 import { useHeroRef } from "@/app/components/context/HeroRefContext";
 
 import gsap from "gsap";
+import { Content, asText } from "@prismicio/client";
 
-export default function Navbar({ soluciones }: { soluciones: any }) {
+export default function Navbar({
+  soluciones,
+}: {
+  soluciones: Content.SolucionDocument[];
+}) {
   const pathname = usePathname();
   const { navItems, socialItems } = LINKS;
 
@@ -44,15 +49,9 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  useEffect(() => {
-    setIsDropdownOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    if (!isSmallScreen) setOpen(false);
-  }, [isSmallScreen, setOpen]);
+  const isMenuOpen = isSmallScreen ? open : false;
 
   const chevronIcon = (
     <svg
@@ -77,17 +76,23 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
     <>
       <div
         className={cn(
-          shouldBeRed ? "bg-enred-red" : "bg-transparent",
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-250 ease-in-out ",
+          shouldBeRed
+            ? "bg-enred-red border-enred-red py-2"
+            : "bg-linear-to-b from-black/50 to-black/10 py-5 border-white/60",
+          "fixed top-0 left-0 right-0 z-9999 transition-all duration-400 ease-in-out border-b",
         )}
       >
-        <div className="max-w-[1440px] m-auto h-16 flex justify-between items-center py-6 px-12">
-          <Link href="/" className="decoration-none">
+        <div className="max-w-360 m-auto flex justify-between items-center px-12">
+          <Link href="/">
             <Image
               src="/logo-en-red.svg"
               alt="enRed Logo"
               width={150}
               height={50}
+              className={cn(
+                shouldBeRed && "scale-[0.75]",
+                "transition-transform duration-300",
+              )}
             />
           </Link>
 
@@ -96,7 +101,7 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
               onClick={toggle}
               className="cursor-pointer relative z-50 transition-all duration-500 ease-in-out "
             >
-              {open ? (
+              {isMenuOpen ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -135,12 +140,16 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
             <nav className="flex gap-20">
               <ul className="flex gap-4 lg:gap-[10vw]">
                 {navItems.map((item) => (
-                  <li key={item.href} className="relative">
+                  <li
+                    key={item.href}
+                    className="relative text-white transition-colors group"
+                  >
+                    <div className="absolute w-full h-px bg-white bottom-0 origin-left transition-transform duration-400 scale-x-0 group-hover:scale-x-100"></div>
                     {item.label === "Soluciones" ? (
                       <div className="relative" ref={dropdownRef}>
                         <button
                           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className="text-white font-light font-sm flex items-center gap-1 cursor-pointer"
+                          className="text-xl flex items-center gap-1 cursor-pointer"
                         >
                           {item.label}
                           {chevronIcon}
@@ -148,37 +157,37 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
 
                         <div
                           className={cn(
-                            "absolute top-full left-0 bg-white shadow min-w-[280px] mt-5",
+                            "absolute top-full left-0 bg-white shadow min-w-70 mt-5",
                             "transition-all duration-300 ease-out origin-top overflow-hidden",
                             isDropdownOpen
                               ? "opacity-100 scale-y-100 visible"
                               : "opacity-0 scale-y-95 invisible",
                           )}
                         >
-                          {soluciones?.map((solucion: any) => (
-                            <Link
-                              key={solucion.id}
-                              href={`/soluciones/${solucion.uid}`}
-                              className={cn(
-                                "block px-4 py-3 text-enred-black hover:bg-gray-300 transition-colors",
-                                pathname === `/soluciones/${solucion.uid}` &&
-                                  "bg-enred-red text-white hover:text-white",
-                              )}
-                              onClick={() => setIsDropdownOpen(false)}
-                            >
-                              {
-                                solucion.data.slices[0].primary.section_title[0]
-                                  .text
-                              }
-                            </Link>
-                          ))}
+                          {soluciones.map((solucion) => {
+                            const featureSlice = solucion.data.slices.find(
+                              (s) => s.slice_type === "feature_highlights_grid",
+                            ) as Content.FeatureHighlightsGridSlice | undefined;
+                            return (
+                              <Link
+                                key={solucion.id}
+                                href={`/soluciones/${solucion.uid}`}
+                                className={cn(
+                                  "block px-4 py-3 text-enred-black hover:bg-gray-300 transition-colors",
+                                  pathname === `/soluciones/${solucion.uid}` &&
+                                    "bg-enred-red text-white",
+                                )}
+                                onClick={() => setIsDropdownOpen(false)}
+                              >
+                                {featureSlice &&
+                                  asText(featureSlice.primary.section_title)}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </div>
                     ) : (
-                      <Link
-                        className="text-white font-light font-sm"
-                        href={item.href}
-                      >
+                      <Link className="text-xl" href={item.href}>
                         {item.label}
                       </Link>
                     )}
@@ -208,20 +217,23 @@ export default function Navbar({ soluciones }: { soluciones: any }) {
           )}
         </div>
       </div>
-      <MobileMenu open={open} items={navItems} />
+      <MobileMenu open={isMenuOpen} items={navItems} />
     </>
   );
 }
 
 type MobileMenuProps = {
   open?: boolean;
-  items: any[];
+  items: typeof LINKS.navItems;
 };
 
-export const MobileMenu: FC<MobileMenuProps> = ({ open = false, items = []}) => {
+export const MobileMenu: FC<MobileMenuProps> = ({
+  open = false,
+  items = [],
+}) => {
   const { socialItems } = LINKS;
   const ref = useRef<HTMLDivElement | null>(null);
-  
+
   useEffect(() => {
     const container = ref.current;
     if (!container) return;
@@ -274,7 +286,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({ open = false, items = []}) => 
     >
       <div className="px-10 order-2 flex flex-col justify-center items-start gap-4 col-span-12 md:col-span-6 text-5xl font-light pb-4">
         <div className="flex flex-col gap-10">
-          {items.map((item: any, _) => (
+          {items.map((item, _) => (
             <NavItem
               key={_}
               href={`/${item.href === "home" ? "" : item.href}`}
@@ -285,7 +297,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({ open = false, items = []}) => 
           ))}
         </div>
         <ul className="flex gap-4">
-          {socialItems.map((link: any) => (
+          {socialItems.map((link) => (
             <li key={link.label}>
               <Link href={link.href} target="_blank" className="cursor-pointer">
                 <Image

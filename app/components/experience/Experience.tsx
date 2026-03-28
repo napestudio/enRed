@@ -1,0 +1,19 @@
+"use client";
+
+import { Canvas } from "@react-three/fiber";
+import AnimatedCubes from "./AnimatedCubes";
+
+export default function Experience() {
+  return (
+    <div className="fixed z-50 h-screen w-full inset-0 pointer-events-none **:pointer-events-none!">
+      <Canvas
+        className="h-full z-50 w-full pointer-events-none"
+        events={undefined}
+        orthographic
+        camera={{ zoom: 75, position: [8, 8, 8] }}
+      >
+        <AnimatedCubes />
+      </Canvas>
+    </div>
+  );
+}
