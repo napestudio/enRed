@@ -1,6 +1,6 @@
 "use client";
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { asText, Content } from "@prismicio/client";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FC, useRef } from "react";
 import { gsap, ScrollTrigger, SplitText } from "@/app/lib/gsap";
 
@@ -55,13 +55,9 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
             <div className="flex gap-4 justify-end items-center mb-6">
               <SectionHeading title="Nosotros" style="" />
             </div>
-            <p className="text-xl text-pretty" ref={textRef}>
-              Somos una empresa que brinda soluciones integrales en edificios,
-              obras de construcción, instalaciones industriales, domicilios
-              particulares y otros espacios, con más de 6 años de experiencia en
-              el rubro. Trabajamos de manera personalizada garantizando
-              resultados rápidos y eficientes en cada espacio.
-            </p>
+            <div className="text-xl text-pretty" ref={textRef}>
+              <PrismicRichText field={slice.primary.description} />
+            </div>
           </div>
         </div>
       </div>
