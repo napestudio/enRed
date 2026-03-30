@@ -3,20 +3,18 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 export function useIsPastHero() {
-  const [isPast, setIsPast] = useState(false);
+  const [scrollPast, setScrollPast] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname.startsWith("/soluciones/")) {
-      setIsPast(false);
-      return;
-    }
+    if (pathname.startsWith("/soluciones/")) return;
 
-    const check = () => setIsPast(window.scrollY >= window.innerHeight);
+    const check = () => setScrollPast(window.scrollY >= window.innerHeight - 120);
     check();
     window.addEventListener("scroll", check, { passive: true });
     return () => window.removeEventListener("scroll", check);
   }, [pathname]);
 
-  return isPast;
+  if (pathname.startsWith("/soluciones/")) return false;
+  return scrollPast;
 }

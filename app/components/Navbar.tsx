@@ -135,8 +135,8 @@ export default function Navbar({
               )}
             </button>
           ) : (
-            <nav className="flex gap-20">
-              <ul className="flex gap-4 lg:gap-[10vw]">
+            <nav className="flex gap-20 items-center flex-1">
+              <ul className="flex gap-4 lg:gap-12 mx-auto">
                 {navItems.map((item) => (
                   <li
                     key={item.href}

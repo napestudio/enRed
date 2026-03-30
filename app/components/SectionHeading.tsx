@@ -1,17 +1,16 @@
 "use client";
-import { cn } from "../lib/utils";
-import { gsap, ScrollTrigger } from "../lib/gsap";
 import { useRef } from "react";
-import ArrowIcon from "./ui/Icons/ArrowIcon";
 import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
-import { Scroll } from "@react-three/drei";
+import { gsap, ScrollTrigger } from "../lib/gsap";
+import { cn } from "../lib/utils";
+import ArrowIcon from "./ui/Icons/UnderlineArrowIcon";
 
 function SectionHeading({
   title = "",
   style = "text-black",
 }: {
   title: string;
-  style: string;
+  style?: string;
 }) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
@@ -50,7 +49,7 @@ function SectionHeading({
     return () => ctx.revert();
   }, []);
   return (
-    <>
+    <div className="flex items-center gap-4 w-max">
       <h2 className={cn(style, "text-5xl font-semibold")} ref={titleRef}>
         {title}
       </h2>
@@ -58,7 +57,7 @@ function SectionHeading({
       <div ref={iconRef}>
         <ArrowIcon className="w-12 h-12" />
       </div>
-    </>
+    </div>
   );
 }
 
