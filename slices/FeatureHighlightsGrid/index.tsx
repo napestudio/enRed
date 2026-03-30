@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { FC, use } from "react";
+import { FC } from "react";
 
 import ImageClipper from "@/app/components/ImageClipper";
 import SolutionsGallery from "@/app/components/solutions/Gallery";
@@ -19,11 +19,15 @@ export type FeatureHighlightsGridProps =
  */
 const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
   slice,
+  context,
 }) => {
   const data = (await cms.getAllByType("solucion", {
     orderings: [{ field: "my.solucion.uid", direction: "asc" }],
-  })) as import("@prismicio/client").Content.SolucionDocument[];
+  })) as Content.SolucionDocument[];
 
+  const currentUid = (context as { uid?: string })?.uid;
+  const relatedSolutions = data.filter((s) => s.uid !== currentUid);
+  console.log(data);
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -66,7 +70,11 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
             </div>
           ))}
         </div>
-        {slice.primary.features && <RelatedSolutionCards slice={slice} />}
+
+        <RelatedSolutionCards
+          slice={slice}
+          relatedSolutions={relatedSolutions}
+        />
       </div>
     </section>
   );

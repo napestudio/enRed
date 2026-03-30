@@ -1,14 +1,19 @@
+import { Content } from "@prismicio/client";
 import { FeatureHighlightsGridSlice } from "@/prismicio-types";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
+
 interface RelatedSolutionCardsProps {
   slice: FeatureHighlightsGridSlice;
+  relatedSolutions: Content.SolucionDocument[];
 }
 
 export default function RelatedSolutionCards({
   slice,
+  relatedSolutions,
 }: RelatedSolutionCardsProps) {
+  console.log(relatedSolutions);
   return (
     <div className="flex flex-col gap-16 pt-18 z-20 ">
       <div className="relative grid grid-cols-12 md:gap-4 items-start pb-16">
