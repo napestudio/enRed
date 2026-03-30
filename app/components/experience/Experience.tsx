@@ -2,6 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import AnimatedCubes from "./AnimatedCubes";
+import FooterCubes from "./FooterCubes";
 
 export default function Experience() {
   return (
@@ -13,6 +14,7 @@ export default function Experience() {
         camera={{ zoom: 75, position: [8, 8, 8] }}
       >
         <AnimatedCubes />
+        <FooterCubes />
       </Canvas>
     </div>
   );

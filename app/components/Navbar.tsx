@@ -202,7 +202,7 @@ export default function Navbar({
                     >
                       <Image
                         src={link.src}
-                        alt="enRed Logo"
+                        alt=""
                         width={20}
                         height={20}
                         className="text-white fill-white"
@@ -300,7 +300,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
               <Link href={link.href} target="_blank" className="cursor-pointer">
                 <Image
                   src={link.src}
-                  alt="enRed Logo"
+                  alt=""
                   width={20}
                   height={20}
                   className="text-white fill-white"

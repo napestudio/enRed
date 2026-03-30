@@ -95,6 +95,16 @@ function TrabajosSlide({
           duration: 1,
         })
         .from(
+          imageRef.current,
+          {
+            y: 50,
+            opacity: 0,
+            ease: "power3.out",
+            duration: 1,
+          },
+          "<",
+        )
+        .from(
           titleRef.current,
           {
             y: 50,
@@ -102,7 +112,7 @@ function TrabajosSlide({
             ease: "power3.out",
             duration: 1,
           },
-          "-=0.75",
+          "<",
         )
         .from(
           textRef.current,
@@ -113,18 +123,7 @@ function TrabajosSlide({
             duration: 1,
           },
           "-=0.75",
-        )
-        .from(
-          imageRef.current,
-          {
-            y: 50,
-            opacity: 0,
-            ease: "power3.out",
-            duration: 1,
-          },
-          "-=0.75",
         );
-
       ScrollTrigger.create({
         trigger: labelRef.current,
         start: "top 65%",
