@@ -1,15 +1,15 @@
 "use client";
-import Image from "next/image";
-import SectionHeading from "./SectionHeading";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { MetricsDocumentData } from "@/prismicio-types";
-import ArrowIcon from "./ui/Icons/ArrowIcon";
-import Metrics from "./Metrics";
-import { use, useRef } from "react";
-import { gsap, ScrollTrigger } from "../lib/gsap";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
+import { gsap, ScrollTrigger } from "../lib/gsap";
+import Metrics from "./Metrics";
+import SectionHeading from "./SectionHeading";
+import ArrowIcon from "./ui/Icons/ArrowIcon";
 
 // 1. Schema Zod
 const schema = z.object({
@@ -76,7 +76,7 @@ export default function FormSection({
         animation: tl2,
         scrub: true,
       });
-    });
+    }, []);
 
     return () => ctx.revert();
   }, []);
@@ -95,13 +95,14 @@ export default function FormSection({
               <Metrics items={metrics.second_metric} variant="small" />
               <Metrics items={metrics.third_metric} variant="small" />
             </div>
-            <div className="absolute -left-100 top-0 -right-35 col-span-12 col-start-1 md:col-span-10 md:col-start-3 z-0 flex items-center">
+            <div className="absolute -left-100 top-0 -right-35 col-span-12 col-start-1 md:col-span-10 md:col-start-3 z-0 flex items-center pointer-events-none">
               <Image
                 src="/gray-shape.svg"
                 alt="enRed Logo"
                 width={150}
                 height={50}
-                className="w-full h-auto"
+                aria-hidden="true"
+                className="w-full h-auto pointer-events-none"
               />
             </div>
           </div>
