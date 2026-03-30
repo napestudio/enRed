@@ -18,7 +18,7 @@ import { PrismicRichText } from "@prismicio/react";
 export default function Footer({
   soluciones,
   metrics,
-  footerInfo
+  footerInfo,
 }: {
   soluciones: SolucionDocument[];
   metrics: MetricsDocumentData;
@@ -47,7 +47,7 @@ export default function Footer({
   );
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden" id="footer">
       <FormSection metrics={metrics} />
 
       <footer

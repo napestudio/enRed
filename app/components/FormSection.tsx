@@ -54,29 +54,29 @@ export default function FormSection({
       const tl = gsap.timeline({ paused: true }).from(formRef.current, {
         y: 100,
         opacity: 0,
+        duration: 0.8,
       });
 
       ScrollTrigger.create({
         trigger: formRef.current,
-        start: "-30% bottom",
-        end: "-10% center",
+        start: "top 90%",
         animation: tl,
-        scrub: true,
+        once: true,
       });
 
       const tl2 = gsap.timeline({ paused: true }).from(submitRef.current, {
         x: -50,
         opacity: 0,
+        duration: 0.6,
       });
 
       ScrollTrigger.create({
         trigger: formRef.current,
-        start: "top center",
-        end: "70% center",
+        start: "top 60%",
         animation: tl2,
-        scrub: true,
+        once: true,
       });
-    }, []);
+    });
 
     return () => ctx.revert();
   }, []);

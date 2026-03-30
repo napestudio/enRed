@@ -10,10 +10,16 @@ import { components } from "@/slices";
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Promise<Params> }) {
-  const { uid } = await params;  
+  const { uid } = await params;
   const page = await cms.getByUID("solucion", uid).catch(() => notFound());
 
-  return <SliceZone slices={page.data.slices} components={components} context={{ uid }} />;
+  return (
+    <SliceZone
+      slices={page.data.slices}
+      components={components}
+      context={{ uid }}
+    />
+  );
 }
 
 export async function generateMetadata({
@@ -25,7 +31,7 @@ export async function generateMetadata({
   const page = await cms.getByUID("solucion", uid).catch(() => notFound());
 
   return {
-    title: page.data.meta_title,
+    title: `EnRed - ${page.data.meta_title || "Soluciones con altura"}`,
     description: page.data.meta_description,
     openGraph: {
       images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],

@@ -2,11 +2,10 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FC } from "react";
 
-import ImageClipper from "@/app/components/ImageClipper";
 import SolutionsGallery from "@/app/components/solutions/Gallery";
 import RelatedSolutionCards from "@/app/components/solutions/RelatedCards";
-import ArrowIcon from "@/app/components/ui/Icons/ArrowIcon";
 import { cms } from "@/prismicio";
+import AnimatedHeader from "./AnimatedHeader";
 
 /**
  * Props for `FeatureHighlightsGrid`.
@@ -39,29 +38,12 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
       className="bg-white pt-12 px-12 overflow-hidden"
     >
       <div className="max-w-360 mx-auto py-8">
-        <div className="grid grid-cols-12 gap-y-10 md:gap-4 items-center">
-          <div className="col-span-12 md:col-span-6 py-8 flex flex-col justify-between h-full gap-4 md:gap-24 text-enred-black">
-            <div className="flex flex-col gap-18">
-              <div className="font-bold text-[clamp(3rem,5vw,calc(95vw-1rem))] leading-none">
-                <PrismicRichText field={slice.primary.section_title} />
-              </div>
-              <div className="text-xl font-semibold underline underline-offset-2">
-                <PrismicRichText field={slice.primary.section_subtitle} />
-              </div>
-            </div>
-            <div className="grid grid-cols-6 gap-4">
-              <div className="col-span-12 md:col-span-1 p-4 flex items-center justify-center text-enred-black">
-                <ArrowIcon className="text-black w-12 h-auto" />
-              </div>
-              <div className="col-span-12 md:col-span-4 md:text-2xl text-pretty">
-                <PrismicRichText field={slice.primary.section_description} />
-              </div>
-            </div>
-          </div>
-          <div className="col-span-12 md:col-span-6">
-            <ImageClipper slice={slice} />
-          </div>
-        </div>
+        <AnimatedHeader
+          title={slice.primary.section_title}
+          subtitle={slice.primary.section_subtitle}
+          sectionDescription={slice.primary.section_description}
+          slice={slice}
+        />
 
         <SolutionsGallery slice={slice} />
         <div className="grid md:grid-cols-2 gap-4 text-enred-black">

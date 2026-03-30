@@ -4,6 +4,7 @@ import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayout
 import { gsap, ScrollTrigger } from "@/app/lib/gsap";
 import { useThree } from "@react-three/fiber";
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import * as THREE from "three";
 
 // ─── Paste your copied coordinates here ───────────────────────────────────────
@@ -156,6 +157,7 @@ type Axis = (typeof AXES)[number];
 const MAX_OFFSET = 1;
 
 export default function FooterCubes() {
+  const pathname = usePathname();
   const refs = useRef<(THREE.Group | null)[]>([]);
   const groupRef = useRef<THREE.Group>(null);
   const lastAxes = useRef<(Axis | null)[]>(
@@ -292,12 +294,15 @@ export default function FooterCubes() {
     return () => {
       isVisible.current = false;
       tweenRefs.current.forEach((tween) => tween?.kill());
+      lastAxes.current = new Array(POSITIONS.length).fill(null);
+      offsets.current = POSITIONS.map(() => ({ x: 0, y: 0, z: 0 }));
+      targetPositions.current = POSITIONS.map((p) => ({ ...p }));
       ctx.revert();
     };
-  }, []);
+  }, [pathname]);
 
   return (
-    <group position={[3, 0, 0]} ref={groupRef}>
+    <group position={[4, 0, 0]} ref={groupRef}>
       {POSITIONS.map((pos, i) => (
         <group
           key={i}

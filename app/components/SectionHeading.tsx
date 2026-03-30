@@ -39,10 +39,9 @@ function SectionHeading({
 
       ScrollTrigger.create({
         trigger: titleRef.current,
-        start: "top bottom",
-        end: "center center",
+        start: "top 90%",
         animation: tl,
-        scrub: true,
+        once: true,
       });
     }, titleRef.current);
 
