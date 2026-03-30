@@ -6,6 +6,7 @@ import { useState } from "react";
 import Cubes, { type CubeData } from "./Cubes";
 import AnimatedCubes from "./AnimatedCubes";
 import { INITIAL_POSITIONS } from "./InitialPositions";
+import { NOT_FOUND_CUBES } from "./NotFoundPositions";
 
 // ─── Paste your copied coordinates here to set the editor's starting layout ───
 const initialLayout = INITIAL_POSITIONS;
