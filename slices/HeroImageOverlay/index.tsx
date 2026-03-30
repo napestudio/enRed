@@ -124,7 +124,7 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
         aria-hidden="true"
       />
       <Image
-        src="/header-bg.jpg"
+        src="/bg-hero.jpg"
         alt="Imagen de fondo"
         fill
         className="w-full h-full object-cover z-0"
