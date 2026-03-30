@@ -8,7 +8,10 @@ import { cn } from "./lib/utils";
 
 import { GSAPProvider } from "@/app/components/GSAPProvider";
 import { cms } from "@/prismicio";
-import { MetricsDocument, MetricsDocumentData } from "@/prismicio-types";
+import {
+  FooterDocumentData,
+  MetricsDocumentData,
+} from "@/prismicio-types";
 
 const spaceGrotesk = localFont({
   src: [
@@ -57,6 +60,7 @@ export default async function RootLayout({
   })) as import("@prismicio/client").Content.SolucionDocument[];
 
   const metrics = await cms.getByType("metrics");
+  const footerInfo = await cms.getByType("footer");
 
   return (
     <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
@@ -67,6 +71,7 @@ export default async function RootLayout({
           <Footer
             soluciones={data}
             metrics={metrics.results[0].data as MetricsDocumentData}
+            footerInfo={footerInfo.results[0].data as FooterDocumentData}
           />
         </GSAPProvider>
       </body>

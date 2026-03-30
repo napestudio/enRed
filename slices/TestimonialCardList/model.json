@@ -10,45 +10,7 @@
       "version": "initial",
       "imageUrl": "",
       "docURL": "...",
-      "primary": {
-        "testimonials": {
-          "type": "Group",
-          "config": {
-            "label": "Testimoniales",
-            "repeat": true,
-            "fields": {
-              "avatar": {
-                "type": "Image",
-                "config": {
-                  "label": "Avatar"
-                }
-              },
-              "author_name": {
-                "type": "Text",
-                "config": {
-                  "label": "Nombre del autor",
-                  "placeholder": ""
-                }
-              },
-              "rating": {
-                "type": "Number",
-                "config": {
-                  "label": "Rating"
-                }
-              },
-              "testimonial_text": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Texto testimonial",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em,hyperlink"
-                }
-              }
-            }
-          }
-        }
-      },
+      "primary": {},
       "items": {}
     }
   ]
