@@ -3,8 +3,15 @@ import { CustomEase } from "gsap/dist/CustomEase";
 import { SplitText } from "gsap/dist/SplitText";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/dist/ScrambleTextPlugin";
+import { MotionPathPlugin } from "gsap/all";
 
-gsap.registerPlugin(CustomEase, SplitText, ScrollTrigger, ScrambleTextPlugin);
+gsap.registerPlugin(
+  CustomEase,
+  SplitText,
+  ScrollTrigger,
+  ScrambleTextPlugin,
+  MotionPathPlugin,
+);
 
 const GOLDEN_RATIO = (1 + Math.sqrt(5)) / 2;
 const RECIPROCAL_GR = 1 / GOLDEN_RATIO;
@@ -30,4 +37,5 @@ export {
   SplitText,
   ScrollTrigger,
   ScrambleTextPlugin,
+  MotionPathPlugin,
 };

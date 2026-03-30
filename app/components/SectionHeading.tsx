@@ -1,35 +1,63 @@
+"use client";
+import { useRef } from "react";
+import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
+import { gsap, ScrollTrigger } from "../lib/gsap";
 import { cn } from "../lib/utils";
+import ArrowIcon from "./ui/Icons/UnderlineArrowIcon";
 
 function SectionHeading({
   title = "",
   style = "text-black",
 }: {
   title: string;
-  style: string;
+  style?: string;
 }) {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const iconRef = useRef<HTMLDivElement>(null);
+
+  useIsomorphicLayoutEffect(() => {
+    if (!titleRef.current || !iconRef.current) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap
+        .timeline({ paused: true })
+        .from(titleRef.current, {
+          y: 50,
+          opacity: 0,
+          ease: "power3.out",
+          duration: 1,
+        })
+        .from(
+          iconRef.current,
+          {
+            y: -50,
+            opacity: 0,
+            ease: "power3.out",
+            duration: 1,
+          },
+          "-=0.75",
+        );
+
+      ScrollTrigger.create({
+        trigger: titleRef.current,
+        start: "top bottom",
+        end: "center center",
+        animation: tl,
+        scrub: true,
+      });
+    }, titleRef.current);
+
+    return () => ctx.revert();
+  }, []);
   return (
-    <>
-      <h2 className={cn(style, "text-5xl font-semibold")}>{title}</h2>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="32"
-        height="32"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={cn(
-          style,
-          "lucide lucide-arrow-down-to-line-icon lucide-arrow-down-to-line w-12 h-12",
-        )}
-      >
-        <path d="M12 17V3" />
-        <path d="m6 11 6 6 6-6" />
-        <path d="M19 21H5" />
-      </svg>
-    </>
+    <div className="flex items-center gap-4 w-max">
+      <h2 className={cn(style, "text-5xl font-semibold")} ref={titleRef}>
+        {title}
+      </h2>
+
+      <div ref={iconRef}>
+        <ArrowIcon className="w-12 h-12" />
+      </div>
+    </div>
   );
 }
 

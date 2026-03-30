@@ -5,12 +5,23 @@ const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 const day = 60 * 60 * 24;// 24 horas en segundos
 const CACHE_DURATION = day * 5;
 
+interface AuthorAttribution {
+  displayName: string;
+  photoUri: string;
+  uri: string;
+}
+
+interface LocalizedText {
+  text: string;
+  languageCode: string;
+}
+
 interface Review {
-  authorAttribution: any;
+  authorAttribution: AuthorAttribution;
   rating: number;
-  text: any;
+  text: LocalizedText;
   relativePublishTimeDescription: string;
-  originalText: any;
+  originalText: LocalizedText;
 }
 
 export async function GET() {

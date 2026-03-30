@@ -160,6 +160,16 @@ export interface MetricsDocumentDataMainMetricItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   descripcion: prismic.RichTextField;
+
+  /**
+   * Número field in *Metrics → Métrica principales*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.main_metric[].number
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  number: prismic.NumberField;
 }
 
 /**
@@ -185,6 +195,16 @@ export interface MetricsDocumentDataSecondMetricItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   descripcion: prismic.RichTextField;
+
+  /**
+   * Número field in *Metrics → Métrica secundaria*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.second_metric[].number
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  number: prismic.NumberField;
 }
 
 /**
@@ -210,6 +230,16 @@ export interface MetricsDocumentDataThirdMetricItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   descripcion: prismic.RichTextField;
+
+  /**
+   * Número field in *Metrics → Métricas secundarias*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: metrics.third_metric[].number
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  number: prismic.NumberField;
 }
 
 /**

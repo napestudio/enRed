@@ -1,17 +1,17 @@
-import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
+import { MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem } from "@/prismicio-types";
 
 function TrabajosImageClipper({
   item,
 }: {
-  item: any; //Content.MediaGridIntroSlice;
+  item: MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem;
 }) {
   //const image = item.primary.image;
   if (!item) {
     return null;
   }
   return (
-    <div className="relative w-full aspect-[615/420]">
+    <div className="relative w-full aspect-615/420">
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <clipPath id="miFormaGeometrica2" clipPathUnits="objectBoundingBox">
           <path

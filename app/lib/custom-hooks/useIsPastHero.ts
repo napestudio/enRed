@@ -1,33 +1,20 @@
-"use client"
-import { RefObject, useEffect, useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import gsap from "gsap";
 
-gsap.registerPlugin(ScrollTrigger);
-
-export function useIsPastHero(heroRef: RefObject<HTMLElement>) {
-  const [isPast, setIsPast] = useState(false);
+export function useIsPastHero() {
+  const [scrollPast, setScrollPast] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    
-    if (pathname.startsWith("/soluciones/")) {
-      setIsPast(false);
-      return;
-    }
+    if (pathname.startsWith("/soluciones/")) return;
 
-    if (!heroRef.current) return;
+    const check = () => setScrollPast(window.scrollY >= window.innerHeight - 120);
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    return () => window.removeEventListener("scroll", check);
+  }, [pathname]);
 
-    const trigger = ScrollTrigger.create({
-      trigger: heroRef.current,
-      start: "bottom top",
-      onEnter: () => setIsPast(true),
-      onLeaveBack: () => setIsPast(false),
-    });
-    
-    return () => trigger.kill();
-  }, [heroRef.current, pathname]);
-
-  return isPast;
+  if (pathname.startsWith("/soluciones/")) return false;
+  return scrollPast;
 }
