@@ -1,8 +1,8 @@
 "use client";
-import { asText, Content } from "@prismicio/client";
+import { gsap, ScrollTrigger, SplitText } from "@/app/lib/gsap";
+import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FC, useRef } from "react";
-import { gsap, ScrollTrigger, SplitText } from "@/app/lib/gsap";
 
 import SectionHeading from "@/app/components/SectionHeading";
 import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
@@ -28,7 +28,7 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top center",
-        end: "bottom center",
+        end: "center center",
         animation: tl,
         scrub: true,
       });

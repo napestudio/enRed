@@ -4,3 +4,4 @@
 - [] Swiper home imagenes quitar mascara
 - [] Responsive
 - [] Boton de hablemos
+- [] Revalidar prismic
