@@ -6,7 +6,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import Image from "next/image";
 import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
 import { gsap, SplitText } from "../../app/lib/gsap";
-import ArrowIcon from "@/app/components/ui/Icons/ArrowIcon";
+import ArrowIcon from "@/app/components/ui/Icons/UnderlineArrowIcon";
 import SvgHeroShape from "@/app/components/SvgHeroShape";
 export type HeroImageOverlayProps =
   SliceComponentProps<Content.HeroImageOverlaySlice>;

@@ -16,16 +16,15 @@ const TestimonialCardList: FC<TestimonialCardListProps> = async ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="text-enred-black bg-white"
+      className="text-enred-black bg-white py-12"
     >
-      <div className="max-w-360 m-auto grid grid-cols-12 gap-y-10 gap-x-5 p-12 items-center">
-        <div className="col-span-12 mb-6 flex gap-4 items-center justify-end">
+      <div className="max-w-360 px-12 m-auto flex items-center">
+        <div className="mb-12 flex gap-4 w-full items-center justify-end">
           <SectionHeading title="Reseñas" style="text-black" />
         </div>
-
-        <div className="col-span-12">
-          <ReviewsComponent />
-        </div>
+      </div>
+      <div>
+        <ReviewsComponent />
       </div>
     </section>
   );

@@ -4,8 +4,12 @@ import SectionHeading from "./SectionHeading";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { PrismicRichText } from "@prismicio/react";
 import { MetricsDocumentData } from "@/prismicio-types";
+import ArrowIcon from "./ui/Icons/ArrowIcon";
+import Metrics from "./Metrics";
+import { use, useRef } from "react";
+import { gsap, ScrollTrigger } from "../lib/gsap";
+import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
 
 // 1. Schema Zod
 const schema = z.object({
@@ -19,8 +23,18 @@ const schema = z.object({
 });
 
 type FormData = z.infer<typeof schema>;
+const inputClass =
+  "bg-white w-full px-2 py-4 border-b-2 text-2xs leading-none outline-none focus:border-enred-red transition-colors";
+const errorClass = "text-red-500 text-[10px] mt-1";
 
-function FormSection({ metrics }: { metrics: MetricsDocumentData }) {
+export default function FormSection({
+  metrics,
+}: {
+  metrics: MetricsDocumentData;
+}) {
+  const submitRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+
   const {
     register,
     handleSubmit,
@@ -34,55 +48,54 @@ function FormSection({ metrics }: { metrics: MetricsDocumentData }) {
     // acá podés hacer fetch/axios
   };
 
-  const inputClass =
-    "bg-white w-full px-2 py-4 border-b-2 text-2xs leading-none outline-none focus:border-enred-red transition-colors";
-  const errorClass = "text-red-500 text-[10px] mt-1";
+  useIsomorphicLayoutEffect(() => {
+    if (!submitRef.current || !formRef.current) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ paused: true }).from(formRef.current, {
+        y: 100,
+        opacity: 0,
+      });
+
+      ScrollTrigger.create({
+        trigger: formRef.current,
+        start: "-30% bottom",
+        end: "-10% center",
+        animation: tl,
+        scrub: true,
+      });
+
+      const tl2 = gsap.timeline({ paused: true }).from(submitRef.current, {
+        x: -50,
+        opacity: 0,
+      });
+
+      ScrollTrigger.create({
+        trigger: formRef.current,
+        start: "top center",
+        end: "70% center",
+        animation: tl2,
+        scrub: true,
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section className="bg-enred-gray-light text-enred-black overflow-hidden">
-      <div className="max-w-360 m-auto grid grid-cols-1 gap-4 py-16 px-6 md:p-12 items-center">
-        <div className="col-span-1 mb-6 flex gap-4 items-center text-enred-black">
+      <div className="max-w-360 m-auto gap-4 py-16 px-6 md:p-12 items-center">
+        <div className="col-span-1 mb-12 flex gap-4 items-center text-enred-black">
           <SectionHeading title="Hablemos" style="text-black" />
         </div>
 
-        <div className="col-span-1 grid grid-cols-4 gap-16 md:gap-4">
-          <div className="order-1 md:order-0 relative col-span-4 md:col-span-2 h-full flex flex-col gap-16 justify-center">
-            {metrics.main_metric.map((item, index) => (
-              <div
-                key={index}
-                className="z-10 flex flex-col items-center md:items-start gap-6"
-              >
-                <div className="text-[3.5rem] md:text-[8rem] font-bold tracking-tight leading-[.75] m-0 z-10">
-                  <PrismicRichText field={item.titulo} />
-                </div>
-                <div className="text-[1.1rem] md:text-[2.5rem] leading-none m-0 z-10 indent-3">
-                  <PrismicRichText field={item.descripcion} />
-                </div>
-              </div>
-            ))}
-            <div className="w-full flex flex-col md:flex-row gap-14 items-center z-10">
-              {metrics.second_metric.map((item, index) => (
-                <div key={index} className="flex flex-col gap-4">
-                  <div className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
-                    <PrismicRichText field={item.titulo} />
-                  </div>
-                  <div className="text-[1.1rem] leading-none m-0 z-10">
-                    <PrismicRichText field={item.descripcion} />
-                  </div>
-                </div>
-              ))}
-              {metrics.third_metric.map((item, index) => (
-                <div key={index} className="flex flex-col gap-4">
-                  <div className="text-[3.5rem] font-bold tracking-tight leading-[.75] m-0 z-10">
-                    <PrismicRichText field={item.titulo} />
-                  </div>
-                  <div className="text-[1.1rem] leading-none m-0 z-10">
-                    <PrismicRichText field={item.descripcion} />
-                  </div>
-                </div>
-              ))}
+        <div className="grid w-full grid-cols-5 gap-16 md:gap-24">
+          <div className="order-1 col-span-2 md:order-0 max-w-min relative h-full flex flex-col gap-8 justify-start">
+            <Metrics items={metrics.main_metric} variant="big" />
+            <div className="w-full flex justify-between items-center z-10">
+              <Metrics items={metrics.second_metric} variant="small" />
+              <Metrics items={metrics.third_metric} variant="small" />
             </div>
-            <div className="absolute -left-100 top-0 right-10 col-span-12 col-start-1 md:col-span-10 md:col-start-3 z-0 flex items-center">
+            <div className="absolute -left-100 top-0 -right-35 col-span-12 col-start-1 md:col-span-10 md:col-start-3 z-0 flex items-center">
               <Image
                 src="/gray-shape.svg"
                 alt="enRed Logo"
@@ -93,10 +106,13 @@ function FormSection({ metrics }: { metrics: MetricsDocumentData }) {
             </div>
           </div>
 
-          <div className="order-0 md:order-1 col-span-4 md:col-span-2 z-10">
+          <div
+            className="col-span-3 order-0 md:order-1 z-10 w-full"
+            ref={formRef}
+          >
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="grid grid-cols-2 gap-y-6 gap-x-4"
+              className="grid grid-cols-2 gap-y-6 gap-x-4 w-full"
             >
               {/* Nombre */}
               <div className="col-span-2 md:col-span-1 flex flex-col gap-1">
@@ -186,13 +202,16 @@ function FormSection({ metrics }: { metrics: MetricsDocumentData }) {
               </div>
 
               {/* Submit */}
-              <div className="col-span-2 md:col-span-1 md:col-start-2 bg-enred-red">
+              <div className="col-span-2 justify-items-end" ref={submitRef}>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full text-white py-4 px-6 text-center disabled:opacity-60 cursor-pointer"
+                  className="bg-enred-red text-white text-2xl px-12 py-4 flex justify-center items-center gap-2 group cursor-pointer"
                 >
-                  {isSubmitting ? "Enviando..." : "Contactanos"}
+                  <span>{isSubmitting ? "Enviando..." : "Contactanos"}</span>
+                  <span className="group-hover:translate-x-2 group-hover:scale-101 transition-transform duration-300">
+                    <ArrowIcon />
+                  </span>
                 </button>
               </div>
             </form>
@@ -202,5 +221,3 @@ function FormSection({ metrics }: { metrics: MetricsDocumentData }) {
     </section>
   );
 }
-
-export default FormSection;

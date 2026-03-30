@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
+import { gsap, ScrollTrigger } from "@/app/lib/gsap";
+import { cn } from "@/app/lib/utils";
+import { asText, Content } from "@prismicio/client";
 import Image from "next/image";
 import Link from "next/link";
-import { Content, asText } from "@prismicio/client";
-import { cn } from "@/app/lib/utils";
-import { gsap, ScrollTrigger } from "@/app/lib/gsap";
-import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
-import { Scroll } from "@react-three/drei";
+import { useRef, useState } from "react";
 
 interface SolutionsGridClientProps {
   solutionsList: Content.SolucionDocument[];
@@ -67,8 +66,18 @@ export default function SolutionsGridClient({
               cardRefs.current[index] = el;
             }}
           >
-            <div className="absolute h-32 w-32 -top-20 -right-32 bg-white group-hover:-rotate-45 pointer-events-none transition-transform origin-bottom-left duration-500" />
-            <div className="absolute h-32 w-32 -bottom-32 -left-20 bg-white group-hover:rotate-45 pointer-events-none origin-top-right transition-transform duration-500" />
+            <div
+              className={cn(
+                "absolute h-32 w-32 -top-20 -right-32 bg-white group-hover:-rotate-45 pointer-events-none transition-transform origin-bottom-left duration-500",
+                isActive && "-rotate-45",
+              )}
+            />
+            <div
+              className={cn(
+                "absolute h-32 w-32 -bottom-32 -left-20 bg-white group-hover:rotate-45 pointer-events-none origin-top-right transition-transform duration-500",
+                isActive && "rotate-45",
+              )}
+            />
 
             <div className="flex flex-col justify-between gap-5 p-4 md:p-10 relative z-20 h-full">
               <div className="flex flex-col gap-5">

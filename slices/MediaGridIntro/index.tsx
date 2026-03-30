@@ -1,10 +1,10 @@
-import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps } from "@prismicio/react";
+import { FC } from "react";
 
-import "swiper/css";
-import TrabajosSwiper from "@/app/components/TrabajosSwiper";
 import SectionHeading from "@/app/components/SectionHeading";
+import TrabajosSwiper from "@/app/components/TrabajosSwiper";
+import "swiper/css";
 
 /**
  * Props for `MediaGridIntro`.
@@ -20,15 +20,15 @@ const MediaGridIntro: FC<MediaGridIntroProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-enred-gray p-12"
+      className="bg-enred-gray py-24"
     >
-      <div className="max-w-[1440px] m-auto grid grid-cols-12 gap-4">
-        <div className="col-span-12 flex gap-5 items-center md:justify-end mb-6 ">
-          <SectionHeading title="Nuestros trabajos" style="text-enred-black" />
+      <div className="max-w-360 mx-auto gap-4 px-12">
+        <div className="text-black w-full flex justify-end mb-5">
+          <SectionHeading title="Nuestros trabajos" />
         </div>
-        <div className="col-span-12">
-          <TrabajosSwiper slice={slice} />
-        </div>
+      </div>
+      <div>
+        <TrabajosSwiper slice={slice} />
       </div>
     </section>
   );

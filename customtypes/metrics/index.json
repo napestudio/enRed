@@ -27,7 +27,14 @@
                 "label": "Descripcion",
                 "placeholder": "",
                 "allowTargetBlank": true,
-                "multi": "heading4"
+                "single": "paragraph,strong"
+              }
+            },
+            "number": {
+              "type": "Number",
+              "config": {
+                "label": "Número",
+                "placeholder": ""
               }
             }
           }
@@ -54,7 +61,14 @@
                 "label": "Descripcion",
                 "placeholder": "",
                 "allowTargetBlank": true,
-                "multi": "heading4"
+                "multi": "paragraph,strong"
+              }
+            },
+            "number": {
+              "type": "Number",
+              "config": {
+                "label": "Número",
+                "placeholder": ""
               }
             }
           }
@@ -81,7 +95,14 @@
                 "label": "Descripcion",
                 "placeholder": "",
                 "allowTargetBlank": true,
-                "multi": "heading4"
+                "multi": "paragraph,strong"
+              }
+            },
+            "number": {
+              "type": "Number",
+              "config": {
+                "label": "Número",
+                "placeholder": ""
               }
             }
           }
