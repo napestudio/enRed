@@ -73,20 +73,23 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
         </div>
         <div className="grid grid-cols-6 gap-4">
           <div
-            className="col-span-12 md:col-span-1 p-4 flex items-center justify-center text-enred-black"
+            className="col-span-6 md:col-span-1 p-4 flex items-center justify-center text-enred-black"
             ref={arrowRef}
           >
-            <ArrowIcon className="text-black w-12 h-auto" />
+            <ArrowIcon className="text-black w-12 h-auto md:rotate-0 rotate-90" />
+          </div>
+          <div className="col-span-6 mx-auto block md:hidden" ref={imageRef}>
+            <ImageClipper slice={slice} />
           </div>
           <div
-            className="col-span-12 md:col-span-4 md:text-2xl text-pretty"
+            className="col-span-6 md:col-span-4 md:text-2xl text-pretty"
             ref={descriptionRef}
           >
             <PrismicRichText field={sectionDescription} />
           </div>
         </div>
       </div>
-      <div className="col-span-12 md:col-span-6" ref={imageRef}>
+      <div className="col-span-12 md:col-span-6 hidden md:block" ref={imageRef}>
         <ImageClipper slice={slice} />
       </div>
     </div>

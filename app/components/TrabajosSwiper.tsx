@@ -137,8 +137,8 @@ function TrabajosSlide({
   }, []);
 
   return (
-    <div className="grid grid-cols-12 gap-4 px-12">
-      <div className="col-span-4 text-enred-black flex flex-col gap-14 py-12">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 px-12">
+      <div className="col-span-1 md:col-span-4 text-enred-black flex flex-col gap-14 py-12">
         <div ref={labelRef}>
           <PrismicRichText field={item.label} />
         </div>
@@ -156,7 +156,7 @@ function TrabajosSlide({
           <SwiperNav />
         </div>
       </div>
-      <div className="col-span-8" ref={imageRef}>
+      <div className="col-span-1 md:col-span-8" ref={imageRef}>
         <TrabajosImageClipper item={item} />
       </div>
     </div>

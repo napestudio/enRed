@@ -51,8 +51,8 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="bg-enred-black text-enred-black py-12"
     >
-      <div className="max-w-360 m-auto grid grid-cols-12 gap-4 px-12 items-center">
-        <div className="col-span-5 flex gap-4 items-center text-white mb-12">
+      <div className="container grid grid-cols-12 gap-4 items-center">
+        <div className="md:col-span-5 flex gap-4 items-center text-white mb-12">
           <SectionHeading title="Nuestros clientes" style="text-white" />
         </div>
       </div>

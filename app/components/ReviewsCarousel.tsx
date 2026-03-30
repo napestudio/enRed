@@ -71,10 +71,10 @@ export default function ReviewsCarousel({
       <div ref={cardsRef}>
         <Swiper
           spaceBetween={16}
-          slidesPerView={isSmallScreen ? 1.2 : isMediumScreen ? 2.2 : 3.2}
+          slidesPerView={isSmallScreen ? 1 : isMediumScreen ? 2.2 : 3.2}
           className="min-h-75 items-stretch!"
-          slidesOffsetBefore={48}
-          slidesOffsetAfter={48}
+          slidesOffsetBefore={isSmallScreen ? 24 : 48}
+          slidesOffsetAfter={isSmallScreen ? 24 : 48}
         >
           {reviews.map((review: Review, index: number) => (
             <SwiperSlide key={index} className="select-none h-auto! group">
@@ -126,7 +126,7 @@ export default function ReviewsCarousel({
       </div>
       {reviewsUrl && (
         <div
-          className="max-w-360 mx-auto mt-12 flex gap-4 items-center justify-end pr-12 w-full overflow-hidden"
+          className="container mt-12 flex gap-4 items-center justify-end pr-12 w-full overflow-hidden"
           ref={linkRef}
         >
           <Link

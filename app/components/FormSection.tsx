@@ -83,19 +83,19 @@ export default function FormSection({
 
   return (
     <section className="bg-enred-gray-light text-enred-black overflow-hidden">
-      <div className="max-w-360 m-auto gap-4 py-16 px-6 md:p-12 items-center">
+      <div className="container gap-4 py-16 md:p-12 items-center">
         <div className="col-span-1 mb-12 flex gap-4 items-center text-enred-black">
           <SectionHeading title="Hablemos" style="text-black" />
         </div>
 
-        <div className="grid w-full grid-cols-5 gap-16 md:gap-24">
-          <div className="order-1 col-span-2 md:order-0 max-w-min relative h-full flex flex-col gap-8 justify-start">
+        <div className="grid w-full grid-cols-1 md:grid-cols-5 gap-16 md:gap-24">
+          <div className="order-1 col-span-1  w-full md:col-span-2 md:order-0 md:max-w-min relative h-full flex flex-col gap-8 justify-start">
             <Metrics items={metrics.main_metric} variant="big" />
-            <div className="w-full flex justify-between items-center z-10">
+            <div className="w-full flex justify-between gap-2 items-center z-10">
               <Metrics items={metrics.second_metric} variant="small" />
               <Metrics items={metrics.third_metric} variant="small" />
             </div>
-            <div className="absolute -left-100 top-0 -right-35 col-span-12 col-start-1 md:col-span-10 md:col-start-3 z-0 flex items-center pointer-events-none">
+            <div className="absolute -left-100 top-0 -right-35 col-start-1 md:col-span-10  md:col-start-3 z-0 flex items-center pointer-events-none">
               <Image
                 src="/gray-shape.svg"
                 alt="enRed Logo"
@@ -108,7 +108,7 @@ export default function FormSection({
           </div>
 
           <div
-            className="col-span-3 order-0 md:order-1 z-10 w-full"
+            className="col-span-1 md:col-span-3 order-0 md:order-1 z-10 w-full"
             ref={formRef}
           >
             <form

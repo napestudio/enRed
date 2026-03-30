@@ -18,7 +18,7 @@ const TestimonialCardList: FC<TestimonialCardListProps> = async ({ slice }) => {
       data-slice-variation={slice.variation}
       className="text-enred-black bg-white py-12"
     >
-      <div className="max-w-360 px-12 m-auto flex items-center">
+      <div className="container flex items-center">
         <div className="mb-12 flex gap-4 w-full items-center justify-end">
           <SectionHeading title="Reseñas" style="text-black" />
         </div>

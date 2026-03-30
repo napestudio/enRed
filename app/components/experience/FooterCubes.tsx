@@ -231,7 +231,7 @@ export default function FooterCubes() {
     }
 
     const ctx = gsap.context(() => {
-      refs.current.forEach((group, i) => {
+      refs.current.forEach((group) => {
         if (!group) return;
 
         gsap.from(group.position, {

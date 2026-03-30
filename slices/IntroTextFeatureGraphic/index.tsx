@@ -49,11 +49,11 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
       className="bg-white text-enred-black relative"
       ref={sectionRef}
     >
-      <div className="max-w-360 m-auto grid grid-cols-5 relative">
-        <div className="relative row-start-1 col-start-4 col-span-2 gap-4 p-12 z-50">
+      <div className="container relative">
+        <div className="relative row-start-1 col-start-4 col-span-2 gap-4 py-8 md:py-12 z-50">
           <div className="col-span-12 md:col-span-4 col-start-1 md:col-start-9 text-right text-balance z-20">
             <div className="flex gap-4 justify-end items-center mb-6">
-              <SectionHeading title="Nosotros" style="" />
+              <SectionHeading title="Nosotros" />
             </div>
             <div className="text-xl text-pretty" ref={textRef}>
               <PrismicRichText field={slice.primary.description} />
