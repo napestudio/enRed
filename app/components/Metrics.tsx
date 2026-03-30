@@ -43,9 +43,7 @@ export default function Metrics({
         ScrollTrigger.create({
           trigger: refs.current[i],
           start: "top 80%",
-          end: "bottom 20%",
           animation: tl,
-          scrub: true,
         });
       });
     });

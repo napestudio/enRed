@@ -27,7 +27,7 @@ const MediaGridIntro: FC<MediaGridIntroProps> = ({ slice }) => {
           <SectionHeading title="Nuestros trabajos" />
         </div>
       </div>
-      <div>
+      <div className="2xl:max-w-360 mx-auto">
         <TrabajosSwiper slice={slice} />
       </div>
     </section>
