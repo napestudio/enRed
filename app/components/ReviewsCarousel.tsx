@@ -99,7 +99,7 @@ export default function ReviewsCarousel({
                 </div>
 
                 <div>
-                  <p className="text-pretty text-md">{review.text}</p>
+                  <p className="text-pretty">{review.text}</p>
                 </div>
 
                 <div className="flex text-enred-red group-hover:text-white transition-colors gap-1 ">

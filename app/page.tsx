@@ -5,16 +5,10 @@ import { SliceZone } from "@prismicio/react";
 
 import { cms } from "@/prismicio";
 import { components } from "@/slices";
-import Experience from "./components/experience/Experience";
 
 export default async function Page() {
   const page = await cms.getSingle("home").catch(() => notFound());
-  return (
-    <>
-      <Experience />
-      <SliceZone slices={page.data.slices} components={components} />
-    </>
-  );
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
 
 export async function generateMetadata(): Promise<Metadata> {

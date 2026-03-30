@@ -8,10 +8,9 @@ import { cn } from "./lib/utils";
 
 import { GSAPProvider } from "@/app/components/GSAPProvider";
 import { cms } from "@/prismicio";
-import {
-  FooterDocumentData,
-  MetricsDocumentData,
-} from "@/prismicio-types";
+import { FooterDocumentData, MetricsDocumentData } from "@/prismicio-types";
+import FixedButton from "./components/FixedButton";
+import Experience from "./components/experience/Experience";
 
 const spaceGrotesk = localFont({
   src: [
@@ -67,6 +66,8 @@ export default async function RootLayout({
       <body className="font-grotesk antialiased">
         <GSAPProvider>
           <Navbar soluciones={data} />
+          <FixedButton />
+          <Experience />
           {children}
           <Footer
             soluciones={data}
