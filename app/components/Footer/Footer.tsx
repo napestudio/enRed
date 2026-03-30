@@ -1,7 +1,11 @@
 "use client";
 
 import { asText } from "@prismicio/client";
-import { MetricsDocumentData, SolucionDocument, FeatureHighlightsGridSlice } from "@/prismicio-types";
+import {
+  MetricsDocumentData,
+  SolucionDocument,
+  FeatureHighlightsGridSlice,
+} from "@/prismicio-types";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -38,12 +42,15 @@ export default function Footer({
   );
 
   return (
-    <>
+    <div className="overflow-hidden">
       <FormSection metrics={metrics} />
 
-      <footer className="bg-enred-red md:min-h-screen overflow-hidden">
-        <div className="h-screen max-w-360 mx-auto p-12 pt-40 relative flex flex-col">
-          <div className="h-full z-40 text-enred-black flex flex-col gap-10 justify-between">
+      <footer
+        data-section="footer"
+        className="bg-enred-red min-h-screen overflow-hidden flex justify-between"
+      >
+        <div className="min-h-full max-w-360 mx-auto p-12 pt-40 relative flex flex-col flex-1">
+          <div className="h-full z-50 text-enred-black flex flex-col gap-10 justify-between">
             <div className="">
               <h2 className="text-balance text-enred-black font-bold text-[clamp(2rem,5vw,7rem)] leading-none">
                 Soluciones con <span className="underline">altura</span>
@@ -80,9 +87,12 @@ export default function Footer({
                                   "bg-enred-red text-white hover:text-white ",
                               )}
                             >
-                              {
-                                asText((solucion.data.slices[0] as FeatureHighlightsGridSlice).primary.section_title)
-                              }
+                              {asText(
+                                (
+                                  solucion.data
+                                    .slices[0] as FeatureHighlightsGridSlice
+                                ).primary.section_title,
+                              )}
                             </Link>
                           ))}
                         </div>
@@ -103,12 +113,7 @@ export default function Footer({
                       target="_blank"
                       className="cursor-pointer"
                     >
-                      <Image
-                        src={link.black}
-                        alt="enRed Logo"
-                        width={20}
-                        height={20}
-                      />
+                      <Image src={link.black} alt="" width={20} height={20} />
                     </Link>
                   </li>
                 ))}
@@ -116,17 +121,18 @@ export default function Footer({
             </div>
           </div>
 
-          <div className="absolute inset-0 top-0 z-0 flex items-center px-4 md:px-20">
+          {/* <div className="absolute inset-0 top-0 z-0 flex items-center px-4 md:px-20">
             <Image
               src="/footer-shapes.svg"
-              alt="enRed Logo"
+              alt=""
               width={150}
               height={50}
               className="w-full h-auto"
+              aria-hidden="true"
             />
-          </div>
+          </div> */}
         </div>
       </footer>
-    </>
+    </div>
   );
 }
