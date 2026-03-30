@@ -109,7 +109,7 @@ export default function Navbar({
           " transition-all duration-400 ease-in-out border-b",
         )}
       >
-        <div className="max-w-360 m-auto flex justify-between items-center px-12">
+        <div className="container flex justify-between items-center">
           <Link href="/">
             <Image
               src="/logo-en-red.svg"

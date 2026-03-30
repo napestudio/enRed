@@ -22,12 +22,12 @@ const MediaGridIntro: FC<MediaGridIntroProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className="bg-enred-gray py-24"
     >
-      <div className="max-w-360 mx-auto gap-4 px-12">
+      <div className="container gap-4">
         <div className="text-black w-full flex justify-end mb-5">
           <SectionHeading title="Nuestros trabajos" />
         </div>
       </div>
-      <div className="2xl:max-w-360 mx-auto">
+      <div className="2xl:container mx-auto">
         <TrabajosSwiper slice={slice} />
       </div>
     </section>

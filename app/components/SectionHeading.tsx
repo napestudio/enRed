@@ -48,8 +48,14 @@ function SectionHeading({
     return () => ctx.revert();
   }, []);
   return (
-    <div className="flex items-center gap-4 w-max">
-      <h2 className={cn(style, "text-5xl font-semibold")} ref={titleRef}>
+    <div className="flex items-center gap-4 w-full justify-between md:w-max">
+      <h2
+        className={cn(
+          style,
+          "whitespace-nowrap text-3xl md:text-5xl font-semibold",
+        )}
+        ref={titleRef}
+      >
         {title}
       </h2>
 

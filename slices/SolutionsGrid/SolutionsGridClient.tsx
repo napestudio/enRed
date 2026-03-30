@@ -59,7 +59,7 @@ export default function SolutionsGridClient({
             onMouseEnter={() => setActiveCard(index)}
             className={cn(
               "relative col-span-12 md:col-span-4 mb-4 p-4 overflow-hidden group transition-colors duration-200",
-              "hover:bg-enred-red hover:text-white",
+              "hover:bg-enred-red hover:text-white max-md:bg-enred-red max-md:text-white",
               isActive && "bg-enred-red text-white",
             )}
             ref={(el) => {
@@ -68,13 +68,13 @@ export default function SolutionsGridClient({
           >
             <div
               className={cn(
-                "absolute h-32 w-32 -top-20 -right-32 bg-white group-hover:-rotate-45 pointer-events-none transition-transform origin-bottom-left duration-500",
+                "absolute h-32 w-32 -top-20 -right-32 bg-white group-hover:-rotate-45 max-md:-rotate-45 pointer-events-none transition-transform origin-bottom-left duration-500",
                 isActive && "-rotate-45",
               )}
             />
             <div
               className={cn(
-                "absolute h-32 w-32 -bottom-32 -left-20 bg-white group-hover:rotate-45 pointer-events-none origin-top-right transition-transform duration-500",
+                "absolute h-32 w-32 -bottom-32 -left-20 bg-white group-hover:rotate-45 max-md:rotate-45 pointer-events-none origin-top-right transition-transform duration-500",
                 isActive && "rotate-45",
               )}
             />
@@ -82,7 +82,7 @@ export default function SolutionsGridClient({
             <div className="flex flex-col justify-between gap-5 p-4 md:p-10 relative z-20 h-full">
               <div className="flex flex-col gap-5">
                 <div className="h-13.5 relative overflow-hidden">
-                  <div className="absolute h-full inset-0 group-hover:-translate-y-100 translate-y-0 transition-transform duration-400">
+                  <div className="absolute h-full inset-0 group-hover:-translate-y-100 max-md:-translate-y-100 translate-y-0 transition-transform duration-400">
                     <Image
                       src={"/red-shape.svg"}
                       alt="Icono del servicio"
@@ -93,7 +93,7 @@ export default function SolutionsGridClient({
                   </div>
                   <div
                     className={cn(
-                      "absolute h-full inset-0 translate-y-100 group-hover:translate-y-0 transition-transform duration-400",
+                      "absolute h-full inset-0 translate-y-100 group-hover:translate-y-0 max-md:translate-y-0 transition-transform duration-400",
                       isActive && "translate-y-0",
                     )}
                   >
@@ -126,7 +126,7 @@ export default function SolutionsGridClient({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ml-auto invisible -translate-x-3 group-hover:translate-x-0 transition-transform duration-500 group-hover:visible"
+                className="ml-auto invisible -translate-x-3 group-hover:translate-x-0 group-hover:visible max-md:visible max-md:translate-x-0 transition-transform duration-500"
               >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />

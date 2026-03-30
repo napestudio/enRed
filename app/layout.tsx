@@ -2,15 +2,9 @@ import type { Metadata } from "next";
 
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer/Footer";
 import { cn } from "./lib/utils";
 
 import { GSAPProvider } from "@/app/components/GSAPProvider";
-import { cms } from "@/prismicio";
-import { FooterDocumentData, MetricsDocumentData } from "@/prismicio-types";
-import FixedButton from "./components/FixedButton";
-import Experience from "./components/experience/Experience";
 
 const spaceGrotesk = localFont({
   src: [
@@ -54,28 +48,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const data = (await cms.getAllByType("solucion", {
-    orderings: [{ field: "my.solucion.uid", direction: "asc" }],
-  })) as import("@prismicio/client").Content.SolucionDocument[];
-
-  const metrics = await cms.getByType("metrics");
-  const footerInfo = await cms.getByType("footer");
-
   return (
     <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
-      <body className="font-grotesk antialiased">
-        <GSAPProvider>
-          <Navbar soluciones={data} />
-          <FixedButton />
-          <Experience />
-          {children}
-          <Footer
-            soluciones={data}
-            metrics={metrics.results[0].data as MetricsDocumentData}
-            footerInfo={footerInfo.results[0].data as FooterDocumentData}
-          />
-        </GSAPProvider>
-      </body>
+      <body className="font-grotesk antialiased">{children}</body>
     </html>
   );
 }
