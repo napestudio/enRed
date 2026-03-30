@@ -21,13 +21,17 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
   slice,
   context,
 }) => {
-  const data = (await cms.getAllByType("solucion", {
-    orderings: [{ field: "my.solucion.uid", direction: "asc" }],
-  })) as Content.SolucionDocument[];
+  const { results: data } = await cms.getByType<Content.SolucionDocument>(
+    "solucion",
+    {
+      orderings: [{ field: "my.solucion.uid", direction: "asc" }],
+      pageSize: 4,
+    },
+  );
 
   const currentUid = (context as { uid?: string })?.uid;
   const relatedSolutions = data.filter((s) => s.uid !== currentUid);
-  console.log(data);
+
   return (
     <section
       data-slice-type={slice.slice_type}

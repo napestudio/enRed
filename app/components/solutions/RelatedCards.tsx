@@ -1,8 +1,7 @@
-import { Content } from "@prismicio/client";
+import { asText, Content } from "@prismicio/client";
 import { FeatureHighlightsGridSlice } from "@/prismicio-types";
-import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface RelatedSolutionCardsProps {
   slice: FeatureHighlightsGridSlice;
@@ -10,24 +9,29 @@ interface RelatedSolutionCardsProps {
 }
 
 export default function RelatedSolutionCards({
-  slice,
   relatedSolutions,
 }: RelatedSolutionCardsProps) {
-  console.log(relatedSolutions);
   return (
     <div className="flex flex-col gap-16 pt-18 z-20 ">
       <div className="relative grid grid-cols-12 md:gap-4 items-start pb-16">
-        {slice.primary.features.map((item, i) => (
-          <div
-            key={i}
-            className="col-span-12 md:col-span-4 p-4 md:p-10 flex flex-col gap-5 z-10"
-          >
-            <PrismicNextImage field={item.icon} width={77} height={62} />
-            <div className="text-2xl md:text-3xl text-enred-black font-semibold">
-              <PrismicRichText field={item.heading} />
-            </div>
-          </div>
-        ))}
+        {relatedSolutions.map((solucion, i) => {
+          const featureSlice = solucion.data.slices.find(
+            (s) => s.slice_type === "feature_highlights_grid",
+          ) as Content.FeatureHighlightsGridSlice | undefined;
+
+          return (
+            <Link
+              key={i}
+              href={`/soluciones/${solucion.uid}`}
+              className="col-span-12 md:col-span-4 p-4 md:p-10 flex flex-col gap-5 z-10"
+            >
+              <Image src="/shape1.svg" alt="" width={77} height={62} />
+              <div className="text-2xl md:text-3xl text-enred-black font-semibold underline underline-offset-2">
+                {featureSlice && asText(featureSlice.primary.section_title)}
+              </div>
+            </Link>
+          );
+        })}
         <Image
           src={"/gray-shape.svg"}
           alt="shape"
