@@ -1,6 +1,6 @@
 "use client";
 import { FC, useRef } from "react";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 
 import Image from "next/image";
@@ -8,6 +8,7 @@ import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayout
 import { gsap, SplitText } from "../../app/lib/gsap";
 import ArrowIcon from "@/app/components/ui/Icons/UnderlineArrowIcon";
 import SvgHeroShape from "@/app/components/SvgHeroShape";
+import { PrismicNextImage } from "@prismicio/next";
 export type HeroImageOverlayProps =
   SliceComponentProps<Content.HeroImageOverlaySlice>;
 
@@ -31,7 +32,6 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
   const data: HeroVideoProps = {
     videoSrc: "/hero.mp4",
   };
-
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -113,22 +113,22 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
         </div>
       </div>
       <div className="absolute inset-0 bg-enred-black opacity-44 z-20"></div>
-      <video
-        ref={videoRef}
-        src={data.videoSrc}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-10"
-        aria-hidden="true"
-      />
-      <Image
-        src="/bg-hero.jpg"
-        alt="Imagen de fondo"
+      {isFilled.linkToMedia(slice.primary.video_url) && (
+        <video
+          ref={videoRef}
+          src={slice.primary.video_url.url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-10"
+          aria-hidden="true"
+        />
+      )}
+      <PrismicNextImage
+        field={slice.primary.background_image}
         fill
         className="w-full h-full object-cover z-0"
-        priority
       />
     </section>
   );

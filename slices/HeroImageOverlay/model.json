@@ -26,6 +26,15 @@
             "allowTargetBlank": true,
             "multi": "heading1,strong,em,hyperlink"
           }
+        },
+        "video_url": {
+          "type": "Link",
+          "config": {
+            "label": "video url",
+            "placeholder": "",
+            "select": "media",
+            "allowText": true
+          }
         }
       },
       "items": {}
