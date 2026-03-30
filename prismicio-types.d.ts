@@ -722,6 +722,16 @@ export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   headline: prismic.RichTextField;
+
+  /**
+   * video url field in *HeroImageOverlay → Centered Headline with Image → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_image_overlay.centered_headline_with_image.primary.video_url
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
