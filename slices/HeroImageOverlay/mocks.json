@@ -35,6 +35,19 @@
 						}
 					}
 				]
+			},
+			"video_url": {
+				"__TYPE__": "LinkContent",
+				"key": "beb7c02e-8d8e-441c-99c6-eef185d2105e",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "seed"
+				}
 			}
 		},
 		"items": []

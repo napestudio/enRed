@@ -5,6 +5,7 @@ import {
   MetricsDocumentData,
   SolucionDocument,
   FeatureHighlightsGridSlice,
+  FooterDocumentData,
 } from "@/prismicio-types";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,16 +13,20 @@ import { usePathname } from "next/navigation";
 import { LINKS } from "../../lib/constants";
 import { cn } from "../../lib/utils";
 import FormSection from "../FormSection";
+import { PrismicRichText } from "@prismicio/react";
 
 export default function Footer({
   soluciones,
   metrics,
+  footerInfo,
 }: {
   soluciones: SolucionDocument[];
   metrics: MetricsDocumentData;
+  footerInfo: FooterDocumentData;
 }) {
   const pathname = usePathname();
   const { navItems, socialItems } = LINKS;
+  const { slogan, direccion, correo } = footerInfo;
 
   const chevronIcon = (
     <svg
@@ -42,7 +47,7 @@ export default function Footer({
   );
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden" id="footer">
       <FormSection metrics={metrics} />
 
       <footer
@@ -52,13 +57,15 @@ export default function Footer({
         <div className="min-h-full max-w-360 mx-auto p-12 pt-40 relative flex flex-col flex-1">
           <div className="h-full z-50 text-enred-black flex flex-col gap-10 justify-between">
             <div className="">
-              <h2 className="text-balance text-enred-black font-bold text-[clamp(2rem,5vw,7rem)] leading-none">
-                Soluciones con <span className="underline">altura</span>
-              </h2>
-              <p className="mt-4 text-lg">
-                C. Gálvez 833, S2000 Rosario, Santa Fe
-              </p>
-              <p className="text-lg">contacto@enred.com.ar</p>
+              <div className="text-balance text-enred-black font-bold [&_strong]:underline [&_strong]:decoration-3 [&_strong]:underline-offset-4 text-[clamp(2rem,5vw,7rem)] leading-none">
+                <PrismicRichText field={slogan} />
+              </div>
+              <div className="mt-4 text-lg">
+                <PrismicRichText field={direccion} />
+              </div>
+              <div className="text-lg">
+                <PrismicRichText field={correo} />
+              </div>
             </div>
             <div className="flex flex-col md:flex-row gap-5 md:gap-10 items-center md:justify-end">
               <ul className="flex flex-col md:flex-row gap-2 md:gap-8 text-xs md:text-sm">

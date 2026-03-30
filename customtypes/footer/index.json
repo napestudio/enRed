@@ -1,0 +1,38 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slogan": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Slogan",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2,strong,rtl"
+        }
+      },
+      "direccion": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Direccion",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      },
+      "correo": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Correo",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph"
+        }
+      }
+    }
+  }
+}

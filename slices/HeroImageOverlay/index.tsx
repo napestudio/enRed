@@ -1,28 +1,32 @@
 "use client";
-import { FC, useRef } from "react";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
+import { FC, useRef } from "react";
 
-import Image from "next/image";
+import SvgHeroShape from "@/app/components/SvgHeroShape";
+import ArrowIcon from "@/app/components/ui/Icons/UnderlineArrowIcon";
 import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
 import { gsap, SplitText } from "../../app/lib/gsap";
-import ArrowIcon from "@/app/components/ui/Icons/UnderlineArrowIcon";
-import SvgHeroShape from "@/app/components/SvgHeroShape";
 export type HeroImageOverlayProps =
   SliceComponentProps<Content.HeroImageOverlaySlice>;
 
 /**
  * Component for "HeroImageOverlay" Slices.
  */
+
 const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
   const heroRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const underlineRef = useRef<HTMLSpanElement>(null);
   const arrowRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useIsomorphicLayoutEffect(() => {
     const ctx = gsap.context(() => {
       if (
+        !contentRef.current ||
         !heroRef.current ||
         !titleRef.current ||
         !underlineRef.current ||
@@ -32,11 +36,12 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
       const words = new SplitText(titleRef.current, { type: "words" });
       const tl = gsap
         .timeline({ paused: true })
-        // .to(heroRef.current, { opacity: 1 })
+        .to(contentRef.current, { opacity: 1 })
         .from(words.words, {
           y: 300,
           opacity: 0,
           stagger: 0.25,
+          duration: 2,
         })
         .from(underlineRef.current, {
           scaleX: 0,
@@ -69,8 +74,11 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
       className="bg-white relative"
       ref={heroRef}
     >
-      <div className="relative max-w-360 m-auto min-h-screen items-center flex z-20">
-        <div className="grid grid-cols-3 md:grid-cols-12 gap-4 p-6 md:p-12 z-10 ">
+      <div
+        className="relative max-w-360 m-auto min-h-screen items-center flex opacity-0"
+        ref={contentRef}
+      >
+        <div className="grid grid-cols-3 md:grid-cols-12 gap-4 p-6 md:p-12 z-30 ">
           <div className="col-span-3 md:col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 lg:gap-20 pt-12 lg:py-12">
             <h1
               className="text-white text-[clamp(2.3rem,7vw,7rem)] mt-4 text-balance leading-none font-semibold max-w-full underline decoration-1 md:no-underline underline-offset-4"
@@ -99,14 +107,24 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
           </div>
         </div>
       </div>
-      <div className="absolute inset-0 bg-enred-black opacity-44 z-10"></div>
-      <Image
-        src="/header-bg.jpg"
-        alt="Imagen de fondo"
+      <div className="absolute inset-0 bg-enred-black opacity-44 z-20"></div>
+      {isFilled.linkToMedia(slice.primary.video_url) && (
+        <video
+          ref={videoRef}
+          src={slice.primary.video_url.url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-10"
+          aria-hidden="true"
+        />
+      )}
+      {/* <PrismicNextImage
+        field={slice.primary.background_image}
         fill
         className="w-full h-full object-cover z-0"
-        priority
-      />
+      /> */}
     </section>
   );
 };

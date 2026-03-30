@@ -1,22 +1,20 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { Canvas } from "@react-three/fiber";
-import AnimatedCubes from "./AnimatedCubes";
-import FooterCubes from "./FooterCubes";
+import NotFoundCubes from "./NotFoundCubes";
 
-export default function Experience() {
-  const pathname = usePathname();
+export default function NotFoundExperience() {
   return (
     <div className="fixed z-50 h-screen w-full inset-0 pointer-events-none **:pointer-events-none!">
       <Canvas
         className="h-full z-50 w-full pointer-events-none"
         events={undefined}
         orthographic
-        camera={{ zoom: 75, position: [8, 8, 8] }}
+        camera={{ zoom: 75, position: [6, 6, 6] }}
       >
-        {pathname === "/" && <AnimatedCubes />}
-        <FooterCubes />
+        <ambientLight intensity={1} />
+        <directionalLight position={[5, 5, 0]} intensity={1} />
+        <NotFoundCubes />
       </Canvas>
     </div>
   );

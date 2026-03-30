@@ -13,6 +13,7 @@ import { useIsPastHero } from "../lib/custom-hooks/useIsPastHero";
 
 import gsap from "gsap";
 import { Content, asText } from "@prismicio/client";
+import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
 
 export default function Navbar({
   soluciones,
@@ -21,6 +22,8 @@ export default function Navbar({
 }) {
   const pathname = usePathname();
   const { navItems, socialItems } = LINKS;
+  const navRef = useRef<HTMLDivElement>(null);
+  const isFirstMount = useRef(true);
 
   const isPast = useIsPastHero();
 
@@ -49,6 +52,26 @@ export default function Navbar({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [pathname]);
 
+  useIsomorphicLayoutEffect(() => {
+    if (isServicePage) {
+      gsap.set(navRef.current, { clearProps: "transform" });
+      return;
+    }
+    const delay = isFirstMount.current ? 3 : 0;
+    isFirstMount.current = false;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ paused: true }).to(navRef.current, {
+        y: 0,
+        ease: "power2.out",
+        duration: 1.5,
+        delay,
+      });
+
+      tl.play();
+    }, [navRef, isServicePage]);
+    return () => ctx.revert();
+  }, [pathname]);
+
   const isMenuOpen = isSmallScreen ? open : false;
 
   const chevronIcon = (
@@ -71,13 +94,19 @@ export default function Navbar({
   );
 
   return (
-    <>
+    <div
+      className={cn(
+        "fixed top-0 left-0 right-0 z-9999",
+        !isServicePage ? "-translate-y-100" : "translate-y-0",
+      )}
+      ref={navRef}
+    >
       <div
         className={cn(
           shouldBeRed
             ? "bg-enred-red border-enred-red py-2"
             : "bg-linear-to-b from-black/50 to-black/10 py-5 border-white/60",
-          "fixed top-0 left-0 right-0 z-9999 transition-all duration-400 ease-in-out border-b",
+          " transition-all duration-400 ease-in-out border-b",
         )}
       >
         <div className="max-w-360 m-auto flex justify-between items-center px-12">
@@ -216,7 +245,7 @@ export default function Navbar({
         </div>
       </div>
       <MobileMenu open={isMenuOpen} items={navItems} />
-    </>
+    </div>
   );
 }
 

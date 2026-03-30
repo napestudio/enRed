@@ -11,7 +11,7 @@ function ImageClipper({
     return null;
   }
   return (
-    <div className="relative w-full aspect-[373/352]">
+    <div className="relative w-full aspect-373/352">
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
           <clipPath id="miFormaGeometrica" clipPathUnits="objectBoundingBox">

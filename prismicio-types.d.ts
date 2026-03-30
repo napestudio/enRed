@@ -69,6 +69,60 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Slogan field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.slogan
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  slogan: prismic.RichTextField;
+
+  /**
+   * Direccion field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.direccion
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  direccion: prismic.RichTextField;
+
+  /**
+   * Correo field in *Footer*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.correo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  correo: prismic.RichTextField;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice =
   | HeroImageOverlaySlice
   | LogoGridSlice
@@ -369,6 +423,7 @@ export type SolucionDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | FooterDocument
   | HomeDocument
   | MetricsDocument
   | SolucionDocument;
@@ -667,6 +722,16 @@ export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   headline: prismic.RichTextField;
+
+  /**
+   * video url field in *HeroImageOverlay → Centered Headline with Image → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_image_overlay.centered_headline_with_image.primary.video_url
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
@@ -1093,68 +1158,6 @@ export type SolutionsGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *TestimonialCardList → Default → Primary → Testimoniales*
- */
-export interface TestimonialCardListSliceDefaultPrimaryTestimonialsItem {
-  /**
-   * Avatar field in *TestimonialCardList → Default → Primary → Testimoniales*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonial_card_list.default.primary.testimonials[].avatar
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  avatar: prismic.ImageField<never>;
-
-  /**
-   * Nombre del autor field in *TestimonialCardList → Default → Primary → Testimoniales*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonial_card_list.default.primary.testimonials[].author_name
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  author_name: prismic.KeyTextField;
-
-  /**
-   * Rating field in *TestimonialCardList → Default → Primary → Testimoniales*
-   *
-   * - **Field Type**: Number
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonial_card_list.default.primary.testimonials[].rating
-   * - **Documentation**: https://prismic.io/docs/fields/number
-   */
-  rating: prismic.NumberField;
-
-  /**
-   * Texto testimonial field in *TestimonialCardList → Default → Primary → Testimoniales*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonial_card_list.default.primary.testimonials[].testimonial_text
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  testimonial_text: prismic.RichTextField;
-}
-
-/**
- * Primary content in *TestimonialCardList → Default → Primary*
- */
-export interface TestimonialCardListSliceDefaultPrimary {
-  /**
-   * Testimoniales field in *TestimonialCardList → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: testimonial_card_list.default.primary.testimonials[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  testimonials: prismic.GroupField<
-    Simplify<TestimonialCardListSliceDefaultPrimaryTestimonialsItem>
-  >;
-}
-
-/**
  * Default variation for TestimonialCardList Slice
  *
  * - **API ID**: `default`
@@ -1163,7 +1166,7 @@ export interface TestimonialCardListSliceDefaultPrimary {
  */
 export type TestimonialCardListSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<TestimonialCardListSliceDefaultPrimary>,
+  Record<string, never>,
   never
 >;
 
@@ -1205,6 +1208,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      FooterDocument,
+      FooterDocumentData,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
@@ -1262,8 +1267,6 @@ declare module "@prismicio/client" {
       SolutionsGridSliceVariation,
       SolutionsGridSliceFeaturedItemGrid,
       TestimonialCardListSlice,
-      TestimonialCardListSliceDefaultPrimaryTestimonialsItem,
-      TestimonialCardListSliceDefaultPrimary,
       TestimonialCardListSliceVariation,
       TestimonialCardListSliceDefault,
     };
