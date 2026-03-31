@@ -1,7 +1,7 @@
-- [] Imagen pagina soluciones
+- [x] Imagen pagina soluciones
 - [x] Gsap pagina soluciones
-- [] Soluciones hero agregar 5 svg diferentes
-- [] Swiper home imagenes quitar mascara
-- [] Responsive
+- [x] Soluciones hero agregar 5 svg diferentes
+- [x] Swiper home imagenes quitar mascara
 - [x] Boton de hablemos
+- [] Responsive GSAP
 - [] Revalidar prismic

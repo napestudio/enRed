@@ -137,26 +137,26 @@ function TrabajosSlide({
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 px-12">
-      <div className="col-span-1 md:col-span-4 text-enred-black flex flex-col gap-14 py-12">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+      <div className="col-span-1 md:col-span-5 text-enred-black flex flex-col gap-14 py-12">
         <div ref={labelRef}>
           <PrismicRichText field={item.label} />
         </div>
         <div
           ref={titleRef}
-          className="text-6xl font-semibold text-[clamp(1rem,7vw,3rem)]"
+          className="text-6xl font-semibold text-[clamp(1rem,5.2vw,55px)]"
         >
           <PrismicRichText field={item.main_title} />
         </div>
         <div
           ref={textRef}
-          className="text-balance h-full flex justify-between items-start flex-col pb-5"
+          className="text-balance h-full flex gap-6 justify-between items-start flex-col pb-5"
         >
           <PrismicRichText field={item.description} />
           <SwiperNav />
         </div>
       </div>
-      <div className="col-span-1 md:col-span-8" ref={imageRef}>
+      <div className="col-span-1 md:col-span-7" ref={imageRef}>
         <TrabajosImageClipper item={item} />
       </div>
     </div>
@@ -170,7 +170,24 @@ export default function TrabajosSwiper({
 }) {
   return (
     <div>
-      <Swiper spaceBetween={30} slidesPerView={1}>
+      <Swiper
+        spaceBetween={60}
+        slidesPerView={1}
+        slidesOffsetBefore={60}
+        slidesOffsetAfter={60}
+        breakpoints={{
+          0: {
+            spaceBetween: 30,
+            slidesOffsetBefore: 30,
+            slidesOffsetAfter: 30,
+          },
+          768: {
+            spaceBetween: 60,
+            slidesOffsetBefore: 60,
+            slidesOffsetAfter: 60,
+          },
+        }}
+      >
         {slice.primary.media_items.map((item, index) => (
           <SwiperSlide key={index}>
             <TrabajosSlide item={item} />

@@ -83,7 +83,7 @@ export default function FormSection({
 
   return (
     <section className="bg-enred-gray-light text-enred-black overflow-hidden">
-      <div className="container gap-4 py-16 md:p-12 items-center">
+      <div className="container gap-4 py-16 md:py-12 items-center">
         <div className="col-span-1 mb-12 flex gap-4 items-center text-enred-black">
           <SectionHeading title="Hablemos" style="text-black" />
         </div>

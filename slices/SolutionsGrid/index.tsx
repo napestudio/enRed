@@ -28,7 +28,8 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white pt-40 text-enred-black z-90"
+      className="bg-white pt-20 text-enred-black z-90"
+      id="solutions-section"
     >
       <div className="container m-auto relative py-12">
         <div className="text-enred-black text-balance z-20 flex items-center gap-4 mb-6">
