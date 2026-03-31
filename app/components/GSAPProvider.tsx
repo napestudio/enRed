@@ -42,6 +42,18 @@ export function GSAPProvider({ children }: { children: React.ReactNode }) {
     const id = requestAnimationFrame(() => {
       ScrollTrigger.refresh();
     });
+
+    // If we navigated to home with a pending anchor scroll (cross-page nav)
+    if (pathname === "/") {
+      const scrollTarget = sessionStorage.getItem("scrollTo");
+      if (scrollTarget) {
+        sessionStorage.removeItem("scrollTo");
+        setTimeout(() => {
+          lenisInstance?.scrollTo(scrollTarget);
+        }, 300);
+      }
+    }
+
     return () => cancelAnimationFrame(id);
   }, [pathname]);
 

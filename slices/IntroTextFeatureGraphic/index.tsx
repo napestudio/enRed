@@ -48,6 +48,7 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
       data-slice-variation={slice.variation}
       className="bg-white text-enred-black relative"
       ref={sectionRef}
+      id="about-us-section"
     >
       <div className="container relative md:grid md:grid-cols-12">
         <div className="relative row-start-1 col-start-4  md:col-span-4 md:col-start-9 col-span-2 gap-4 py-8 md:py-12 z-50">

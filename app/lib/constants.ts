@@ -1,9 +1,9 @@
 export const LINKS = {
   navItems: [
-    { label: "Nosotros", href: "#nosotros" },
+    { label: "Nosotros", href: "/#about-us-section" },
     { label: "Soluciones", href: "/" },
-    { label: "Trabajos", href: "#trabajos" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Trabajos", href: "/#our-work-section" },
+    { label: "Contacto", href: "#footer" },
   ],
   socialItems: [
     {
