@@ -75,7 +75,7 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
       ref={heroRef}
     >
       <div
-        className="relative container min-h-screen items-center flex opacity-0"
+        className="relative container  h-[85svh] md:min-h-screen items-center flex opacity-0"
         ref={contentRef}
       >
         <div className="grid grid-cols-3 md:grid-cols-12 gap-4 p-6 md:p-12 z-30 ">
@@ -88,7 +88,7 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
               <span className="relative">
                 altura
                 <span
-                  className="absolute h-0.75 bg-white w-full bottom-4 left-0 md:block hidden"
+                  className="absolute h-0.75 bg-white w-full bottom-0 md:bottom-4 left-0 "
                   ref={underlineRef}
                 ></span>
               </span>

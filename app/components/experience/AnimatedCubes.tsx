@@ -2,6 +2,7 @@
 
 import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
 import { gsap, ScrollTrigger } from "@/app/lib/gsap";
+import { useMediaQuery } from "@mantine/hooks";
 import { useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
@@ -33,6 +34,7 @@ export default function AnimatedCubes() {
   const isVisible = useRef(false);
 
   const { viewport } = useThree();
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
   useIsomorphicLayoutEffect(() => {
     function animateCube(group: THREE.Group, index: number) {
@@ -157,21 +159,23 @@ export default function AnimatedCubes() {
   }, []);
 
   return (
-    <group position={[0, 0, 0]} ref={groupRef}>
-      {POSITIONS.map((pos, i) => (
-        <group
-          key={i}
-          ref={(el) => {
-            refs.current[i] = el;
-          }}
-          position={[pos.x, pos.y, pos.z]}
-        >
-          <mesh>
-            <boxGeometry args={[1, 1, 1]} />
-            <meshBasicMaterial color="#f03c32" />
-          </mesh>
-        </group>
-      ))}
+    <group position={[isSmallScreen ? 2 : 0, isSmallScreen ? 3.5 : 0, 0]}>
+      <group position={[0, 0, 0]} ref={groupRef}>
+        {POSITIONS.map((pos, i) => (
+          <group
+            key={i}
+            ref={(el) => {
+              refs.current[i] = el;
+            }}
+            position={[pos.x, pos.y, pos.z]}
+          >
+            <mesh>
+              <boxGeometry args={[1, 1, 1]} />
+              <meshBasicMaterial color="#f03c32" />
+            </mesh>
+          </group>
+        ))}
+      </group>
     </group>
   );
 }

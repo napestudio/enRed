@@ -44,8 +44,8 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
         .from(titleRef.current, { y: 50, opacity: 0.1, stagger: 0.15 })
         .from(subtitleRef.current, { opacity: 0, y: 10 }, "<0.3")
         .from(descriptionRef.current, { opacity: 0, y: 10 }, "<0.3")
-        .from(arrowRef.current, { opacity: 0, x: -10 }, "<0.3")
-        .from(imageRef.current, { opacity: 0, y: 20 }, "<0.3");
+        .from(arrowRef.current, { opacity: 0, x: -10 }, "<0.3");
+      // .from(imageRef.current, { opacity: 0, y: 20 }, "<0.3");
 
       tl.play();
 
@@ -57,23 +57,23 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
 
   return (
     <div className="grid grid-cols-12 gap-y-10 md:gap-4 items-center">
-      <div className="col-span-12 md:col-span-6 py-8 flex flex-col justify-between h-full gap-4 md:gap-24 text-enred-black">
-        <div ref={sectionRef} className="flex flex-col gap-18">
+      <div className="col-span-12  md:col-span-7 py-8 flex flex-col justify-between h-full gap-4 md:gap-24 text-enred-black">
+        <div ref={sectionRef} className="flex flex-col gap-10">
           <div
             ref={titleRef}
-            className="font-bold text-[clamp(3rem,5vw,calc(95vw-1rem))] leading-none"
+            className="font-bold text-[clamp(2.2rem,5.2vw,80px)] leading-none"
           >
             <PrismicRichText field={title} />
           </div>
-          <div className="text-xl font-semibold underline underline-offset-2">
+          <div className="text-[clamp(1rem,1.60vw,30px)] font-semibold underline underline-offset-2">
             <div ref={subtitleRef}>
               <PrismicRichText field={subtitle} />
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-6 gap-4 items-center">
           <div
-            className="col-span-6 md:col-span-1 p-4 flex items-center justify-center text-enred-black"
+            className="col-span-6 md:col-span-1 flex items-center justify-center text-enred-black"
             ref={arrowRef}
           >
             <ArrowIcon className="text-black w-12 h-auto md:rotate-0 rotate-90" />
@@ -82,14 +82,17 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
             <ImageClipper slice={slice} />
           </div>
           <div
-            className="col-span-6 md:col-span-4 md:text-2xl text-pretty"
+            className="col-span-6 md:col-span-4 text-[clamp(1rem,1.55vw,30px)] text-pretty"
             ref={descriptionRef}
           >
             <PrismicRichText field={sectionDescription} />
           </div>
         </div>
       </div>
-      <div className="col-span-12 md:col-span-6 hidden md:block" ref={imageRef}>
+      <div
+        className="md:col-span-5 col-span-12 col-start-9 hidden md:block"
+        ref={imageRef}
+      >
         <ImageClipper slice={slice} />
       </div>
     </div>

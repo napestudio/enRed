@@ -21,6 +21,7 @@ const MediaGridIntro: FC<MediaGridIntroProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="bg-enred-gray py-24"
+      id="our-work-section"
     >
       <div className="container gap-4">
         <div className="text-black w-full flex justify-end mb-5">

@@ -16,13 +16,20 @@ export default function SolutionsGridClient({
   solutionsList,
 }: SolutionsGridClientProps) {
   const [activeCard, setActiveCard] = useState<number>(1);
-  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const solutionsRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const decoTopRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const decoBottomRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const iconRedRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const iconWhiteRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const arrowRefs = useRef<(SVGSVGElement | null)[]>([]);
 
   useIsomorphicLayoutEffect(() => {
     if (cardRefs.current.length === 0 || !solutionsRef.current) return;
     const ctx = gsap.context(() => {
-      const cards = cardRefs.current.filter(Boolean);
+      const cards = cardRefs.current.filter(Boolean) as HTMLAnchorElement[];
+
+      // Entrance animation (all breakpoints)
       const tl = gsap.timeline({ paused: true }).from(cards, {
         opacity: 0,
         y: 50,
@@ -36,9 +43,72 @@ export default function SolutionsGridClient({
         animation: tl,
         scrub: true,
       });
-    }, cardRefs.current);
+
+      // Mobile-only active state ScrollTrigger
+      const mm = gsap.matchMedia();
+      mm.add("(max-width: 767px)", () => {
+        const cleanups: (() => void)[] = [];
+
+        cards.forEach((card, index) => {
+          const decoTop = decoTopRefs.current[index];
+          const decoBottom = decoBottomRefs.current[index];
+          const iconRed = iconRedRefs.current[index];
+          const iconWhite = iconWhiteRefs.current[index];
+          const arrow = arrowRefs.current[index];
+
+          // Tailwind v4 uses standalone CSS `translate` / `rotate` properties
+          // which are independent of GSAP's `transform`. Clear them with inline
+          // styles so GSAP has full control, and restore on cleanup.
+          if (decoTop) decoTop.style.rotate = "none";
+          if (decoBottom) decoBottom.style.rotate = "none";
+          if (iconRed) iconRed.style.translate = "none";
+          if (iconWhite) iconWhite.style.translate = "none";
+          if (arrow) arrow.style.translate = "none";
+
+          cleanups.push(() => {
+            if (decoTop) decoTop.style.rotate = "";
+            if (decoBottom) decoBottom.style.rotate = "";
+            if (iconRed) iconRed.style.translate = "";
+            if (iconWhite) iconWhite.style.translate = "";
+            if (arrow) arrow.style.translate = "";
+          });
+
+          // Set initial inactive state
+          gsap.set(card, { backgroundColor: "transparent", color: "#111111" });
+          gsap.set(decoTop, { rotation: 0 });
+          gsap.set(decoBottom, { rotation: 0 });
+          gsap.set(iconRed, { yPercent: 0 });
+          gsap.set(iconWhite, { yPercent: 100 });
+          gsap.set(arrow, { autoAlpha: 0, x: -12 });
+
+          const cardTl = gsap.timeline({ paused: true });
+          cardTl
+            .to(card, { backgroundColor: "#f03c32", color: "white", duration: 0.3 }, 0)
+            .to(decoTop, { rotation: -45, duration: 0.5 }, 0)
+            .to(decoBottom, { rotation: 45, duration: 0.5 }, 0)
+            .to(iconRed, { yPercent: -100, duration: 0.4 }, 0)
+            .to(iconWhite, { yPercent: 0, duration: 0.4 }, 0)
+            .to(arrow, { autoAlpha: 1, x: 0, duration: 0.5 }, 0);
+
+          if (index === 0) {
+            // First card starts active immediately on mobile
+            cardTl.progress(1);
+          } else {
+            ScrollTrigger.create({
+              trigger: card,
+              start: "top 75%",
+              end: "top 30%",
+              animation: cardTl,
+              scrub: true,
+            });
+          }
+        });
+
+        return () => cleanups.forEach((fn) => fn());
+      });
+    }, solutionsRef);
     return () => ctx.revert();
-  }, [cardRefs]);
+  }, []);
 
   return (
     <div
@@ -58,8 +128,8 @@ export default function SolutionsGridClient({
             key={index}
             onMouseEnter={() => setActiveCard(index)}
             className={cn(
-              "relative col-span-12 md:col-span-4 mb-4 p-4 overflow-hidden group transition-colors duration-200",
-              "hover:bg-enred-red hover:text-white max-md:bg-enred-red max-md:text-white",
+              "relative col-span-12 md:col-span-4 mb-4 p-4 overflow-hidden group md:transition-colors md:duration-200",
+              "hover:bg-enred-red hover:text-white",
               isActive && "bg-enred-red text-white",
             )}
             ref={(el) => {
@@ -67,14 +137,16 @@ export default function SolutionsGridClient({
             }}
           >
             <div
+              ref={(el) => { decoTopRefs.current[index] = el; }}
               className={cn(
-                "absolute h-32 w-32 -top-20 -right-32 bg-white group-hover:-rotate-45 max-md:-rotate-45 pointer-events-none transition-transform origin-bottom-left duration-500",
+                "absolute h-32 w-32 -top-20 -right-32 bg-white group-hover:-rotate-45 pointer-events-none md:transition-transform origin-bottom-left md:duration-500",
                 isActive && "-rotate-45",
               )}
             />
             <div
+              ref={(el) => { decoBottomRefs.current[index] = el; }}
               className={cn(
-                "absolute h-32 w-32 -bottom-32 -left-20 bg-white group-hover:rotate-45 max-md:rotate-45 pointer-events-none origin-top-right transition-transform duration-500",
+                "absolute h-32 w-32 -bottom-32 -left-20 bg-white group-hover:rotate-45 pointer-events-none origin-top-right md:transition-transform md:duration-500",
                 isActive && "rotate-45",
               )}
             />
@@ -82,7 +154,10 @@ export default function SolutionsGridClient({
             <div className="flex flex-col justify-between gap-5 p-4 md:p-10 relative z-20 h-full">
               <div className="flex flex-col gap-5">
                 <div className="h-13.5 relative overflow-hidden">
-                  <div className="absolute h-full inset-0 group-hover:-translate-y-100 max-md:-translate-y-100 translate-y-0 transition-transform duration-400">
+                  <div
+                    ref={(el) => { iconRedRefs.current[index] = el; }}
+                    className="absolute h-full inset-0 group-hover:-translate-y-100 translate-y-0 md:transition-transform md:duration-400"
+                  >
                     <Image
                       src={"/red-shape.svg"}
                       alt="Icono del servicio"
@@ -92,8 +167,9 @@ export default function SolutionsGridClient({
                     />
                   </div>
                   <div
+                    ref={(el) => { iconWhiteRefs.current[index] = el; }}
                     className={cn(
-                      "absolute h-full inset-0 translate-y-100 group-hover:translate-y-0 max-md:translate-y-0 transition-transform duration-400",
+                      "absolute h-full inset-0 translate-y-100 group-hover:translate-y-0 md:transition-transform md:duration-400",
                       isActive && "translate-y-0",
                     )}
                   >
@@ -117,6 +193,7 @@ export default function SolutionsGridClient({
                 )}
               </div>
               <svg
+                ref={(el) => { arrowRefs.current[index] = el; }}
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
                 height="32"
@@ -126,7 +203,7 @@ export default function SolutionsGridClient({
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ml-auto invisible -translate-x-3 group-hover:translate-x-0 group-hover:visible max-md:visible max-md:translate-x-0 transition-transform duration-500"
+                className="ml-auto invisible -translate-x-3 group-hover:translate-x-0 group-hover:visible md:transition-transform md:duration-500"
               >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />

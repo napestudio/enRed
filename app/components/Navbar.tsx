@@ -3,7 +3,7 @@ import { useState, useRef, useEffect, useCallback, FC } from "react";
 
 import Image from "next/image";
 import Link, { LinkProps } from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -14,6 +14,9 @@ import { useIsPastHero } from "../lib/custom-hooks/useIsPastHero";
 import gsap from "gsap";
 import { Content, asText } from "@prismicio/client";
 import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
+import { getLenis } from "./GSAPProvider";
+
+const SCROLL_OFFSET = -20;
 
 export default function Navbar({
   soluciones,
@@ -21,7 +24,27 @@ export default function Navbar({
   soluciones: Content.SolucionDocument[];
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const { navItems, socialItems } = LINKS;
+
+  const handleAnchorClick = useCallback(
+    (e: React.MouseEvent, href: string) => {
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        getLenis()?.scrollTo(href, { offset: SCROLL_OFFSET });
+      } else if (href.startsWith("/#")) {
+        e.preventDefault();
+        const anchor = href.slice(1);
+        if (pathname === "/") {
+          getLenis()?.scrollTo(anchor, { offset: SCROLL_OFFSET });
+        } else {
+          sessionStorage.setItem("scrollTo", anchor);
+          router.push("/");
+        }
+      }
+    },
+    [pathname, router],
+  );
   const navRef = useRef<HTMLDivElement>(null);
   const isFirstMount = useRef(true);
 
@@ -214,7 +237,11 @@ export default function Navbar({
                         </div>
                       </div>
                     ) : (
-                      <Link className="text-xl" href={item.href}>
+                      <Link
+                        className="text-xl"
+                        href={item.href}
+                        onClick={(e) => handleAnchorClick(e, item.href)}
+                      >
                         {item.label}
                       </Link>
                     )}
@@ -244,7 +271,11 @@ export default function Navbar({
           )}
         </div>
       </div>
-      <MobileMenu open={isMenuOpen} items={navItems} />
+      <MobileMenu
+        open={isMenuOpen}
+        items={navItems}
+        onAnchorClick={handleAnchorClick}
+      />
     </div>
   );
 }
@@ -252,11 +283,13 @@ export default function Navbar({
 type MobileMenuProps = {
   open?: boolean;
   items: typeof LINKS.navItems;
+  onAnchorClick?: (e: React.MouseEvent, href: string) => void;
 };
 
 export const MobileMenu: FC<MobileMenuProps> = ({
   open = false,
   items = [],
+  onAnchorClick,
 }) => {
   const { socialItems } = LINKS;
   const ref = useRef<HTMLDivElement | null>(null);
@@ -316,8 +349,9 @@ export const MobileMenu: FC<MobileMenuProps> = ({
           {items.map((item, _) => (
             <NavItem
               key={_}
-              href={`/${item.href === "home" ? "" : item.href}`}
+              href={item.href}
               className="flex flex-row gap-2 text-enred-white font-bold "
+              onClick={(e) => onAnchorClick?.(e, item.href)}
             >
               <span className="">{item.label}</span>
             </NavItem>
