@@ -24,10 +24,10 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
 
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
-  const speedRef = useRef(0.08);
+  const speedRef = useRef(0.05);
 
   useIsometricLayoutEffect(() => {
-    speedRef.current = isSmallScreen ? 0.02 : 0.08;
+    speedRef.current = isSmallScreen ? 0.02 : 0.05;
   }, [isSmallScreen]);
 
   useIsometricLayoutEffect(() => {
@@ -71,11 +71,11 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
         }}
       >
         <div ref={trackRef} className="flex">
-          <div className="flex shrink-0 w-screen justify-around items-center">
+          <div className="flex shrink-0 items-center gap-8 md:gap-12 px-4 md:px-6">
             {logos.map((foto, index) => (
-              <div key={`a-${index}`} className="w-120 md:w-80">
+              <div key={`a-${index}`} className="w-24 md:w-36">
                 <PrismicNextImage
-                  className="w-full h-auto aspect-video object-contain"
+                  className="w-full h-auto max-h-12 md:max-h-16 object-contain"
                   field={foto.logo_image}
                   width={foto.logo_image.dimensions?.width}
                   height={foto.logo_image.dimensions?.height}
@@ -83,11 +83,11 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
               </div>
             ))}
           </div>
-          <div className="flex shrink-0 w-screen justify-around items-center">
+          <div className="flex shrink-0 items-center gap-8 md:gap-12 px-4 md:px-6">
             {logos.map((foto, index) => (
-              <div key={`b-${index}`} className="w-120 md:w-80">
+              <div key={`b-${index}`} className="w-24 md:w-36">
                 <PrismicNextImage
-                  className="w-full h-auto aspect-video object-contain"
+                  className="w-full h-auto max-h-12 md:max-h-16 object-contain"
                   field={foto.logo_image}
                   width={foto.logo_image.dimensions?.width}
                   height={foto.logo_image.dimensions?.height}
