@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 
+import { GoogleTagManager } from "@next/third-parties/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "./lib/utils";
-
-import { GSAPProvider } from "@/app/components/GSAPProvider";
 
 const spaceGrotesk = localFont({
   src: [
@@ -51,6 +50,7 @@ export default async function RootLayout({
   return (
     <html lang="es" className={cn(spaceGrotesk.variable, "bg-white")}>
       <body className="font-grotesk antialiased">{children}</body>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
     </html>
   );
 }
