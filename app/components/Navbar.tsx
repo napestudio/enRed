@@ -275,6 +275,8 @@ export default function Navbar({
         open={isMenuOpen}
         items={navItems}
         onAnchorClick={handleAnchorClick}
+        soluciones={soluciones}
+        onClose={() => setOpen(false)}
       />
     </div>
   );
@@ -284,15 +286,21 @@ type MobileMenuProps = {
   open?: boolean;
   items: typeof LINKS.navItems;
   onAnchorClick?: (e: React.MouseEvent, href: string) => void;
+  soluciones?: Content.SolucionDocument[];
+  onClose?: () => void;
 };
 
 export const MobileMenu: FC<MobileMenuProps> = ({
   open = false,
   items = [],
   onAnchorClick,
+  soluciones = [],
+  onClose,
 }) => {
   const { socialItems } = LINKS;
   const ref = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
   useEffect(() => {
     const container = ref.current;
@@ -346,16 +354,74 @@ export const MobileMenu: FC<MobileMenuProps> = ({
     >
       <div className="px-10 order-2 flex flex-col justify-center items-start gap-4 col-span-12 md:col-span-6 text-5xl font-light pb-4">
         <div className="flex flex-col gap-10">
-          {items.map((item, _) => (
-            <NavItem
-              key={_}
-              href={item.href}
-              className="flex flex-row gap-2 text-enred-white font-bold "
-              onClick={(e) => onAnchorClick?.(e, item.href)}
-            >
-              <span className="">{item.label}</span>
-            </NavItem>
-          ))}
+          {items.map((item, idx) =>
+            item.label === "Soluciones" ? (
+              <div key={idx}>
+                <button
+                  className="flex flex-row gap-2 text-enred-white font-bold items-center cursor-pointer"
+                  onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                >
+                  <span>{item.label}</span>
+                  <svg
+                    className={cn(
+                      "w-6 h-6 transition-transform duration-300",
+                      open && mobileDropdownOpen && "rotate-180",
+                    )}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  className={cn(
+                    "overflow-hidden transition-all duration-300 ease-in-out",
+                    open && mobileDropdownOpen
+                      ? "max-h-96 opacity-100 mt-4"
+                      : "max-h-0 opacity-0",
+                  )}
+                >
+                  <div className="flex flex-col gap-3 pl-4 border-l-2 border-white/40">
+                    {soluciones.map((solucion) => {
+                      const featureSlice = solucion.data.slices.find(
+                        (s) => s.slice_type === "feature_highlights_grid",
+                      ) as Content.FeatureHighlightsGridSlice | undefined;
+                      return (
+                        <Link
+                          key={solucion.id}
+                          href={`/soluciones/${solucion.uid}`}
+                          className={cn(
+                            "text-xl text-enred-white/80 hover:text-enred-white transition-colors",
+                            pathname === `/soluciones/${solucion.uid}` &&
+                              "text-enred-white underline",
+                          )}
+                          onClick={() => onClose?.()}
+                        >
+                          {featureSlice &&
+                            asText(featureSlice.primary.section_title)}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <NavItem
+                key={idx}
+                href={item.href}
+                className="flex flex-row gap-2 text-enred-white font-bold"
+                onClick={(e) => onAnchorClick?.(e, item.href)}
+              >
+                <span>{item.label}</span>
+              </NavItem>
+            ),
+          )}
         </div>
         <ul className="flex gap-4">
           {socialItems.map((link) => (
