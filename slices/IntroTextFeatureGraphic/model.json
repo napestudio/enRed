@@ -14,7 +14,7 @@
         "description": {
           "type": "StructuredText",
           "config": {
-            "label": "Descripción",
+            "label": "Nosotros",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,hyperlink"

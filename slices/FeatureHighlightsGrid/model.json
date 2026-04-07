@@ -32,7 +32,7 @@
         "section_description": {
           "type": "StructuredText",
           "config": {
-            "label": "Descripción del servicio",
+            "label": "Párrafo",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,hyperlink"
@@ -49,7 +49,7 @@
         "features": {
           "type": "Group",
           "config": {
-            "label": "Características",
+            "label": "Soluciones Relacionadas",
             "repeat": true,
             "fields": {
               "icon": {

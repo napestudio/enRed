@@ -51,15 +51,6 @@
                   "repeat": false,
                   "select": null
                 }
-              },
-              "featured": {
-                "type": "Boolean",
-                "config": {
-                  "label": "Destacado",
-                  "placeholder_false": "false",
-                  "placeholder_true": "true",
-                  "default_value": true
-                }
               }
             }
           }

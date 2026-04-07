@@ -14,7 +14,8 @@
         "media_items": {
           "type": "Group",
           "config": {
-            "label": "Media Items",
+            "label": "Trabajos realizados",
+            "repeat": true,
             "fields": {
               "label": {
                 "type": "StructuredText",
@@ -28,7 +29,7 @@
               "main_title": {
                 "type": "StructuredText",
                 "config": {
-                  "label": "Tipo de trabajo",
+                  "label": "Título",
                   "placeholder": "",
                   "allowTargetBlank": true,
                   "multi": "heading2"

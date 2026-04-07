@@ -11,13 +11,6 @@
       "imageUrl": "",
       "docURL": "...",
       "primary": {
-        "background_image": {
-          "type": "Image",
-          "config": {
-            "constraint": {},
-            "label": "Imagen de fondo"
-          }
-        },
         "headline": {
           "type": "StructuredText",
           "config": {
@@ -30,10 +23,17 @@
         "video_url": {
           "type": "Link",
           "config": {
-            "label": "video url",
+            "label": "Video",
             "placeholder": "",
             "select": "media",
             "allowText": true
+          }
+        },
+        "background_image": {
+          "type": "Image",
+          "config": {
+            "label": "Imagen de fondo",
+            "constraint": {}
           }
         }
       },
