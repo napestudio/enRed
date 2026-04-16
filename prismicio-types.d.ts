@@ -646,11 +646,11 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
   section_description: prismic.RichTextField;
 
   /**
-   * Mostrar Garantía field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   * Mostrar slogan field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
-   * - **Default Value**: false
+   * - **Default Value**: true
    * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.mostrar_garantia
    * - **Documentation**: https://prismic.io/docs/fields/boolean
    */

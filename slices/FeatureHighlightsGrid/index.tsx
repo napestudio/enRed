@@ -42,7 +42,7 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
       data-slice-variation={slice.variation}
       className="bg-white pt-12 overflow-hidden"
     >
-      <div className="container py-8 md:px-12">
+      <div className="container py-8 md:px-12 overflow-hidden">
         <AnimatedHeader
           title={slice.primary.section_title}
           subtitle={slice.primary.section_subtitle}

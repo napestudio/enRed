@@ -41,10 +41,10 @@
         "mostrar_garantia": {
           "type": "Boolean",
           "config": {
-            "label": "Mostrar Garantía",
+            "label": "Mostrar slogan",
             "placeholder_false": "false",
             "placeholder_true": "true",
-            "default_value": false
+            "default_value": true
           }
         },
         "imagen_principal": {
