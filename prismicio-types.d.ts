@@ -123,60 +123,6 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Content for Slogan documents
- */
-interface GarantiaDocumentData {
-  /**
-   * Logo field in *Slogan*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: garantia.logo
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  logo: prismic.ImageField<never>;
-
-  /**
-   * slogan field in *Slogan*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: garantia.slogan
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  slogan: prismic.RichTextField;
-
-  /**
-   * sello field in *Slogan*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: garantia.sello
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  sello: prismic.ImageField<never>;
-}
-
-/**
- * Slogan document from Prismic
- *
- * - **API ID**: `garantia`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/content-modeling
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type GarantiaDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<GarantiaDocumentData>,
-    "garantia",
-    Lang
-  >;
-
 type HomeDocumentDataSlicesSlice =
   | HeroImageOverlaySlice
   | LogoGridSlice
@@ -478,7 +424,6 @@ export type SolucionDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | FooterDocument
-  | GarantiaDocument
   | HomeDocument
   | MetricsDocument
   | SolucionDocument;
@@ -1276,8 +1221,6 @@ declare module "@prismicio/client" {
     export type {
       FooterDocument,
       FooterDocumentData,
-      GarantiaDocument,
-      GarantiaDocumentData,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
