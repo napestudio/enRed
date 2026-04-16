@@ -167,6 +167,10 @@
 				"credits": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"mostrar_garantia": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []

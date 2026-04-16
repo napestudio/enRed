@@ -1,0 +1,36 @@
+{
+  "format": "custom",
+  "id": "slogan",
+  "label": "Slogan",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "slogan": {
+        "type": "StructuredText",
+        "config": {
+          "label": "slogan",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2,strong,em,rtl,paragraph,heading3"
+        }
+      },
+      "sello": {
+        "type": "Image",
+        "config": {
+          "label": "sello",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}
