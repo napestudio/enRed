@@ -29,8 +29,8 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
     },
   );
 
-  const { results: sloganData } = await cms.getByType<Content.GarantiaDocument>(
-    "garantia",
+  const { results: sloganData } = await cms.getByType<Content.SloganDocument>(
+    "slogan",
   );
 
   const currentUid = (context as { uid?: string })?.uid;

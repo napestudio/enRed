@@ -354,6 +354,60 @@ export type MetricsDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Slogan documents
+ */
+interface SloganDocumentData {
+  /**
+   * logo field in *Slogan*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slogan.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * slogan field in *Slogan*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slogan.slogan
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  slogan: prismic.RichTextField;
+
+  /**
+   * sello field in *Slogan*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slogan.sello
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  sello: prismic.ImageField<never>;
+}
+
+/**
+ * Slogan document from Prismic
+ *
+ * - **API ID**: `slogan`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SloganDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SloganDocumentData>,
+    "slogan",
+    Lang
+  >;
+
 type SolucionDocumentDataSlicesSlice =
   | FormContactSlice
   | BrandTextColumnsSlice
@@ -426,6 +480,7 @@ export type AllDocumentTypes =
   | FooterDocument
   | HomeDocument
   | MetricsDocument
+  | SloganDocument
   | SolucionDocument;
 
 /**
@@ -1229,6 +1284,8 @@ declare module "@prismicio/client" {
       MetricsDocumentDataMainMetricItem,
       MetricsDocumentDataSecondMetricItem,
       MetricsDocumentDataThirdMetricItem,
+      SloganDocument,
+      SloganDocumentData,
       SolucionDocument,
       SolucionDocumentData,
       SolucionDocumentDataSlicesSlice,

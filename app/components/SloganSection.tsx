@@ -5,9 +5,9 @@ import { PrismicRichText } from "@prismicio/react";
 export default function SloganSection({
   sloganData,
 }: {
-  sloganData: Content.GarantiaDocument;
+  sloganData: Content.SloganDocument;
 }) {
-  const data = sloganData.data as Content.GarantiaDocumentData;
+  const data = sloganData.data as Content.SloganDocumentData;
 
   return (
     <section className="bg-black py-16 px-6 sm:py-20 sm:px-12">
