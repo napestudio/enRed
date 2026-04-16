@@ -1,0 +1,36 @@
+{
+  "format": "custom",
+  "id": "garantia",
+  "label": "Slogan",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "slogan": {
+        "type": "StructuredText",
+        "config": {
+          "label": "slogan",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading2,strong,em"
+        }
+      },
+      "sello": {
+        "type": "Image",
+        "config": {
+          "label": "sello",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

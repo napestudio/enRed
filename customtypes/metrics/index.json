@@ -1,7 +1,7 @@
 {
   "format": "custom",
   "id": "metrics",
-  "label": "Metrics",
+  "label": "Metricas",
   "repeatable": false,
   "status": true,
   "json": {

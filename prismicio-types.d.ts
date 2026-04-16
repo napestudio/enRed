@@ -123,6 +123,60 @@ export type FooterDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Content for Slogan documents
+ */
+interface GarantiaDocumentData {
+  /**
+   * Logo field in *Slogan*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: garantia.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * slogan field in *Slogan*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: garantia.slogan
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  slogan: prismic.RichTextField;
+
+  /**
+   * sello field in *Slogan*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: garantia.sello
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  sello: prismic.ImageField<never>;
+}
+
+/**
+ * Slogan document from Prismic
+ *
+ * - **API ID**: `garantia`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GarantiaDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<GarantiaDocumentData>,
+    "garantia",
+    Lang
+  >;
+
 type HomeDocumentDataSlicesSlice =
   | HeroImageOverlaySlice
   | LogoGridSlice
@@ -192,11 +246,11 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 /**
- * Item in *Metrics → Métrica principales*
+ * Item in *Metricas → Métrica principales*
  */
 export interface MetricsDocumentDataMainMetricItem {
   /**
-   * Titulo field in *Metrics → Métrica principales*
+   * Titulo field in *Metricas → Métrica principales*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -206,7 +260,7 @@ export interface MetricsDocumentDataMainMetricItem {
   titulo: prismic.RichTextField;
 
   /**
-   * Descripcion field in *Metrics → Métrica principales*
+   * Descripcion field in *Metricas → Métrica principales*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -216,7 +270,7 @@ export interface MetricsDocumentDataMainMetricItem {
   descripcion: prismic.RichTextField;
 
   /**
-   * Número field in *Metrics → Métrica principales*
+   * Número field in *Metricas → Métrica principales*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -227,11 +281,11 @@ export interface MetricsDocumentDataMainMetricItem {
 }
 
 /**
- * Item in *Metrics → Métrica secundaria*
+ * Item in *Metricas → Métrica secundaria*
  */
 export interface MetricsDocumentDataSecondMetricItem {
   /**
-   * Titulo field in *Metrics → Métrica secundaria*
+   * Titulo field in *Metricas → Métrica secundaria*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -241,7 +295,7 @@ export interface MetricsDocumentDataSecondMetricItem {
   titulo: prismic.RichTextField;
 
   /**
-   * Descripcion field in *Metrics → Métrica secundaria*
+   * Descripcion field in *Metricas → Métrica secundaria*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -251,7 +305,7 @@ export interface MetricsDocumentDataSecondMetricItem {
   descripcion: prismic.RichTextField;
 
   /**
-   * Número field in *Metrics → Métrica secundaria*
+   * Número field in *Metricas → Métrica secundaria*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -262,11 +316,11 @@ export interface MetricsDocumentDataSecondMetricItem {
 }
 
 /**
- * Item in *Metrics → Métricas secundarias*
+ * Item in *Metricas → Métricas secundarias*
  */
 export interface MetricsDocumentDataThirdMetricItem {
   /**
-   * Titulo field in *Metrics → Métricas secundarias*
+   * Titulo field in *Metricas → Métricas secundarias*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -276,7 +330,7 @@ export interface MetricsDocumentDataThirdMetricItem {
   titulo: prismic.RichTextField;
 
   /**
-   * Descripcion field in *Metrics → Métricas secundarias*
+   * Descripcion field in *Metricas → Métricas secundarias*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -286,7 +340,7 @@ export interface MetricsDocumentDataThirdMetricItem {
   descripcion: prismic.RichTextField;
 
   /**
-   * Número field in *Metrics → Métricas secundarias*
+   * Número field in *Metricas → Métricas secundarias*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -297,11 +351,11 @@ export interface MetricsDocumentDataThirdMetricItem {
 }
 
 /**
- * Content for Metrics documents
+ * Content for Metricas documents
  */
 interface MetricsDocumentData {
   /**
-   * Métrica principales field in *Metrics*
+   * Métrica principales field in *Metricas*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -312,7 +366,7 @@ interface MetricsDocumentData {
   main_metric: prismic.GroupField<Simplify<MetricsDocumentDataMainMetricItem>>;
 
   /**
-   * Métrica secundaria field in *Metrics*
+   * Métrica secundaria field in *Metricas*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -325,7 +379,7 @@ interface MetricsDocumentData {
   >;
 
   /**
-   * Métricas secundarias field in *Metrics*
+   * Métricas secundarias field in *Metricas*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -339,7 +393,7 @@ interface MetricsDocumentData {
 }
 
 /**
- * Metrics document from Prismic
+ * Metricas document from Prismic
  *
  * - **API ID**: `metrics`
  * - **Repeatable**: `false`
@@ -424,6 +478,7 @@ export type SolucionDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | FooterDocument
+  | GarantiaDocument
   | HomeDocument
   | MetricsDocument
   | SolucionDocument;
@@ -589,6 +644,17 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   section_description: prismic.RichTextField;
+
+  /**
+   * Mostrar Garantía field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.mostrar_garantia
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  mostrar_garantia: prismic.BooleanField;
 
   /**
    * Imagen principal field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
@@ -1210,6 +1276,8 @@ declare module "@prismicio/client" {
     export type {
       FooterDocument,
       FooterDocumentData,
+      GarantiaDocument,
+      GarantiaDocumentData,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,

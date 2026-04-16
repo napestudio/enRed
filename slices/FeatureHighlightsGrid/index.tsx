@@ -6,6 +6,7 @@ import SolutionsGallery from "@/app/components/solutions/Gallery";
 import RelatedSolutionCards from "@/app/components/solutions/RelatedCards";
 import { cms } from "@/prismicio";
 import AnimatedHeader from "./AnimatedHeader";
+import SloganSection from "@/app/components/SloganSection";
 
 /**
  * Props for `FeatureHighlightsGrid`.
@@ -28,6 +29,10 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
     },
   );
 
+  const { results: sloganData } = await cms.getByType<Content.GarantiaDocument>(
+    "garantia",
+  );
+
   const currentUid = (context as { uid?: string })?.uid;
   const relatedSolutions = data.filter((s) => s.uid !== currentUid);
 
@@ -35,9 +40,9 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white pt-12 md:px-12 overflow-hidden"
+      className="bg-white pt-12 overflow-hidden"
     >
-      <div className="container py-8">
+      <div className="container py-8 md:px-12">
         <AnimatedHeader
           title={slice.primary.section_title}
           subtitle={slice.primary.section_subtitle}
@@ -61,7 +66,11 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
           slice={slice}
           relatedSolutions={relatedSolutions}
         />
+
       </div>
+        {slice.primary.mostrar_garantia && sloganData[0] && (
+          <SloganSection sloganData={sloganData[0]} />
+        )}
     </section>
   );
 };

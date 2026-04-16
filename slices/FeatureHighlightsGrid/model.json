@@ -38,6 +38,15 @@
             "multi": "paragraph,strong,em,hyperlink"
           }
         },
+        "mostrar_garantia": {
+          "type": "Boolean",
+          "config": {
+            "label": "Mostrar Garantía",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "imagen_principal": {
           "type": "Image",
           "config": {
