@@ -37,7 +37,7 @@ export default function RelatedSolutionCards({
           alt="shape"
           width={944}
           height={544}
-          className="absolute z-0 -right-14 top-14 w-full md:w-[69%] h-auto"
+          className="absolute z-0 -right-14 top-60 md:top-14 w-full scale-200 md:scale-100 md:w-[60%] h-auto"
         />
       </div>
     </div>

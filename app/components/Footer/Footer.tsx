@@ -14,6 +14,7 @@ import { LINKS } from "../../lib/constants";
 import { cn } from "../../lib/utils";
 import FormSection from "../FormSection";
 import { PrismicRichText } from "@prismicio/react";
+import PinIcon from "../ui/Icons/PinIcon";
 
 export default function Footer({
   soluciones,
@@ -66,6 +67,9 @@ export default function Footer({
               <div className="text-lg">
                 <PrismicRichText field={correo} />
               </div>
+              <div className="text-lg">
+                <Link href="phone:0341153722267">0341153722267</Link>
+              </div>
             </div>
             <div className="flex gap-5 md:gap-10 items-center justify-between md:justify-end">
               <ul className="flex flex-col md:flex-row gap-2 md:gap-8 text-xs md:text-sm">
@@ -113,6 +117,18 @@ export default function Footer({
                 ))}
               </ul>
               <ul className="flex justify-start gap-6">
+                <li>
+                  <Link
+                    href="https://maps.app.goo.gl/NZpKhYxgND4G4k3h7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=""
+                  >
+                    <span className="text-enred-black">
+                      <PinIcon />
+                    </span>
+                  </Link>
+                </li>
                 {socialItems.map((link) => (
                   <li key={link.label}>
                     <Link

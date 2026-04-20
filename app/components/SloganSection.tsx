@@ -10,34 +10,28 @@ export default function SloganSection({
   const data = sloganData.data as Content.SloganDocumentData;
 
   return (
-    <section className="bg-black py-16 px-6 sm:py-20 sm:px-12">
-      <div className="container mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-10 sm:gap-6">
-
-        {isFilled.richText(data.slogan) && (
-          <div className="sm:w-1/3 text-center sm:text-left">
-            <div className="text-white [&_strong]:underline [&_strong]:decoration-[3px] [&_strong]:underline-offset-4 text-[clamp(2rem,3vw,3rem)] font-bold leading-tight">
-              <PrismicRichText field={data.slogan} />
-            </div>
-          </div>
-        )}
-
-
+    <section className="bg-black py-12 ">
+      <div className="container mx-auto flex  items-start justify-center gap-10 sm:gap-12">
         {isFilled.image(data.logo) && (
-          <div className="flex justify-center sm:justify-start sm:w-1/3">
+          <div className="flex justify-center sm:justify-start">
             <PrismicNextImage
-              className="w-40 sm:w-44 md:w-52 object-contain"
+              className="w-40 sm:w-44 md:w-72 object-contain"
               field={data.logo}
               width={data.logo.dimensions?.width}
               height={data.logo.dimensions?.height}
             />
           </div>
         )}
-
-
-
+        {isFilled.richText(data.slogan) && (
+          <div className="text-center sm:text-left">
+            <div className="text-white [&_strong]:underline [&_strong]:decoration-[3px] [&_strong]:underline-offset-4 text-[clamp(2rem,4vw,4rem)] font-medium leading-none">
+              <PrismicRichText field={data.slogan} />
+            </div>
+          </div>
+        )}
 
         {isFilled.image(data.sello) && (
-          <div className="flex justify-center sm:justify-end sm:w-1/3">
+          <div className="flex justify-center sm:justify-end">
             <PrismicNextImage
               className="w-28 sm:w-20 md:w-24 object-contain"
               field={data.sello}

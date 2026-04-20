@@ -4,14 +4,17 @@
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
+import {
+  MediaGridIntroSlice,
+  MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem,
+} from "@/prismicio-types";
 import { PrismicRichText } from "@prismicio/react";
-import TrabajosImageClipper from "./TrabajosImageClipper";
-import { MediaGridIntroSlice } from "@/prismicio-types";
-import { gsap, ScrollTrigger } from "../lib/gsap";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
 import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
-import { MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem } from "@/prismicio-types";
+import { gsap, ScrollTrigger } from "../lib/gsap";
+import TrabajosImageClipper from "./TrabajosImageClipper";
 
 function SwiperNav() {
   const swiper = useSwiper();
@@ -137,16 +140,18 @@ function TrabajosSlide({
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-      <div className="col-span-1 md:col-span-5 text-enred-black flex flex-col gap-14 py-12">
-        <div ref={labelRef}>
-          <PrismicRichText field={item.label} />
-        </div>
-        <div
-          ref={titleRef}
-          className="text-6xl font-semibold text-[clamp(1rem,5.2vw,55px)]"
-        >
-          <PrismicRichText field={item.main_title} />
+    <div className="grid grid-cols-1 md:grid-cols-12 md:gap-4">
+      <div className="col-span-1 md:col-span-5 text-enred-black flex flex-col gap-5 md:gap-14 py-8 md:py-12">
+        <div>
+          <div ref={labelRef} className="mb-4">
+            <PrismicRichText field={item.label} />
+          </div>
+          <div
+            ref={titleRef}
+            className="text-6xl font-semibold text-[clamp(1rem,5.2vw,55px)]"
+          >
+            <PrismicRichText field={item.main_title} />
+          </div>
         </div>
         <div
           ref={textRef}
@@ -157,7 +162,9 @@ function TrabajosSlide({
         </div>
       </div>
       <div className="col-span-1 md:col-span-7" ref={imageRef}>
-        <TrabajosImageClipper item={item} />
+        <span className="block">
+          <TrabajosImageClipper item={item} />
+        </span>
       </div>
     </div>
   );
@@ -187,6 +194,12 @@ export default function TrabajosSwiper({
             slidesOffsetAfter: 60,
           },
         }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        speed={1000}
+        modules={[Autoplay]}
       >
         {slice.primary.media_items.map((item, index) => (
           <SwiperSlide key={index}>
