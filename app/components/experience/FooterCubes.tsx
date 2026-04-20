@@ -261,7 +261,7 @@ export default function FooterCubes() {
         start: "top bottom",
         end: "bottom top",
         animation: tl,
-        scrub: 0.1,
+        scrub: true,
       });
 
       ScrollTrigger.create({
