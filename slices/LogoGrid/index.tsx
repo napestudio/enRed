@@ -62,7 +62,7 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
           </h3>
         </div>
         <div className="relative overflow-hidden">
-          <div className="absolute w-full inset-0 bg-linear-to-r from-black from-10% to-30% to-transparent opacity-80 z-10"></div>
+          <div className="absolute w-full inset-0 bg-linear-to-r from-black from-10% to-30% to-transparent z-10"></div>
           <div
             className="overflow-hidden relative"
             onMouseEnter={() => {
