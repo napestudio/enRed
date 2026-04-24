@@ -366,7 +366,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
       ref={ref}
     >
       <div className="px-10 order-2 flex flex-col justify-center items-start gap-4 col-span-12 md:col-span-6 text-5xl font-light pb-4">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-4 md:gap-10">
           {items.map((item, idx) =>
             item.label === "Soluciones" ? (
               <div key={idx}>
