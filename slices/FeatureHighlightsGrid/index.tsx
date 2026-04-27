@@ -53,7 +53,7 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
         <div className="grid md:grid-cols-2 gap-4 text-enred-black">
           {slice.primary.feature_descriptions.map((item, index) => (
             <div
-              className="col-span-2 md:col-span-1 text-pretty text-xl"
+              className="col-span-2 md:col-span-1 text-pretty md:text-xl"
               key={index}
             >
               <PrismicRichText field={item.feature_description} />

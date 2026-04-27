@@ -11,7 +11,7 @@ export default function SloganSection({
 
   return (
     <section className="bg-black py-12 ">
-      <div className="container mx-auto flex  items-center justify-center gap-10 sm:gap-12">
+      <div className="container mx-auto flex md:flex-row flex-col items-center justify-center gap-10 sm:gap-12">
         {isFilled.image(data.logo) && (
           <div className="flex justify-center sm:justify-start">
             <PrismicNextImage
@@ -19,6 +19,7 @@ export default function SloganSection({
               field={data.logo}
               width={data.logo.dimensions?.width}
               height={data.logo.dimensions?.height}
+              alt=""
             />
           </div>
         )}
@@ -37,6 +38,7 @@ export default function SloganSection({
               field={data.sello}
               width={data.sello.dimensions?.width}
               height={data.sello.dimensions?.height}
+              alt=""
             />
           </div>
         )}

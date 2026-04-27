@@ -91,7 +91,7 @@ export default function FormSection({
         <div className="grid w-full grid-cols-1 md:grid-cols-5 gap-16 md:gap-24">
           <div className="order-1 col-span-1 pt-12 w-full md:col-span-2 md:order-0 md:max-w-min relative h-full flex flex-col gap-8 justify-start">
             <Metrics items={metrics.main_metric} variant="big" />
-            <div className="w-full flex justify-between gap-2 items-center z-10">
+            <div className="w-full flex md:flex-row flex-col justify-between gap-8 md:gap-2 items-center z-10">
               <Metrics items={metrics.second_metric} variant="small" />
               <Metrics items={metrics.third_metric} variant="small" />
             </div>

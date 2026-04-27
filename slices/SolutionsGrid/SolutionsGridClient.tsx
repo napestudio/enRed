@@ -171,8 +171,8 @@ export default function SolutionsGridClient({
                     <Image
                       src={"/red-shape.svg"}
                       alt="Icono del servicio"
-                      width={70}
-                      height={50}
+                      width={57}
+                      height={46}
                       priority
                     />
                   </div>
@@ -188,38 +188,40 @@ export default function SolutionsGridClient({
                     <Image
                       src={"/white-shape.svg"}
                       alt="Icono del servicio"
-                      width={70}
-                      height={50}
+                      width={57}
+                      height={46}
                       priority
                     />
                   </div>
                 </div>
-                <h3 className="text-3xl font-bold underline text-balance z-20 relative">
+                <h3 className="text-2xl md:text-3xl font-bold underline text-balance z-20 relative">
                   {featureSlice && asText(featureSlice.primary.section_title)}
                 </h3>
 
-                <p className="text-left text-balance text-xl">
+                <p className="text-left text-balance  md:text-xl">
                   {featureSlice &&
                     asText(featureSlice.primary.section_description)}
                 </p>
               </div>
+
               <svg
+                width="28"
+                height="30"
+                viewBox="0 0 28 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
                 ref={(el) => {
                   arrowRefs.current[index] = el;
                 }}
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
                 className="ml-auto invisible -translate-x-3 group-hover:translate-x-0 group-hover:visible md:transition-transform md:duration-500"
               >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
+                <path
+                  d="M2 14.8284H26M26 14.8284L14 2.82837M26 14.8284L14 26.8284"
+                  stroke="white"
+                  stroke-width="4"
+                  stroke-linecap="square"
+                  stroke-linejoin="round"
+                />
               </svg>
             </div>
           </Link>

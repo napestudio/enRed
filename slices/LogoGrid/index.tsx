@@ -81,6 +81,7 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
                       field={foto.logo_image}
                       width={foto.logo_image.dimensions?.width}
                       height={foto.logo_image.dimensions?.height}
+                      alt=""
                     />
                   </div>
                 ))}
@@ -93,6 +94,7 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
                       field={foto.logo_image}
                       width={foto.logo_image.dimensions?.width}
                       height={foto.logo_image.dimensions?.height}
+                      alt=""
                     />
                   </div>
                 ))}

@@ -13,7 +13,7 @@ export default function RelatedSolutionCards({
 }: RelatedSolutionCardsProps) {
   return (
     <div className="flex flex-col gap-16 pt-18 z-20 ">
-      <div className="relative grid grid-cols-12 md:gap-4 items-start pb-16">
+      <div className="relative grid grid-cols-12 gap-4 md:gap-4 items-start pb-16">
         {relatedSolutions.map((solucion, i) => {
           const featureSlice = solucion.data.slices.find(
             (s) => s.slice_type === "feature_highlights_grid",
@@ -25,7 +25,13 @@ export default function RelatedSolutionCards({
               href={`/soluciones/${solucion.uid}`}
               className="col-span-12 md:col-span-4 p-4 md:p-10 flex flex-col gap-5 z-10"
             >
-              <Image src="/shape1.svg" alt="" width={77} height={62} />
+              <Image
+                src="/shape1.svg"
+                alt=""
+                width={77}
+                height={62}
+                className="w-14 h-11 md:w-19 md:h-16"
+              />
               <div className="text-2xl md:text-3xl text-enred-black font-semibold underline underline-offset-2">
                 {featureSlice && asText(featureSlice.primary.section_title)}
               </div>

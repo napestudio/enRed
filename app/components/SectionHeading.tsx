@@ -52,7 +52,7 @@ function SectionHeading({
       <h2
         className={cn(
           style,
-          "whitespace-nowrap text-3xl md:text-5xl font-medium",
+          "whitespace-nowrap text-3xl md:text-5xl font-bold md:font-medium",
         )}
         ref={titleRef}
       >
@@ -60,7 +60,7 @@ function SectionHeading({
       </h2>
 
       <div ref={iconRef}>
-        <ArrowIcon className="w-12 h-12" />
+        <ArrowIcon className="w-7 h-7 md:w-12 md:h-12" />
       </div>
     </div>
   );

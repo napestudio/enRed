@@ -61,7 +61,7 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
         <div ref={sectionRef} className="flex flex-col gap-10">
           <div
             ref={titleRef}
-            className="font-bold text-[clamp(2.75rem,4.75vw,80px)] leading-none"
+            className="font-bold text-[clamp(2.35rem,4.75vw,80px)] leading-none"
           >
             <PrismicRichText field={title} />
           </div>

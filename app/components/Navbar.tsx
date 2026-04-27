@@ -142,7 +142,7 @@ export default function Navbar({
               height={50}
               className={cn(
                 shouldBeRed && "scale-[0.75]",
-                "transition-transform duration-300",
+                "transition-transform duration-300 w-30 md:w-44 h-auto",
               )}
             />
           </Link>
