@@ -52,7 +52,7 @@ function SectionHeading({
       <h2
         className={cn(
           style,
-          "whitespace-nowrap text-3xl md:text-5xl font-semibold",
+          "whitespace-nowrap text-3xl md:text-5xl font-medium",
         )}
         ref={titleRef}
       >

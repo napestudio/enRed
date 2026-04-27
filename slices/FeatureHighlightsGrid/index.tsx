@@ -29,9 +29,8 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
     },
   );
 
-  const { results: sloganData } = await cms.getByType<Content.SloganDocument>(
-    "slogan",
-  );
+  const { results: sloganData } =
+    await cms.getByType<Content.SloganDocument>("slogan");
 
   const currentUid = (context as { uid?: string })?.uid;
   const relatedSolutions = data.filter((s) => s.uid !== currentUid);
@@ -66,11 +65,10 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
           slice={slice}
           relatedSolutions={relatedSolutions}
         />
-
       </div>
-        {slice.primary.mostrar_garantia && sloganData[0] && (
-          <SloganSection sloganData={sloganData[0]} />
-        )}
+      {slice.primary.mostrar_garantia && sloganData[0] && (
+        <SloganSection sloganData={sloganData[0]} />
+      )}
     </section>
   );
 };

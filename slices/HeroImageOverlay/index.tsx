@@ -81,7 +81,7 @@ const HeroImageOverlay: FC<HeroImageOverlayProps> = ({ slice }) => {
         <div className="grid grid-cols-3 md:grid-cols-12 gap-4 p-6 md:p-12 z-30 ">
           <div className="col-span-3 md:col-span-12 col-start-1 lg:col-start-1 lg:col-span-5 flex flex-col justify-start gap-4 lg:gap-20 pt-12 lg:py-12">
             <h1
-              className="text-white text-[clamp(3.5rem,7vw,7rem)] mt-4 text-balance leading-none font-semibold max-w-full"
+              className="text-white text-[clamp(3.5rem,7vw,7rem)] mt-4 text-balance leading-none font-bold max-w-full"
               ref={titleRef}
             >
               Soluciones con{" "}

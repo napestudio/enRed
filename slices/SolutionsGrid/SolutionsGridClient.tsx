@@ -194,11 +194,11 @@ export default function SolutionsGridClient({
                     />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold underline text-balance z-20 relative">
+                <h3 className="text-3xl font-bold underline text-balance z-20 relative">
                   {featureSlice && asText(featureSlice.primary.section_title)}
                 </h3>
 
-                <p className="text-right">
+                <p className="text-left text-balance text-xl">
                   {featureSlice &&
                     asText(featureSlice.primary.section_description)}
                 </p>

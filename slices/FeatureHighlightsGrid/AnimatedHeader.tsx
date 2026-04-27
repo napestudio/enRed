@@ -57,15 +57,15 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
 
   return (
     <div className="grid grid-cols-12 gap-y-10 md:gap-4 items-center">
-      <div className="col-span-12  md:col-span-7 py-8 flex flex-col justify-between h-full gap-4 md:gap-24 text-enred-black">
+      <div className="col-span-12  md:col-span-6 py-8 flex flex-col justify-between h-full gap-4 md:gap-24 text-enred-black">
         <div ref={sectionRef} className="flex flex-col gap-10">
           <div
             ref={titleRef}
-            className="font-bold text-[clamp(2.2rem,5.2vw,80px)] leading-none"
+            className="font-bold text-[clamp(2.75rem,4.75vw,80px)] leading-none"
           >
             <PrismicRichText field={title} />
           </div>
-          <div className="text-[clamp(1rem,1.60vw,30px)] font-semibold underline underline-offset-2">
+          <div className="text-[clamp(1rem,1.60vw,30px)] font-medium underline underline-offset-2">
             <div ref={subtitleRef}>
               <PrismicRichText field={subtitle} />
             </div>
@@ -82,7 +82,7 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
             <ImageClipper slice={slice} />
           </div>
           <div
-            className="col-span-6 md:col-span-4 text-[clamp(1rem,1.55vw,30px)] text-pretty"
+            className="col-span-6 md:col-span-4 text-[clamp(1rem,1.45vw,30px)] text-pretty"
             ref={descriptionRef}
           >
             <PrismicRichText field={sectionDescription} />
@@ -90,7 +90,7 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
         </div>
       </div>
       <div
-        className="md:col-span-5 col-span-12 col-start-9 hidden md:block"
+        className="md:col-span-6 col-span-12 col-start-9 hidden md:block"
         ref={imageRef}
       >
         <ImageClipper slice={slice} />

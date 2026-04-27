@@ -68,7 +68,7 @@ export default function Footer({
                 <PrismicRichText field={correo} />
               </div>
               <div className="text-lg">
-                <Link href="phone:0341153722267">0341153722267</Link>
+                <Link href="phone:0341153722267">+549 341-3722267</Link>
               </div>
             </div>
             <div className="flex gap-5 md:gap-10 items-center justify-between md:justify-end">

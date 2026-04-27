@@ -141,21 +141,18 @@ function TrabajosSlide({
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 md:gap-4">
-      <div className="col-span-1 md:col-span-5 text-enred-black flex flex-col gap-5 md:gap-14 py-8 md:py-12">
+      <div className="col-span-1 md:col-span-5 text-enred-black flex flex-col gap-5 pt-8 md:pt-12">
         <div>
-          <div ref={labelRef} className="mb-4">
+          <div ref={labelRef} className="mb-4 text-xl">
             <PrismicRichText field={item.label} />
           </div>
-          <div
-            ref={titleRef}
-            className="text-6xl font-semibold text-[clamp(1rem,5.2vw,55px)]"
-          >
+          <div ref={titleRef} className="text-5xl font-medium">
             <PrismicRichText field={item.main_title} />
           </div>
         </div>
         <div
           ref={textRef}
-          className="text-balance h-full flex gap-6 justify-between items-start flex-col pb-5"
+          className="text-balance text-xl h-full flex gap-6 justify-between items-start flex-col pb-5"
         >
           <PrismicRichText field={item.description} />
           <SwiperNav />

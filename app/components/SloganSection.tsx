@@ -11,11 +11,11 @@ export default function SloganSection({
 
   return (
     <section className="bg-black py-12 ">
-      <div className="container mx-auto flex  items-start justify-center gap-10 sm:gap-12">
+      <div className="container mx-auto flex  items-center justify-center gap-10 sm:gap-12">
         {isFilled.image(data.logo) && (
           <div className="flex justify-center sm:justify-start">
             <PrismicNextImage
-              className="w-40 sm:w-44 md:w-72 object-contain"
+              className="w-40 sm:w-44 md:w-44 object-contain"
               field={data.logo}
               width={data.logo.dimensions?.width}
               height={data.logo.dimensions?.height}
@@ -24,7 +24,7 @@ export default function SloganSection({
         )}
         {isFilled.richText(data.slogan) && (
           <div className="text-center sm:text-left">
-            <div className="text-white [&_strong]:underline [&_strong]:decoration-[3px] [&_strong]:underline-offset-4 text-[clamp(2rem,4vw,4rem)] font-medium leading-none">
+            <div className="text-white [&_strong]:underline [&_strong]:decoration-[3px] [&_strong]:underline-offset-4 text-[clamp(2rem,3.25vw,4rem)] font-medium leading-none">
               <PrismicRichText field={data.slogan} />
             </div>
           </div>
