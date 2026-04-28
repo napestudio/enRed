@@ -1,4 +1,4 @@
-import { Content } from "@prismicio/client";
+import { Content, filter } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FC } from "react";
 
@@ -21,19 +21,23 @@ const FeatureHighlightsGrid: FC<FeatureHighlightsGridProps> = async ({
   slice,
   context,
 }) => {
+  const currentUid = (context as { uid?: string })?.uid;
   const { results: data } = await cms.getByType<Content.SolucionDocument>(
     "solucion",
     {
+      filters: [filter.not("my.solucion.uid", currentUid!)],
       orderings: [{ field: "my.solucion.uid", direction: "asc" }],
-      pageSize: 4,
+      pageSize: 6,
     },
   );
 
   const { results: sloganData } =
     await cms.getByType<Content.SloganDocument>("slogan");
 
-  const currentUid = (context as { uid?: string })?.uid;
-  const relatedSolutions = data.filter((s) => s.uid !== currentUid);
+  const relatedSolutions = data
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item).slice(0, 3);
 
   return (
     <section
