@@ -218,9 +218,9 @@ export default function SolutionsGridClient({
                 <path
                   d="M2 14.8284H26M26 14.8284L14 2.82837M26 14.8284L14 26.8284"
                   stroke="white"
-                  stroke-width="4"
-                  stroke-linecap="square"
-                  stroke-linejoin="round"
+                  strokeWidth="4"
+                  strokeLinecap="square"
+                  strokeLinejoin="round"
                 />
               </svg>
             </div>
