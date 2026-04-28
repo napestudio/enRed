@@ -50,8 +50,8 @@ function SwiperNav() {
           <path
             d="M10.5 5.70703L0.499999 5.70703M0.499999 5.70703L5.5 10.707M0.499999 5.70703L5.5 0.707031"
             stroke="white"
-            stroke-linecap="square"
-            stroke-linejoin="round"
+            strokeLinecap="square"
+            strokeLinejoin="round"
           />
         </svg>
       </button>
@@ -72,8 +72,8 @@ function SwiperNav() {
           <path
             d="M10.5 5.70703L0.499999 5.70703M0.499999 5.70703L5.5 10.707M0.499999 5.70703L5.5 0.707031"
             stroke="white"
-            stroke-linecap="square"
-            stroke-linejoin="round"
+            strokeLinecap="square"
+            strokeLinejoin="round"
           />
         </svg>
       </button>

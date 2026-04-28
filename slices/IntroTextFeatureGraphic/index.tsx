@@ -62,7 +62,7 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
           </div>
         </div>
         {/* </div> */}
-        <div className="absolute -right-40 top-45 -scale-y-100 -scale-x-100 w-lg md:hidden z-0 flex items-center pointer-events-none">
+        <div className="absolute hidden -right-40 top-45 -scale-y-100 -scale-x-100 w-lg md:hidden z-0 flex items-center pointer-events-none">
           <Image
             src="/gray-shape.svg"
             alt="enRed Logo"
