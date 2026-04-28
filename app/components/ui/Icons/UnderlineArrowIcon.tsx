@@ -16,12 +16,12 @@ export default function UnderlineArrowIcon({ className }: ArrowIconProps) {
     >
       <path
         d="M19.5356 2.5V34.5M19.5356 34.5L35.5356 18.5M19.5356 34.5L3.53564 18.5"
-        stroke="#111111"
+        stroke="currentColor"
         strokeWidth="5"
         strokeLinecap="square"
         strokeLinejoin="round"
       />
-      <path d="M0.535645 38.5H38.5356" stroke="#111111" strokeWidth="5" />
+      <path d="M0.535645 38.5H38.5356" stroke="currentColor" strokeWidth="5" />
     </svg>
   );
 }

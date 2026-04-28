@@ -1,7 +1,3 @@
-- [x] Imagen pagina soluciones
-- [x] Gsap pagina soluciones
-- [x] Soluciones hero agregar 5 svg diferentes
-- [x] Swiper home imagenes quitar mascara
-- [x] Boton de hablemos
-- [] Responsive GSAP
-- [] Revalidar prismic
+- [] No aparece form a veces al navegar
+- [] Botones cambiar fondo en hover
+- [] Lag formas
