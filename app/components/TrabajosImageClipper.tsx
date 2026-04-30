@@ -12,7 +12,12 @@ function TrabajosImageClipper({
   }
   return (
     <div className="relative w-full aspect-615/420">
-      <svg width="0" height="0" className="absolute" aria-hidden="true">
+      <svg
+        width="0"
+        height="0"
+        className="absolute hidden md:block"
+        aria-hidden="true"
+      >
         <clipPath id="miFormaGeometrica2" clipPathUnits="objectBoundingBox">
           <path
             transform="scale(0.001628, 0.002387)"

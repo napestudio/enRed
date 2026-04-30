@@ -4,11 +4,10 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import { FC, useRef } from "react";
 
-import SectionHeading from "@/app/components/SectionHeading";
-import { PrismicNextImage } from "@prismicio/next";
-import { gsap } from "@/app/lib/gsap";
 import useIsometricLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
+import { gsap } from "@/app/lib/gsap";
 import { useMediaQuery } from "@mantine/hooks";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `LogoGrid`.
@@ -54,46 +53,53 @@ const LogoGrid: FC<LogoGridProps> = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-enred-black text-enred-black py-12"
+      className="bg-enred-black text-enred-black py-18"
     >
-      <div className="container grid grid-cols-12 gap-4 items-center">
-        <div className="md:col-span-5 flex gap-4 items-center text-white mb-12">
-          <SectionHeading title="Nuestros clientes" style="text-white" />
+      <div className="container mx-auto flex items-center">
+        <div className="flex items-center text-white pr-4">
+          <h3 className="text-3xl md:text-5xl w-max font-semibold text-white text-pretty">
+            Confían en <br /> nosotros:
+          </h3>
         </div>
-      </div>
-      <div
-        className="overflow-hidden"
-        onMouseEnter={() => {
-          isPausedRef.current = true;
-        }}
-        onMouseLeave={() => {
-          isPausedRef.current = false;
-        }}
-      >
-        <div ref={trackRef} className="flex">
-          <div className="flex shrink-0 items-center gap-8 md:gap-12 px-4 md:px-6">
-            {logos.map((foto, index) => (
-              <div key={`a-${index}`} className="w-24 md:w-36">
-                <PrismicNextImage
-                  className="w-full h-auto max-h-12 md:max-h-16 object-contain"
-                  field={foto.logo_image}
-                  width={foto.logo_image.dimensions?.width}
-                  height={foto.logo_image.dimensions?.height}
-                />
+        <div className="relative overflow-hidden">
+          <div className="absolute w-full inset-0 bg-linear-to-r from-enred-black from-10% to-30% to-transparent z-10"></div>
+          <div
+            className="overflow-hidden relative"
+            onMouseEnter={() => {
+              isPausedRef.current = true;
+            }}
+            onMouseLeave={() => {
+              isPausedRef.current = false;
+            }}
+          >
+            <div ref={trackRef} className="flex">
+              <div className="flex shrink-0 items-center gap-8 md:gap-12 px-4 md:px-6">
+                {logos.map((foto, index) => (
+                  <div key={`a-${index}`} className="w-24 md:w-36">
+                    <PrismicNextImage
+                      className="w-full h-auto max-h-12 md:max-h-16 object-contain"
+                      field={foto.logo_image}
+                      width={foto.logo_image.dimensions?.width}
+                      height={foto.logo_image.dimensions?.height}
+                      alt=""
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="flex shrink-0 items-center gap-8 md:gap-12 px-4 md:px-6">
-            {logos.map((foto, index) => (
-              <div key={`b-${index}`} className="w-24 md:w-36">
-                <PrismicNextImage
-                  className="w-full h-auto max-h-12 md:max-h-16 object-contain"
-                  field={foto.logo_image}
-                  width={foto.logo_image.dimensions?.width}
-                  height={foto.logo_image.dimensions?.height}
-                />
+              <div className="flex shrink-0 items-center gap-8 md:gap-12 px-4 md:px-6">
+                {logos.map((foto, index) => (
+                  <div key={`b-${index}`} className="w-24 md:w-36">
+                    <PrismicNextImage
+                      className="w-full h-auto max-h-12 md:max-h-16 object-contain"
+                      field={foto.logo_image}
+                      width={foto.logo_image.dimensions?.width}
+                      height={foto.logo_image.dimensions?.height}
+                      alt=""
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>

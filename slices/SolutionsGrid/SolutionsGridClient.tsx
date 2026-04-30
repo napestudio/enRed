@@ -83,7 +83,11 @@ export default function SolutionsGridClient({
 
           const cardTl = gsap.timeline({ paused: true });
           cardTl
-            .to(card, { backgroundColor: "#f03c32", color: "white", duration: 0.3 }, 0)
+            .to(
+              card,
+              { backgroundColor: "#f03c32", color: "white", duration: 0.3 },
+              0,
+            )
             .to(decoTop, { rotation: -45, duration: 0.5 }, 0)
             .to(decoBottom, { rotation: 45, duration: 0.5 }, 0)
             .to(iconRed, { yPercent: -100, duration: 0.4 }, 0)
@@ -137,14 +141,18 @@ export default function SolutionsGridClient({
             }}
           >
             <div
-              ref={(el) => { decoTopRefs.current[index] = el; }}
+              ref={(el) => {
+                decoTopRefs.current[index] = el;
+              }}
               className={cn(
                 "absolute h-32 w-32 -top-20 -right-32 bg-white group-hover:-rotate-45 pointer-events-none md:transition-transform origin-bottom-left md:duration-500",
                 isActive && "-rotate-45",
               )}
             />
             <div
-              ref={(el) => { decoBottomRefs.current[index] = el; }}
+              ref={(el) => {
+                decoBottomRefs.current[index] = el;
+              }}
               className={cn(
                 "absolute h-32 w-32 -bottom-32 -left-20 bg-white group-hover:rotate-45 pointer-events-none origin-top-right md:transition-transform md:duration-500",
                 isActive && "rotate-45",
@@ -155,19 +163,23 @@ export default function SolutionsGridClient({
               <div className="flex flex-col gap-5">
                 <div className="h-13.5 relative overflow-hidden">
                   <div
-                    ref={(el) => { iconRedRefs.current[index] = el; }}
+                    ref={(el) => {
+                      iconRedRefs.current[index] = el;
+                    }}
                     className="absolute h-full inset-0 group-hover:-translate-y-100 translate-y-0 md:transition-transform md:duration-400"
                   >
                     <Image
                       src={"/red-shape.svg"}
                       alt="Icono del servicio"
-                      width={70}
-                      height={50}
+                      width={57}
+                      height={46}
                       priority
                     />
                   </div>
                   <div
-                    ref={(el) => { iconWhiteRefs.current[index] = el; }}
+                    ref={(el) => {
+                      iconWhiteRefs.current[index] = el;
+                    }}
                     className={cn(
                       "absolute h-full inset-0 translate-y-100 group-hover:translate-y-0 md:transition-transform md:duration-400",
                       isActive && "translate-y-0",
@@ -176,37 +188,40 @@ export default function SolutionsGridClient({
                     <Image
                       src={"/white-shape.svg"}
                       alt="Icono del servicio"
-                      width={70}
-                      height={50}
+                      width={57}
+                      height={46}
                       priority
                     />
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold underline text-balance z-20 relative">
+                <h3 className="text-2xl md:text-3xl font-bold underline text-balance z-20 relative">
                   {featureSlice && asText(featureSlice.primary.section_title)}
                 </h3>
-                {index < 3 && (
-                  <p className="text-right">
-                    {featureSlice &&
-                      asText(featureSlice.primary.section_description)}
-                  </p>
-                )}
+
+                <p className="text-left text-balance  md:text-xl">
+                  {featureSlice &&
+                    asText(featureSlice.primary.section_description)}
+                </p>
               </div>
+
               <svg
-                ref={(el) => { arrowRefs.current[index] = el; }}
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
+                width="28"
+                height="30"
+                viewBox="0 0 28 30"
                 fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                xmlns="http://www.w3.org/2000/svg"
+                ref={(el) => {
+                  arrowRefs.current[index] = el;
+                }}
                 className="ml-auto invisible -translate-x-3 group-hover:translate-x-0 group-hover:visible md:transition-transform md:duration-500"
               >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
+                <path
+                  d="M2 14.8284H26M26 14.8284L14 2.82837M26 14.8284L14 26.8284"
+                  stroke="white"
+                  strokeWidth="4"
+                  strokeLinecap="square"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
           </Link>

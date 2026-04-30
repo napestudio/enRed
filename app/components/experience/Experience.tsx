@@ -14,6 +14,8 @@ export default function Experience() {
         events={undefined}
         orthographic
         camera={{ zoom: 75, position: [8, 8, 8] }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: false }}
       >
         {pathname === "/" && <AnimatedCubes />}
         <FooterCubes />

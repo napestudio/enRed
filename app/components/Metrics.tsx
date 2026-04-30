@@ -64,8 +64,8 @@ export default function Metrics({
           <div
             className={cn(
               variant === "big"
-                ? "text-[clamp(3rem,8vw,140px)]"
-                : "text-[clamp(2rem,5vw,60px)]",
+                ? "text-[clamp(5.5rem,8vw,140px)]"
+                : "text-[clamp(5.5rem,5vw,60px)]",
               "tracking-tight leading-none font-bold",
             )}
           >
@@ -81,7 +81,7 @@ export default function Metrics({
             className={cn(
               variant === "big"
                 ? "text-[clamp(1.2rem,2vw,30px)] leading-none"
-                : "z-10",
+                : "text-[clamp(1.2rem,2vw,30px)] md:text-xl z-10",
               "leading-none [&_strong]:text-enred-red text-center md:text-left text-pretty",
             )}
           >

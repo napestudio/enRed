@@ -32,10 +32,19 @@
         "section_description": {
           "type": "StructuredText",
           "config": {
-            "label": "Descripción del servicio",
+            "label": "Párrafo",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "mostrar_garantia": {
+          "type": "Boolean",
+          "config": {
+            "label": "Mostrar slogan",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
           }
         },
         "imagen_principal": {
@@ -49,7 +58,7 @@
         "features": {
           "type": "Group",
           "config": {
-            "label": "Características",
+            "label": "Soluciones Relacionadas",
             "repeat": true,
             "fields": {
               "icon": {

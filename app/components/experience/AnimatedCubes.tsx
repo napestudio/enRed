@@ -121,7 +121,7 @@ export default function AnimatedCubes() {
         start: "top bottom",
         end: "bottom top",
         animation: tl,
-        scrub: true,
+        scrub: 0.1,
       });
 
       ScrollTrigger.create({
@@ -159,7 +159,7 @@ export default function AnimatedCubes() {
   }, []);
 
   return (
-    <group position={[isSmallScreen ? 2 : 0, isSmallScreen ? 3.5 : 0, 0]}>
+    <group position={[isSmallScreen ? 2 : 0, isSmallScreen ? 1.5 : 0, 0]}>
       <group position={[0, 0, 0]} ref={groupRef}>
         {POSITIONS.map((pos, i) => (
           <group

@@ -24,7 +24,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 const inputClass =
-  "bg-white w-full px-2 py-4 border-b-2 text-2xs leading-none outline-none focus:border-enred-red transition-colors";
+  "bg-white w-full px-2 py-4 border-b text-2xs leading-none outline-none focus:border-enred-red transition-colors";
 const errorClass = "text-red-500 text-[10px] mt-1";
 
 export default function FormSection({
@@ -89,9 +89,9 @@ export default function FormSection({
         </div>
 
         <div className="grid w-full grid-cols-1 md:grid-cols-5 gap-16 md:gap-24">
-          <div className="order-1 col-span-1  w-full md:col-span-2 md:order-0 md:max-w-min relative h-full flex flex-col gap-8 justify-start">
+          <div className="order-1 col-span-1 pt-12 w-full md:col-span-2 md:order-0 md:max-w-min relative h-full flex flex-col gap-8 justify-start">
             <Metrics items={metrics.main_metric} variant="big" />
-            <div className="w-full flex justify-between gap-2 items-center z-10">
+            <div className="w-full flex md:flex-row flex-col justify-between gap-8 md:gap-2 items-center z-10">
               <Metrics items={metrics.second_metric} variant="small" />
               <Metrics items={metrics.third_metric} variant="small" />
             </div>
@@ -106,7 +106,6 @@ export default function FormSection({
               />
             </div>
           </div>
-
           <div
             className="col-span-1 md:col-span-3 order-0 md:order-1 z-10 w-full"
             ref={formRef}
@@ -197,7 +196,7 @@ export default function FormSection({
               <div className="col-span-2 flex flex-col gap-1">
                 <label className="text-xs">Mensaje</label>
                 <textarea
-                  className="bg-white p-2 border-b-2 outline-none focus:border-enred-red transition-colors"
+                  className="bg-white p-2 border-b outline-none focus:border-enred-red transition-colors"
                   {...register("mensaje")}
                 />
               </div>
@@ -207,11 +206,13 @@ export default function FormSection({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="bg-enred-red text-white text-2xl px-12 py-4 flex justify-center items-center gap-2 group cursor-pointer"
+                  className="bg-enred-red text-white px-10 py-4 flex justify-center items-center gap-2 group cursor-pointer"
                 >
-                  <span>{isSubmitting ? "Enviando..." : "Contactanos"}</span>
+                  <span>
+                    {isSubmitting ? "Enviando..." : "Enviar consulta"}
+                  </span>
                   <span className="group-hover:translate-x-2 group-hover:scale-101 transition-transform duration-300">
-                    <ArrowIcon />
+                    <ArrowIcon className="w-4 h-4" />
                   </span>
                 </button>
               </div>

@@ -4,14 +4,17 @@
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
+import {
+  MediaGridIntroSlice,
+  MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem,
+} from "@/prismicio-types";
 import { PrismicRichText } from "@prismicio/react";
-import TrabajosImageClipper from "./TrabajosImageClipper";
-import { MediaGridIntroSlice } from "@/prismicio-types";
-import { gsap, ScrollTrigger } from "../lib/gsap";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
 import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
-import { MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem } from "@/prismicio-types";
+import { gsap, ScrollTrigger } from "../lib/gsap";
+import TrabajosImageClipper from "./TrabajosImageClipper";
 
 function SwiperNav() {
   const swiper = useSwiper();
@@ -34,15 +37,20 @@ function SwiperNav() {
       <button
         onClick={() => swiper.slidePrev()}
         disabled={isBeginning}
-        className="w-10 h-10 bg-enred-red flex items-center justify-center disabled:opacity-40"
+        className="w-10 h-10 bg-enred-red hover:bg-enred-black transition-colors flex items-center justify-center disabled:opacity-40"
         aria-label="Slide anterior"
       >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <svg
+          width="11"
+          height="12"
+          viewBox="0 0 11 12"
+          fill="white"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
-            d="M10 3L5 8L10 13"
+            d="M10.5 5.70703L0.499999 5.70703M0.499999 5.70703L5.5 10.707M0.499999 5.70703L5.5 0.707031"
             stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
+            strokeLinecap="square"
             strokeLinejoin="round"
           />
         </svg>
@@ -50,15 +58,21 @@ function SwiperNav() {
       <button
         onClick={() => swiper.slideNext()}
         disabled={isEnd}
-        className="w-10 h-10 bg-enred-red flex items-center justify-center disabled:opacity-40"
+        className="w-10 h-10 bg-enred-red hover:bg-enred-black transition-colors flex items-center justify-center disabled:opacity-40"
         aria-label="Slide siguiente"
       >
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <svg
+          width="11"
+          height="12"
+          viewBox="0 0 11 12"
+          fill="white"
+          xmlns="http://www.w3.org/2000/svg"
+          className="-scale-x-100"
+        >
           <path
-            d="M6 3L11 8L6 13"
+            d="M10.5 5.70703L0.499999 5.70703M0.499999 5.70703L5.5 10.707M0.499999 5.70703L5.5 0.707031"
             stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
+            strokeLinecap="square"
             strokeLinejoin="round"
           />
         </svg>
@@ -137,27 +151,39 @@ function TrabajosSlide({
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-      <div className="col-span-1 md:col-span-5 text-enred-black flex flex-col gap-14 py-12">
-        <div ref={labelRef}>
-          <PrismicRichText field={item.label} />
-        </div>
-        <div
-          ref={titleRef}
-          className="text-6xl font-semibold text-[clamp(1rem,5.2vw,55px)]"
-        >
-          <PrismicRichText field={item.main_title} />
+    <div className="grid grid-cols-1 md:grid-cols-12 md:gap-4">
+      <div className="col-span-1 md:col-span-5 text-enred-black flex flex-col gap-5 pt-8 md:pt-12">
+        <div>
+          <div ref={labelRef} className="mb-4 md:text-xl">
+            <PrismicRichText field={item.label} />
+          </div>
+          <div
+            className="block md:hidden col-span-1 md:col-span-7 mb-4"
+            ref={imageRef}
+          >
+            <span className="block">
+              <TrabajosImageClipper item={item} />
+            </span>
+          </div>
+          <div
+            ref={titleRef}
+            className="text-2xl md:text-5xl underline md:no-underline font-bold md:font-medium"
+          >
+            <PrismicRichText field={item.main_title} />
+          </div>
         </div>
         <div
           ref={textRef}
-          className="text-balance h-full flex gap-6 justify-between items-start flex-col pb-5"
+          className="text-balance md:text-xl h-full flex gap-6 justify-between items-start flex-col pb-5"
         >
           <PrismicRichText field={item.description} />
           <SwiperNav />
         </div>
       </div>
-      <div className="col-span-1 md:col-span-7" ref={imageRef}>
-        <TrabajosImageClipper item={item} />
+      <div className="hidden md:block col-span-1 md:col-span-7" ref={imageRef}>
+        <span className="block">
+          <TrabajosImageClipper item={item} />
+        </span>
       </div>
     </div>
   );
@@ -187,6 +213,12 @@ export default function TrabajosSwiper({
             slidesOffsetAfter: 60,
           },
         }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        speed={1000}
+        modules={[Autoplay]}
       >
         {slice.primary.media_items.map((item, index) => (
           <SwiperSlide key={index}>

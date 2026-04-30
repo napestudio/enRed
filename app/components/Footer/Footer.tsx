@@ -14,6 +14,7 @@ import { LINKS } from "../../lib/constants";
 import { cn } from "../../lib/utils";
 import FormSection from "../FormSection";
 import { PrismicRichText } from "@prismicio/react";
+import PinIcon from "../ui/Icons/PinIcon";
 
 export default function Footer({
   soluciones,
@@ -57,14 +58,17 @@ export default function Footer({
         <div className="min-h-full container py-6 md:py-12  relative flex flex-col flex-1">
           <div className="h-full z-50 text-enred-black flex flex-col gap-10 justify-between">
             <div className="">
-              <div className="text-balance text-enred-black font-bold [&_strong]:underline [&_strong]:decoration-3 [&_strong]:underline-offset-4 text-[clamp(3rem,5vw,7rem)] leading-none">
+              <div className="text-balance text-enred-black font-bold [&_strong]:underline [&_strong]:decoration-3 [&_strong]:underline-offset-4 text-[clamp(3.75rem,5vw,7rem)] leading-none">
                 <PrismicRichText field={slogan} />
               </div>
-              <div className="mt-4 text-lg">
+              <div className="mt-8 md:mt-4 text-lg">
                 <PrismicRichText field={direccion} />
               </div>
               <div className="text-lg">
                 <PrismicRichText field={correo} />
+              </div>
+              <div className="text-lg">
+                <Link href="phone:0341153722267">+549 341-3722267</Link>
               </div>
             </div>
             <div className="flex gap-5 md:gap-10 items-center justify-between md:justify-end">
@@ -113,6 +117,18 @@ export default function Footer({
                 ))}
               </ul>
               <ul className="flex justify-start gap-6">
+                <li>
+                  <Link
+                    href="https://maps.app.goo.gl/NZpKhYxgND4G4k3h7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=""
+                  >
+                    <span className="text-enred-black">
+                      <PinIcon />
+                    </span>
+                  </Link>
+                </li>
                 {socialItems.map((link) => (
                   <li key={link.label}>
                     <Link

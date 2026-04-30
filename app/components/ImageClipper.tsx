@@ -25,15 +25,13 @@ function ImageClipper({
         </defs>
       </svg>
 
-      <div
-        style={{ clipPath: `url(#${id})` }}
-        className="w-full h-full"
-      >
+      <div style={{ clipPath: `url(#${id})` }} className="w-full h-full">
         <PrismicNextImage
           className="w-full h-full object-cover"
           field={image}
           width={image.dimensions?.width}
           height={image.dimensions?.height}
+          alt=""
         />
       </div>
     </div>

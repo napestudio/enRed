@@ -23,16 +23,15 @@ export function GSAPProvider({ children }: { children: React.ReactNode }) {
     // Sincroniza Lenis con ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
+    // Drive Lenis from GSAP's ticker so tween updates and scroll updates
+    // happen in the same tick, before R3F renders.
+    const lenisRaf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(lenisRaf);
 
     return () => {
+      gsap.ticker.remove(lenisRaf);
       lenis.destroy();
       lenisInstance = null;
-      gsap.ticker.remove(lenis.raf);
     };
   }, []);
 

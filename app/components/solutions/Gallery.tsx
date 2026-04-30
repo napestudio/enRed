@@ -16,7 +16,7 @@ const gridClasses = [
 
 export default function SolutionsGallery({ slice }: SolutionsGalleryProps) {
   return (
-    <div className="relative py-16">
+    <div className="relative pt-16 pb-8">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-4 lg:h-[80svh]">
         {slice.primary.imagenes.map((item, index) => (
           <div

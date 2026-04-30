@@ -15,6 +15,7 @@ import gsap from "gsap";
 import { Content, asText } from "@prismicio/client";
 import useIsomorphicLayoutEffect from "../lib/custom-hooks/useIsometricLayoutEffect";
 import { getLenis } from "./GSAPProvider";
+import PinIcon from "./ui/Icons/PinIcon";
 
 const SCROLL_OFFSET = -20;
 
@@ -133,7 +134,7 @@ export default function Navbar({
         )}
       >
         <div className="container flex justify-between items-center">
-          <Link href="/">
+          <Link href="/" className="z-50">
             <Image
               src="/logo-en-red.svg"
               alt="enRed Logo"
@@ -141,7 +142,7 @@ export default function Navbar({
               height={50}
               className={cn(
                 shouldBeRed && "scale-[0.75]",
-                "transition-transform duration-300",
+                "transition-transform duration-300 w-30 md:w-44 h-auto",
               )}
             />
           </Link>
@@ -249,12 +250,24 @@ export default function Navbar({
                 ))}
               </ul>
               <ul className="flex gap-4">
+                <li>
+                  <Link
+                    href="https://maps.app.goo.gl/NZpKhYxgND4G4k3h7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=""
+                  >
+                    <span className="text-white">
+                      <PinIcon />
+                    </span>
+                  </Link>
+                </li>
                 {socialItems.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
                       target="_blank"
-                      className="cursor-pointer"
+                      rel="noopener noreferrer"
                     >
                       <Image
                         src={link.src}
@@ -353,7 +366,7 @@ export const MobileMenu: FC<MobileMenuProps> = ({
       ref={ref}
     >
       <div className="px-10 order-2 flex flex-col justify-center items-start gap-4 col-span-12 md:col-span-6 text-5xl font-light pb-4">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-4 md:gap-10">
           {items.map((item, idx) =>
             item.label === "Soluciones" ? (
               <div key={idx}>
@@ -424,6 +437,18 @@ export const MobileMenu: FC<MobileMenuProps> = ({
           )}
         </div>
         <ul className="flex gap-4">
+          <li>
+            <Link
+              href="https://maps.app.goo.gl/NZpKhYxgND4G4k3h7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className=""
+            >
+              <span className="text-white">
+                <PinIcon />
+              </span>
+            </Link>
+          </li>
           {socialItems.map((link) => (
             <li key={link.label}>
               <Link href={link.href} target="_blank" className="cursor-pointer">

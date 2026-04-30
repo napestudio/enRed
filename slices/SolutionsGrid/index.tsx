@@ -20,7 +20,9 @@ const SolutionsGrid: FC<SolutionsGridProps> = async ({ slice }) => {
   const solutionsList: Content.SolucionDocument[] = await cms.getAllByType(
     "solucion",
     {
-      orderings: [{ field: "my.solucion.uid", direction: "asc" }],
+      orderings: [
+        { field: "document.last_publication_date", direction: "desc" },
+      ],
     },
   );
 

@@ -192,11 +192,11 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 /**
- * Item in *Metrics → Métrica principales*
+ * Item in *Metricas → Métrica principales*
  */
 export interface MetricsDocumentDataMainMetricItem {
   /**
-   * Titulo field in *Metrics → Métrica principales*
+   * Titulo field in *Metricas → Métrica principales*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -206,7 +206,7 @@ export interface MetricsDocumentDataMainMetricItem {
   titulo: prismic.RichTextField;
 
   /**
-   * Descripcion field in *Metrics → Métrica principales*
+   * Descripcion field in *Metricas → Métrica principales*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -216,7 +216,7 @@ export interface MetricsDocumentDataMainMetricItem {
   descripcion: prismic.RichTextField;
 
   /**
-   * Número field in *Metrics → Métrica principales*
+   * Número field in *Metricas → Métrica principales*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -227,11 +227,11 @@ export interface MetricsDocumentDataMainMetricItem {
 }
 
 /**
- * Item in *Metrics → Métrica secundaria*
+ * Item in *Metricas → Métrica secundaria*
  */
 export interface MetricsDocumentDataSecondMetricItem {
   /**
-   * Titulo field in *Metrics → Métrica secundaria*
+   * Titulo field in *Metricas → Métrica secundaria*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -241,7 +241,7 @@ export interface MetricsDocumentDataSecondMetricItem {
   titulo: prismic.RichTextField;
 
   /**
-   * Descripcion field in *Metrics → Métrica secundaria*
+   * Descripcion field in *Metricas → Métrica secundaria*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -251,7 +251,7 @@ export interface MetricsDocumentDataSecondMetricItem {
   descripcion: prismic.RichTextField;
 
   /**
-   * Número field in *Metrics → Métrica secundaria*
+   * Número field in *Metricas → Métrica secundaria*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -262,11 +262,11 @@ export interface MetricsDocumentDataSecondMetricItem {
 }
 
 /**
- * Item in *Metrics → Métricas secundarias*
+ * Item in *Metricas → Métricas secundarias*
  */
 export interface MetricsDocumentDataThirdMetricItem {
   /**
-   * Titulo field in *Metrics → Métricas secundarias*
+   * Titulo field in *Metricas → Métricas secundarias*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -276,7 +276,7 @@ export interface MetricsDocumentDataThirdMetricItem {
   titulo: prismic.RichTextField;
 
   /**
-   * Descripcion field in *Metrics → Métricas secundarias*
+   * Descripcion field in *Metricas → Métricas secundarias*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -286,7 +286,7 @@ export interface MetricsDocumentDataThirdMetricItem {
   descripcion: prismic.RichTextField;
 
   /**
-   * Número field in *Metrics → Métricas secundarias*
+   * Número field in *Metricas → Métricas secundarias*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -297,11 +297,11 @@ export interface MetricsDocumentDataThirdMetricItem {
 }
 
 /**
- * Content for Metrics documents
+ * Content for Metricas documents
  */
 interface MetricsDocumentData {
   /**
-   * Métrica principales field in *Metrics*
+   * Métrica principales field in *Metricas*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -312,7 +312,7 @@ interface MetricsDocumentData {
   main_metric: prismic.GroupField<Simplify<MetricsDocumentDataMainMetricItem>>;
 
   /**
-   * Métrica secundaria field in *Metrics*
+   * Métrica secundaria field in *Metricas*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -325,7 +325,7 @@ interface MetricsDocumentData {
   >;
 
   /**
-   * Métricas secundarias field in *Metrics*
+   * Métricas secundarias field in *Metricas*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -339,7 +339,7 @@ interface MetricsDocumentData {
 }
 
 /**
- * Metrics document from Prismic
+ * Metricas document from Prismic
  *
  * - **API ID**: `metrics`
  * - **Repeatable**: `false`
@@ -351,6 +351,60 @@ export type MetricsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<
     Simplify<MetricsDocumentData>,
     "metrics",
+    Lang
+  >;
+
+/**
+ * Content for Slogan documents
+ */
+interface SloganDocumentData {
+  /**
+   * logo field in *Slogan*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slogan.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * slogan field in *Slogan*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slogan.slogan
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  slogan: prismic.RichTextField;
+
+  /**
+   * sello field in *Slogan*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: slogan.sello
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  sello: prismic.ImageField<never>;
+}
+
+/**
+ * Slogan document from Prismic
+ *
+ * - **API ID**: `slogan`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SloganDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SloganDocumentData>,
+    "slogan",
     Lang
   >;
 
@@ -426,6 +480,7 @@ export type AllDocumentTypes =
   | FooterDocument
   | HomeDocument
   | MetricsDocument
+  | SloganDocument
   | SolucionDocument;
 
 /**
@@ -502,11 +557,11 @@ export type BrandTextColumnsSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Características*
+ * Item in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Soluciones Relacionadas*
  */
 export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeaturesItem {
   /**
-   * Icono field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Características*
+   * Icono field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Soluciones Relacionadas*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -516,7 +571,7 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimaryFeaturesI
   icon: prismic.ImageField<never>;
 
   /**
-   * Título field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Características*
+   * Título field in *FeatureHighlightsGrid → Three Columns with Intro → Primary → Soluciones Relacionadas*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -581,7 +636,7 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
   section_subtitle: prismic.RichTextField;
 
   /**
-   * Descripción del servicio field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   * Párrafo field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -589,6 +644,17 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   section_description: prismic.RichTextField;
+
+  /**
+   * Mostrar slogan field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: feature_highlights_grid.three_columns_with_intro.primary.mostrar_garantia
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  mostrar_garantia: prismic.BooleanField;
 
   /**
    * Imagen principal field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
@@ -601,7 +667,7 @@ export interface FeatureHighlightsGridSliceThreeColumnsWithIntroPrimary {
   imagen_principal: prismic.ImageField<never>;
 
   /**
-   * Características field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
+   * Soluciones Relacionadas field in *FeatureHighlightsGrid → Three Columns with Intro → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -704,16 +770,6 @@ export type FormContactSlice = prismic.SharedSlice<
  */
 export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
   /**
-   * Imagen de fondo field in *HeroImageOverlay → Centered Headline with Image → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero_image_overlay.centered_headline_with_image.primary.background_image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  background_image: prismic.ImageField<never>;
-
-  /**
    * Texto principal field in *HeroImageOverlay → Centered Headline with Image → Primary*
    *
    * - **Field Type**: Rich Text
@@ -724,7 +780,7 @@ export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
   headline: prismic.RichTextField;
 
   /**
-   * video url field in *HeroImageOverlay → Centered Headline with Image → Primary*
+   * Video field in *HeroImageOverlay → Centered Headline with Image → Primary*
    *
    * - **Field Type**: Link to Media
    * - **Placeholder**: *None*
@@ -732,6 +788,16 @@ export interface HeroImageOverlaySliceCenteredHeadlineWithImagePrimary {
    * - **Documentation**: https://prismic.io/docs/fields/link-to-media
    */
   video_url: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * Imagen de fondo field in *HeroImageOverlay → Centered Headline with Image → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_image_overlay.centered_headline_with_image.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  background_image: prismic.ImageField<never>;
 }
 
 /**
@@ -771,7 +837,7 @@ export type HeroImageOverlaySlice = prismic.SharedSlice<
  */
 export interface IntroTextFeatureGraphicSliceDefaultPrimary {
   /**
-   * Descripción field in *IntroTextFeatureGraphic → Default → Primary*
+   * Nosotros field in *IntroTextFeatureGraphic → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -963,11 +1029,11 @@ export type MediaContentGridSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+ * Item in *MediaGridIntro → Headline with Image Grid → Primary → Trabajos realizados*
  */
 export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
   /**
-   * Cliente field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   * Cliente field in *MediaGridIntro → Headline with Image Grid → Primary → Trabajos realizados*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -977,7 +1043,7 @@ export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
   label: prismic.RichTextField;
 
   /**
-   * Tipo de trabajo field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   * Título field in *MediaGridIntro → Headline with Image Grid → Primary → Trabajos realizados*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -987,7 +1053,7 @@ export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
   main_title: prismic.RichTextField;
 
   /**
-   * Descripcion field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   * Descripcion field in *MediaGridIntro → Headline with Image Grid → Primary → Trabajos realizados*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -997,7 +1063,7 @@ export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
   description: prismic.RichTextField;
 
   /**
-   * Imagen field in *MediaGridIntro → Headline with Image Grid → Primary → Media Items*
+   * Imagen field in *MediaGridIntro → Headline with Image Grid → Primary → Trabajos realizados*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -1012,7 +1078,7 @@ export interface MediaGridIntroSliceHeadlineImageGridPrimaryMediaItemsItem {
  */
 export interface MediaGridIntroSliceHeadlineImageGridPrimary {
   /**
-   * Media Items field in *MediaGridIntro → Headline with Image Grid → Primary*
+   * Trabajos realizados field in *MediaGridIntro → Headline with Image Grid → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -1097,17 +1163,6 @@ export interface SolutionsGridSliceFeaturedItemGridPrimarySolutionsItem {
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
   link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-  /**
-   * Destacado field in *SolutionsGrid → Featured Item Grid → Primary → Soluciones*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: true
-   * - **API ID Path**: solutions_grid.featured_item_grid.primary.solutions[].featured
-   * - **Documentation**: https://prismic.io/docs/fields/boolean
-   */
-  featured: prismic.BooleanField;
 }
 
 /**
@@ -1218,6 +1273,8 @@ declare module "@prismicio/client" {
       MetricsDocumentDataMainMetricItem,
       MetricsDocumentDataSecondMetricItem,
       MetricsDocumentDataThirdMetricItem,
+      SloganDocument,
+      SloganDocumentData,
       SolucionDocument,
       SolucionDocumentData,
       SolucionDocumentDataSlicesSlice,

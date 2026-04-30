@@ -3,6 +3,7 @@ import { gsap, ScrollTrigger, SplitText } from "@/app/lib/gsap";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { FC, useRef } from "react";
+import Image from "next/image";
 
 import SectionHeading from "@/app/components/SectionHeading";
 import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayoutEffect";
@@ -46,21 +47,31 @@ const IntroTextFeatureGraphic: FC<IntroTextFeatureGraphicProps> = ({
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-white text-enred-black relative"
+      className="bg-white text-enred-black relative overflow-hidden"
       ref={sectionRef}
       id="about-us-section"
     >
       <div className="container relative md:grid md:grid-cols-12">
-        <div className="relative row-start-1 col-start-4  md:col-span-4 md:col-start-9 col-span-2 gap-4 py-8 md:py-12 z-50">
+        <div className="relative row-start-1 col-start-4 md:col-span-4 md:col-start-9 col-span-2 gap-4 py-8 md:py-12 z-50">
           {/* <div className="col-span-12 md:col-span-4 col-start-1 md:col-start-9 text-right text-balance z-20"> */}
           <div className="flex gap-4 justify-end items-center mb-6">
             <SectionHeading title="Nosotros" />
           </div>
-          <div className="text-xl text-pretty" ref={textRef}>
+          <div className="md:text-xl text-right" ref={textRef}>
             <PrismicRichText field={slice.primary.description} />
           </div>
         </div>
         {/* </div> */}
+        <div className="absolute hidden -right-40 top-45 -scale-y-100 -scale-x-100 w-lg md:hidden z-0 flex items-center pointer-events-none">
+          <Image
+            src="/gray-shape.svg"
+            alt="enRed Logo"
+            width={150}
+            height={50}
+            aria-hidden="true"
+            className="w-full h-auto pointer-events-none"
+          />
+        </div>
       </div>
     </section>
   );

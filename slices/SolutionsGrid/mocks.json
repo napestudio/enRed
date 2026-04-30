@@ -72,13 +72,6 @@
 										"url": "https://slicemachine.dev"
 									}
 								}
-							],
-							[
-								"featured",
-								{
-									"__TYPE__": "BooleanContent",
-									"value": true
-								}
 							]
 						]
 					}

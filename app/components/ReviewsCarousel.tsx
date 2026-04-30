@@ -132,11 +132,11 @@ export default function ReviewsCarousel({
           <Link
             href={reviewsUrl}
             target="_blank"
-            className="bg-enred-red text-white text-2xl px-12 py-4 flex justify-center items-center gap-2 group hover:inset-shadow-[inset_0px_0px_0px_5px_rgba(255,255,255,0.1)]"
+            className="bg-enred-red text-white px-10 py-4 flex justify-center items-center gap-2 group hover:inset-shadow-[inset_0px_0px_0px_5px_rgba(255,255,255,0.1)]"
           >
             <span>Ver todas</span>
             <span className="group-hover:translate-x-2 group-hover:scale-101 transition-transform duration-300 ">
-              <ArrowIcon />
+              <ArrowIcon className="w-4 h-4" />
             </span>
           </Link>
         </div>
