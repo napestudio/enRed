@@ -16,7 +16,7 @@ export const LINKS = {
       label: "Whatsapp",
       src: "/wasap-white.svg",
       black: "/wasap-black.svg",
-      href: "#",
+      href: "https://wa.me/+5493413722267?text=Hola,%20llegué%20desde%20la%20página%20web%20de%20EnRed.%20Me%20gustaría%20recibir%20asesoramiento.",
     },
   ],
 };
