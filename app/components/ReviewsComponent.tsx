@@ -1,3 +1,4 @@
+import { connection } from 'next/server'
 import ReviewsCarousel, { type Review } from "./ReviewsCarousel";
 
 const PLACE_ID = process.env.GOOGLE_PLACE_ID;
@@ -5,6 +6,8 @@ const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 const CACHE_DURATION = 60 * 60 * 24 * 5;
 
 export default async function ReviewsComponent() {
+  await connection();
+
   console.log("ReviewsComponent ejecutándose", {
     hasPlaceId: !!PLACE_ID,
     hasApiKey: !!API_KEY,
