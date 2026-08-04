@@ -5,6 +5,8 @@ import { FC } from "react";
 import ReviewsComponent from "@/app/components/ReviewsComponent";
 import SectionHeading from "@/app/components/SectionHeading";
 
+import { Suspense } from "react";
+
 /**
  * Props for `TestimonialCardList`.
  */
@@ -24,7 +26,9 @@ const TestimonialCardList: FC<TestimonialCardListProps> = async ({ slice }) => {
         </div>
       </div>
       <div>
-        <ReviewsComponent />
+        <Suspense fallback={"Cargando reseñas..."}>
+          <ReviewsComponent />
+        </Suspense>
       </div>
     </section>
   );
