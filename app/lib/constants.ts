@@ -16,7 +16,7 @@ export const LINKS = {
       label: "Whatsapp",
       src: "/wasap-white.svg",
       black: "/wasap-black.svg",
-      href: "#",
+      href: "https://wa.me/+5493413722267?text=Hola!%20me%20comuinico%20desde%20la%20web%20para%20consultar%20sobre%20sus%20servicios.",
     },
   ],
 };
