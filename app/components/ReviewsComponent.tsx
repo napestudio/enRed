@@ -5,7 +5,15 @@ const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 const CACHE_DURATION = 60 * 60 * 24 * 5;
 
 export default async function ReviewsComponent() {
-  if (!PLACE_ID || !API_KEY) return null;
+  console.log("ReviewsComponent ejecutándose", {
+    hasPlaceId: !!PLACE_ID,
+    hasApiKey: !!API_KEY,
+  });
+
+  if (!PLACE_ID || !API_KEY) {
+    console.log("Faltan env vars");
+    return null;
+  }
 
   const response = await fetch(
     `https://places.googleapis.com/v1/places/${PLACE_ID}`,
@@ -20,7 +28,10 @@ export default async function ReviewsComponent() {
     },
   );
 
-  if (!response.ok) return null;
+  if (!response.ok) {
+    console.log("Fetch falló:", response.status, await response.text());
+    return null;
+  }
 
   const data = await response.json();
 
