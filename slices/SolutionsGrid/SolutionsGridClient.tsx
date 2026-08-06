@@ -4,6 +4,7 @@ import useIsomorphicLayoutEffect from "@/app/lib/custom-hooks/useIsometricLayout
 import { gsap, ScrollTrigger } from "@/app/lib/gsap";
 import { cn } from "@/app/lib/utils";
 import { asText, Content } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -194,14 +195,14 @@ export default function SolutionsGridClient({
                     />
                   </div>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold underline text-balance z-20 relative">
+                <h3 className="text-2xl md:text-3xl underline font-bold text-balance z-20 relative">
                   {featureSlice && asText(featureSlice.primary.section_title)}
                 </h3>
 
-                <p className="text-left text-balance  md:text-xl">
+                <div className="md:text-xl">
                   {featureSlice &&
-                    asText(featureSlice.primary.section_description)}
-                </p>
+                    (<PrismicRichText field={featureSlice.primary.section_description} />)}
+                </div>
               </div>
 
               <svg

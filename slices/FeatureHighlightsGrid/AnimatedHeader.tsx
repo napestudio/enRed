@@ -65,7 +65,7 @@ const AnimatedHeader: FC<AnimatedHeaderProps> = ({
           >
             <PrismicRichText field={title} />
           </div>
-          <div className="text-[clamp(1rem,1.60vw,30px)] font-medium underline underline-offset-2">
+          <div className="text-[clamp(1rem,1.60vw,30px)] font-medium ">
             <div ref={subtitleRef}>
               <PrismicRichText field={subtitle} />
             </div>
