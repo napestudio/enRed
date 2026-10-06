@@ -40,6 +40,9 @@ const spaceGrotesk = localFont({
 export const metadata: Metadata = {
   title: "EnRed - Soluciones con altura",
   description: "Redes de protección",
+  verification: {
+    google: "JFKBOsAJotWyZuuPxHEG8ux8aKVqfqMcw-6EwMfbhD8",
+  },
 };
 
 export default async function RootLayout({
